@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="es" data-theme="claro" style="--acento: var(--a-expresion)"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Paralelismo, perpendicularidad y distancias — Expresión Gráfica</title><meta name="description" content="Cómo se traza una recta o un plano paralelo o perpendicular a otro, y por qué una distancia, salvo la de dos puntos, es un segmento perpendicular que hay que ver en verdadera magnitud."><meta property="og:title" content="Paralelismo, perpendicularidad y distancias — Expresión Gráfica"><meta property="og:description" content="Cómo se traza una recta o un plano paralelo o perpendicular a otro, y por qué una distancia, salvo la de dos puntos, es un segmento perpendicular que hay que ver en verdadera magnitud."><meta property="og:type" content="website"><link rel="canonical" href="https://ionanberloso.github.io/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/"><link rel="icon" type="image/svg+xml" href="/expresion-grafica/favicon.svg"><meta name="color-scheme" content="light dark"><script>
+      // Antes del primer pintado, para que no haya destello al recargar.
+      // La lectura va en su propio try: si el almacenamiento está bloqueado,
+      // la preferencia del sistema tiene que seguir mirándose (§02, regla 3).
+      let guardado = null;
+      try {
+        guardado = localStorage.getItem('tema');
+      } catch {}
+      if (guardado === 'oscuro' || guardado === 'claro') {
+        document.documentElement.dataset.theme = guardado;
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.dataset.theme = 'oscuro';
+      }
+    </script><link rel="stylesheet" href="/expresion-grafica/_astro/Cabecera.DzRFyI4l.css"><link rel="stylesheet" href="/expresion-grafica/_astro/Seguir.FVhjhl9z.css"><link rel="stylesheet" href="/expresion-grafica/_astro/_tema_.BaggnrbY.css"><link rel="stylesheet" href="/expresion-grafica/_astro/EnlaceAsignatura.CuotzBn5.css"><link rel="stylesheet" href="/expresion-grafica/_astro/ErrorTipico.QoP1w63h.css"></head><body><a class="saltar" href="#principal">Saltar al contenido</a><header class="top" data-astro-cid-zze2dqe4><a class="brand" href="/expresion-grafica/expresion-grafica/" data-astro-cid-zze2dqe4>Road to <span data-astro-cid-zze2dqe4>Ingeniería</span></a><span class="rotulo crumb" data-astro-cid-zze2dqe4>Expresión Gráfica · tema 05</span><span class="spacer" data-astro-cid-zze2dqe4></span><div class="modos no-imprimir" role="group" aria-label="Modo de lectura" data-modos hidden data-astro-cid-ln5sr2am><button type="button" data-modo="guiado" aria-pressed="true" data-astro-cid-ln5sr2am>guiado</button><button type="button" data-modo="completo" aria-pressed="false" data-astro-cid-ln5sr2am>completo</button><span class="rotulo avance" data-avance data-astro-cid-ln5sr2am></span></div><button class="toggle" type="button" data-cambia-tema aria-live="polite" data-astro-cid-zze2dqe4>tema</button></header><script>
+  (() => {
+    const boton = document.querySelector('[data-cambia-tema]');
+    if (!boton) return;
+    const pinta = () => {
+      const oscuro = document.documentElement.dataset.theme === 'oscuro';
+      boton.textContent = oscuro ? 'claro' : 'oscuro';
+      boton.setAttribute('aria-label', oscuro ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+    };
+    boton.addEventListener('click', () => {
+      const oscuro = document.documentElement.dataset.theme === 'oscuro';
+      document.documentElement.dataset.theme = oscuro ? 'claro' : 'oscuro';
+      try {
+        localStorage.setItem('tema', oscuro ? 'claro' : 'oscuro');
+      } catch {}
+      pinta();
+    });
+    pinta();
+  })();
+</script><main id="principal" data-astro-cid-ln5sr2am><div class="shell" data-armazon data-direcciones="{&quot;ej-ri4-la-distancia-de-q-a-un-plano-de-canto&quot;:&quot;/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-ri4-la-distancia-de-q-a-un-plano-de-canto&quot;,&quot;ej-sd15-la-chapa-soldada-en-la-arista-be&quot;:&quot;/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd15-la-chapa-soldada-en-la-arista-be&quot;,&quot;ej-sd47-el-tubo-perpendicular-al-fondo-de-la-tolva&quot;:&quot;/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd47-el-tubo-perpendicular-al-fondo-de-la-tolva&quot;,&quot;ej-sd50-el-cuadrado-paralelo-a-abc-por-p&quot;:&quot;/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd50-el-cuadrado-paralelo-a-abc-por-p&quot;,&quot;ej-sd51-la-piramide-recta-de-base-rectangular&quot;:&quot;/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd51-la-piramide-recta-de-base-rectangular&quot;,&quot;ej-sd53-la-piramide-recta-de-eje-e&quot;:&quot;/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd53-la-piramide-recta-de-eje-e&quot;,&quot;ej-sd54-la-recta-paralela-al-plano-y-su-distancia&quot;:&quot;/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd54-la-recta-paralela-al-plano-y-su-distancia&quot;,&quot;ej-sd55-la-tuberia-mas-corta-de-p-a-ab&quot;:&quot;/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd55-la-tuberia-mas-corta-de-p-a-ab&quot;,&quot;ej-sd56-la-tuberia-mas-corta-entre-ab-y-cd&quot;:&quot;/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd56-la-tuberia-mas-corta-entre-ab-y-cd&quot;,&quot;ej-sd57-la-tuberia-mas-corta-entre-ab-y-cd-paralelas&quot;:&quot;/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd57-la-tuberia-mas-corta-entre-ab-y-cd-paralelas&quot;,&quot;ej-sd58-la-tuberia-mas-corta-hasta-la-tolva&quot;:&quot;/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/2/#ej-sd58-la-tuberia-mas-corta-hasta-la-tolva&quot;,&quot;ej-sd67a-el-prisma-hexagonal-oblicuo&quot;:&quot;/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/2/#ej-sd67a-el-prisma-hexagonal-oblicuo&quot;,&quot;ej-sd67b-la-seccion-del-prisma-por-el-plano-a-60&quot;:&quot;/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/2/#ej-sd67b-la-seccion-del-prisma-por-el-plano-a-60&quot;}" data-astro-cid-ktanj4pa><nav class="rail" aria-label="Índice del tema" data-astro-cid-ktanj4pa><div class="rail-bloque" data-de="teoria" data-astro-cid-ktanj4pa><h2 class="rotulo" data-astro-cid-ktanj4pa>En este tema</h2><ol data-astro-cid-ktanj4pa><li data-astro-cid-ktanj4pa><a href="#paralelismo" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Paralelismo</span></a></li><li data-astro-cid-ktanj4pa><a href="#perpendicularidad" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Perpendicularidad</span></a></li><li data-astro-cid-ktanj4pa><a href="#distancias" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Distancias</span></a></li><li data-astro-cid-ktanj4pa><a href="#cómo-se-trabaja-aquí" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Cómo se trabaja aquí</span></a></li><li data-astro-cid-ktanj4pa><a href="#lo-que-hay-que-llevar-sabido" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Lo que hay que llevar sabido</span></a></li></ol></div><div class="rail-bloque" data-de="ejercicios" data-astro-cid-ktanj4pa><h2 class="rotulo" data-astro-cid-ktanj4pa>Ejercicios</h2><ol data-astro-cid-ktanj4pa><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-ri4-la-distancia-de-q-a-un-plano-de-canto" data-astro-cid-ktanj4pa>La distancia de un punto a un plano de canto</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd15-la-chapa-soldada-en-la-arista-be" data-astro-cid-ktanj4pa>La chapa de 20 × 30 cm soldada en la arista BE de la campana</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd47-el-tubo-perpendicular-al-fondo-de-la-tolva" data-astro-cid-ktanj4pa>El tubo perpendicular al fondo de la tolva, de P al suelo</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd50-el-cuadrado-paralelo-a-abc-por-p" data-astro-cid-ktanj4pa>El cuadrado de 35 mm paralelo al plano ABC, con P a 20 mm por encima</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd51-la-piramide-recta-de-base-rectangular" data-astro-cid-ktanj4pa>La pirámide recta de base rectangular, con el vértice en el plano α</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd53-la-piramide-recta-de-eje-e" data-astro-cid-ktanj4pa>La pirámide recta de base triangular y eje e, con la base vista de punta a e</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd54-la-recta-paralela-al-plano-y-su-distancia" data-astro-cid-ktanj4pa>La recta r paralela al plano ABC por P, y su distancia al plano</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd55-la-tuberia-mas-corta-de-p-a-ab" data-astro-cid-ktanj4pa>La tubería más corta de P a la tubería AB, y su distancia</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd56-la-tuberia-mas-corta-entre-ab-y-cd" data-astro-cid-ktanj4pa>La tubería más corta entre las tuberías AB y CD, con CD de punta</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd57-la-tuberia-mas-corta-entre-ab-y-cd-paralelas" data-astro-cid-ktanj4pa>La tubería más corta entre AB y CD, cuando son paralelas</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/2/#ej-sd58-la-tuberia-mas-corta-hasta-la-tolva" data-astro-cid-ktanj4pa>La tubería más corta de P a la tolva</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/2/#ej-sd67a-el-prisma-hexagonal-oblicuo" data-astro-cid-ktanj4pa>El prisma hexagonal regular oblicuo, de eje sobre la horizontal e y una base en el plano de r</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/2/#ej-sd67b-la-seccion-del-prisma-por-el-plano-a-60" data-astro-cid-ktanj4pa>La sección del prisma por el plano proyectante vertical a 60°, en verdadera magnitud</a></li></ol></div></nav><div class="col" data-astro-cid-ktanj4pa><p class="rotulo rotulo--live eyebrow" data-astro-cid-ktanj4pa><a class="asignatura" href="/expresion-grafica/expresion-grafica/" data-asignatura="expresion-grafica" data-astro-cid-ololhd5l>Expresión Gráfica</a> · tema 05</p><h1 data-astro-cid-ktanj4pa>Paralelismo, perpendicularidad y distancias</h1><p class="lede" data-astro-cid-ktanj4pa>Cómo se traza una recta o un plano paralelo o perpendicular a otro, y por qué una distancia, salvo la de dos puntos, es un segmento perpendicular que hay que ver en verdadera magnitud.</p><a class="ir-sim no-imprimir" data-ir-sim href="#" hidden data-astro-cid-ktanj4pa><span class="rotulo rotulo--live" data-astro-cid-ktanj4pa>este tema trae un simulador</span><span class="nombre" data-ir-sim-nombre data-astro-cid-ktanj4pa></span></a><nav class="pestanas" aria-label="Secciones del tema" data-astro-cid-ktanj4pa><a href="#teoria" data-pestana="teoria" aria-current="page" data-astro-cid-ktanj4pa>Teoría</a><a href="#ejercicios" data-pestana="ejercicios" data-astro-cid-ktanj4pa>Ejercicios<span class="cuenta" data-astro-cid-ktanj4pa>13</span></a></nav><section id="teoria" class="panel" aria-label="Teoría" data-astro-cid-ktanj4pa><div class="read" data-lectura data-astro-cid-j54e57cz><p>Este tema contesta dos preguntas que el examen hace sin parar: cómo se dibuja una recta o un plano
+paralelo o perpendicular a otro, y cuánto distan dos cosas. Lo perpendicular y las distancias salen de una idea del tema 2: un ángulo recto solo se ve recto en
+la vista donde uno de sus lados está en verdadera magnitud. Las distancias se apoyan además en el
+tema 3, porque, salvo la de dos puntos, una distancia es siempre un segmento perpendicular, y hay
+que verlo sin acortar.</p>
+<p>De los ejercicios 1 al 51 de la colección, once son de este tema: el 12, el 33, del 35 al 42 y el
+51. Lo piden también los cuatro ejercicios de varios apartados con que acaba la colección: el 52,
+en el agujero perpendicular a una cara y en la chapa paralela a 25 mm, y el 53, el 54 y el 55, en
+seis preguntas. Las que ya están resueltas aquí, todas salvo la del agujero, están al final, en
+«Cómo se trabaja aquí».</p>
+<p>En eGela son dos temas: el 6, paralelismo y perpendicularidad, y el 8, distancias. Por dentro, sus
+PDF se titulan «Sistema diedrico 6: Paralelismo y perpendicularidad» y «Sistema diedrico 8:
+Distancias», y las páginas que se citan aquí son las de esos dos PDF.</p>
+<h2 id="paralelismo">Paralelismo</h2>
+<h3 id="dos-rectas">Dos rectas</h3>
+<p>Dos rectas paralelas tienen paralelas sus dos proyecciones, y al revés: si las dos lo son, las rectas
+son paralelas (diapositivas de paralelismo, pág. 2). La excepción es la de siempre, la recta de
+perfil. Sus dos proyecciones son verticales en el papel, así que dos rectas de perfil tienen siempre
+las proyecciones paralelas, aunque se crucen: para saberlo hace falta la vista de perfil (pág. 3).</p>
+<h3 id="una-recta-paralela-a-un-plano">Una recta paralela a un plano</h3>
+<p>Una recta es paralela a un plano si es paralela a una recta del plano (pág. 5). Eso ya es el método:
+se busca dentro del plano una recta con la dirección que conviene y se traza la paralela.</p>
+<p>Cuando el enunciado da una de las proyecciones de la recta, esa proyección elige la recta del plano.
+Si te dan r₁, se traza en el plano una recta cuya planta sea paralela a r₁ —por un vértice, hasta
+el lado de enfrente—, se sube al alzado, y r₂ va paralela a su alzado. Es lo que pide el Ejercicio
+38 (SD54), con r₁ horizontal en el papel: r es frontal, y la recta del plano que hay que buscar es
+una frontal. Las diapositivas traen el mismo problema al revés, con el alzado de la recta dado y la
+planta por hallar (pág. 18).</p>
+<div class="error-tipico" data-astro-cid-jdnpk4r2><p class="titulo" data-astro-cid-jdnpk4r2>Paralela a un lado, pero solo en una vista</p><div class="cuerpo" data-astro-cid-jdnpk4r2><p>Trazar r₂ paralela a un lado del triángulo en el alzado no hace a r paralela a ese lado: para eso
+r₁ también tendría que ser paralela a la planta del lado. Las dos proyecciones a la vez, o no hay
+paralelismo. En el Ejercicio 38, r₂ paralela a C₂B₂ con r₁ horizontal da una recta que acaba
+cortando al plano, y es justo lo que sale si D₁, el punto de la frontal en A₁B₁, se sube a C₂B₂ en
+vez de a A₂B₂.</p></div></div>
+<h3 id="dos-planos-paralelos">Dos planos paralelos</h3>
+<p>Dos planos son paralelos si dos rectas de uno, que se corten, son paralelas a dos rectas del otro
+(pág. 4). Para el plano paralelo a ABC por un punto P se eligen las más cómodas: por P, la paralela
+a una horizontal del plano y la paralela a una frontal. Las dos rectas dan el plano nuevo. Y si dos
+planos paralelos se cortan con un tercero, las dos rectas de corte también son paralelas.</p>
+<h2 id="perpendicularidad">Perpendicularidad</h2>
+<h3 id="el-ángulo-recto-otra-vez">El ángulo recto, otra vez</h3>
+<p>Todo lo de este apartado sale de la regla del tema 2: <a href="/expresion-grafica/expresion-grafica/t02-punto-recta-y-plano/#el-%C3%A1ngulo-recto-que-s%C3%AD-se-ve">un ángulo recto se ve recto en una vista
+cuando uno de sus lados es paralelo a esa vista y el otro no es perpendicular a ella</a>.
+Las diapositivas la llaman teorema de las tres perpendiculares (pág. 7), y de ella sacan las dos
+consecuencias que se usan: si una de las dos rectas es horizontal, el ángulo recto se ve en la
+planta, y si es frontal, en el alzado.</p>
+<h3 id="una-recta-perpendicular-a-un-plano">Una recta perpendicular a un plano</h3>
+<p>Una recta es perpendicular a un plano si lo es a dos rectas del plano que no sean paralelas. Se
+eligen las dos que dejan ver el ángulo recto, una horizontal y una frontal (pág. 8), y de ahí la
+regla:</p>
+<ul>
+<li>la <strong>planta</strong> de la perpendicular es perpendicular a la planta de una <strong>horizontal</strong> del plano, h₁;</li>
+<li>el <strong>alzado</strong> es perpendicular al alzado de una <strong>frontal</strong>, f₂.</li>
+</ul>
+<p>Con eso se dibujan las dos proyecciones de la perpendicular por cualquier punto, con la escuadra.
+Lo que no dan es su <strong>pie</strong>, el punto donde corta al plano: eso es una intersección de recta y
+plano, la del tema 4, con un plano auxiliar que contenga la perpendicular, o un cambio de plano que
+ponga el plano de canto, como más abajo. El <a href="/expresion-grafica/expresion-grafica/t06-angulos/">tema 6</a>
+la usa para el ángulo de una recta con un plano, que es el complementario del que la recta forma con
+esta perpendicular.</p>
+<figure><svg viewBox="0 0 224 375" role="img" width="224" height="375" aria-labelledby="t05-perpendicular-t t05-perpendicular-d"><title id="t05-perpendicular-t">La perpendicular desde un punto Q a un plano, en las dos vistas</title><desc id="t05-perpendicular-d">Arriba, el alzado del triángulo ABC y el de un punto Q que está fuera de él; abajo, la planta. La horizontal del plano por B, h, corta a AC en D: h₂ es horizontal en el papel y h₁ va de B₁ a D₁. La frontal por A, f, corta a BC en E: f₁ es horizontal en el papel y f₂ va de A₂ a E₂. La perpendicular t al plano por Q se dibuja con una regla en cada vista: t₁ pasa por Q₁ perpendicular a h₁, y t₂ pasa por Q₂ perpendicular a f₂, y los dos ángulos rectos se ven rectos porque h está en verdadera magnitud en la planta y f en el alzado. T, donde t corta al plano, está en t₁ y en t₂, en la misma vertical, y QT mide 20,2 mm.</desc><path stroke="var(--ink)" stroke-width="1.6" fill="none" stroke-linejoin="round" d="M43.6 162.3L180.4 111.9L115.6 47.2Z"></path><path stroke="var(--ink)" stroke-width="1.6" fill="none" stroke-linejoin="round" d="M43.6 277.4L180.4 234.3L115.6 331.4Z"></path><path stroke="var(--d1)" stroke-width="1.3" fill="none" d="M180.4 111.9L75.1 111.9"></path><path stroke="var(--d1)" stroke-width="1.3" fill="none" d="M180.4 234.3L75.1 301.1"></path><path stroke="var(--d1)" stroke-width="1.3" fill="none" d="M43.6 162.3L151.6 83.2"></path><path stroke="var(--d1)" stroke-width="1.3" fill="none" d="M43.6 277.4L151.6 277.4"></path><path stroke="var(--live)" stroke-width="1.4" fill="none" d="M88.2 232.4L137.1 309.3"></path><path stroke="var(--live)" stroke-width="1.4" fill="none" d="M87.6 34.9L138.3 103.9"></path><path stroke="var(--faint)" stroke-width=".9" fill="none" d="M111.3 268.7L118 264.5L122.2 271.2"></path><path stroke="var(--faint)" stroke-width=".9" fill="none" d="M128.3 90.4L122 95.1L126.6 101.5"></path><path stroke="var(--faint)" stroke-width=".9" fill="none" stroke-dasharray="3 3" d="M125.5 86.5L125.5 291.1"></path><circle fill="var(--paper)" stroke="var(--ink)" stroke-width="1.4" cx="94" cy="43.6" r="3"></circle><circle fill="var(--paper)" stroke="var(--ink)" stroke-width="1.4" cx="94" cy="241.5" r="3"></circle><circle fill="var(--live)" stroke="none" cx="125.5" cy="86.5" r="2.6"></circle><circle fill="var(--live)" stroke="none" cx="125.5" cy="291.1" r="2.6"></circle><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="25.6" y="166.3" text-anchor="start" fill="var(--ink)">A₂</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="186.4" y="115.9" text-anchor="start" fill="var(--ink)">B₂</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="119.6" y="41.2" text-anchor="start" fill="var(--ink)">C₂</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="25.6" y="281.4" text-anchor="start" fill="var(--ink)">A₁</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="186.4" y="238.3" text-anchor="start" fill="var(--ink)">B₁</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="109.6" y="346.4" text-anchor="start" fill="var(--ink)">C₁</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="61.1" y="107.9" text-anchor="start">h₂</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="61.1" y="305.1" text-anchor="start">h₁</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="155.6" y="95.2" text-anchor="start">f₂</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="155.6" y="289.4" text-anchor="start">f₁</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="74" y="39.6" text-anchor="start" fill="var(--ink)">Q₂</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="74" y="237.5" text-anchor="start" fill="var(--ink)">Q₁</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="131.5" y="81.5" text-anchor="start" fill="var(--live)">T₂</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="132.5" y="295.1" text-anchor="start" fill="var(--live)">T₁</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="107.9" y="255.9" text-anchor="start">t₁</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="85.9" y="58.3" text-anchor="start">t₂</text></svg><figcaption>Nuestro triángulo ABC del tema 3 y un punto Q nuestro. La perpendicular t por Q: t₁ perpendicular a h₁, la horizontal por B, y t₂ perpendicular a f₂, la frontal por A. Los ángulos rectos se ven en esas vistas porque h está en verdadera magnitud en la planta y f en el alzado. T, el pie, está en t₁ y en t₂, en la misma vertical, y QT mide 20,2 mm.</figcaption></figure>
+<div class="error-tipico" data-astro-cid-jdnpk4r2><p class="titulo" data-astro-cid-jdnpk4r2>La perpendicular, contra los lados del triángulo</p><div class="cuerpo" data-astro-cid-jdnpk4r2><p>Trazar la planta de la perpendicular perpendicular a A₁B₁, o a cualquier otro lado, da una recta
+que no es perpendicular al plano: aquí ningún lado es horizontal, y el ángulo recto con él no se ve
+recto en la planta. Tampoco vale trazar el alzado perpendicular a h₂, que saldría vertical. Cada vista con la
+suya: en la planta, contra h₁; en el alzado, contra f₂.</p></div></div>
+<h3 id="un-plano-perpendicular-a-una-recta">Un plano perpendicular a una recta</h3>
+<p>Al revés: por un punto P, el plano perpendicular a una recta a (pág. 9, el segundo ejemplo). El
+plano se da por dos rectas que se cortan en P, y otra vez son una horizontal y una frontal. La
+horizontal por P tiene el alzado horizontal en el papel y la planta perpendicular a a₁; la frontal
+por P tiene la planta horizontal y el alzado perpendicular a a₂.</p>
+<p>Un caso que las diapositivas no nombran y que el examen pide es el <strong>plano mediador</strong> de un
+segmento AB: el de los puntos que están a la misma distancia de A que de B. Es el plano
+perpendicular a AB por su punto medio. El apartado 3 del Ejercicio 55 lo pide con otro nombre: dos
+tuberías iguales desde A y desde B que llegan a un punto del colector r, y su nota impresa dice
+que ese punto es «la intersección entre la recta r y un plano equidistante a los puntos A y B». Ese
+plano es el mediador de AB.</p>
+<h3 id="dos-rectas-perpendiculares-y-dos-planos">Dos rectas perpendiculares, y dos planos</h3>
+<p>Dos rectas son perpendiculares si lo son en la vista donde una de ellas está en verdadera magnitud
+(pág. 11). Por eso una perpendicular cualquiera a una recta a por un punto P (pág. 12) sale
+enseguida: la horizontal por P con la planta perpendicular a a₁, o la frontal con el alzado
+perpendicular a a₂. Si además tiene que cortar a a, y a no es horizontal ni frontal, se busca con
+el plano perpendicular a a por P: corta a a en el pie, y P y el pie dan la recta.</p>
+<p>Dos planos son perpendiculares cuando uno de ellos contiene una recta perpendicular al otro (pág.
+13). Para el plano perpendicular a ABC que contiene una recta dada (pág. 15), se traza por un punto
+de la recta la perpendicular a ABC, y las dos rectas dan el plano. Es el apartado 2 b del Ejercicio
+54: un rectángulo perpendicular al trapecio, con un lado en la diagonal AC, cuyos otros dos lados van
+por la perpendicular al plano del trapecio en A y en C.</p>
+<h2 id="distancias">Distancias</h2>
+<p>Salvo la de dos puntos, que es el segmento que los une, toda distancia es la longitud de un
+segmento perpendicular: de un punto a un plano, la perpendicular al plano; entre dos rectas que se
+cruzan, la perpendicular a las dos. El trabajo tiene dos partes,
+encontrar ese segmento y verlo en verdadera magnitud. La segunda es la del tema 3, y casi siempre se
+resuelve con un cambio de plano que deja algo de canto o de punta.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>la distancia</th><th>lo que se pone en la vista nueva</th><th>lo que se mide</th></tr></thead><tbody><tr><td>entre dos puntos</td><td>nada: el segmento sale de su triángulo</td><td>la hipotenusa, como en el tema 2</td></tr><tr><td>de un punto a un plano</td><td>el plano, de canto</td><td>la perpendicular del punto al canto</td></tr><tr><td>de una recta a un plano paralelo</td><td>el plano, de canto</td><td>lo mismo, desde cualquier punto de la recta</td></tr><tr><td>entre dos planos paralelos</td><td>los dos, de canto</td><td>la perpendicular entre los dos cantos</td></tr><tr><td>de un punto a una recta</td><td>la recta, de punta</td><td>del punto al punto en que se ve la recta</td></tr><tr><td>entre dos rectas que se cruzan</td><td>una de las dos, de punta</td><td>la perpendicular desde ese punto a la otra</td></tr></tbody></table>
+<h3 id="de-un-punto-a-un-plano">De un punto a un plano</h3>
+<p>El camino largo tiene tres pasos: la perpendicular por el punto, con h y f; su pie, cortándola con
+el plano, y la verdadera magnitud del segmento, con su triángulo. El corto es el de las diapositivas
+de distancias (págs. 5 y 6): un cambio de plano que pone el plano <strong>proyectante</strong>, de canto. En esa
+vista la perpendicular al plano es perpendicular al canto y está en verdadera magnitud, y se mide
+con la regla. Si además se pide la posición, el pie se lleva de vuelta a las vistas por su línea de
+referencia, hasta la proyección de la perpendicular.</p>
+<p>Para poner un plano de canto hay que mirar a lo largo de una de sus rectas: con una horizontal, un
+cambio vertical con la línea nueva perpendicular a h₁, y con una frontal, uno horizontal con la línea
+nueva perpendicular a f₂ (tema 3, <a href="/expresion-grafica/expresion-grafica/t03-metodos-descriptivos/#un-plano-en-dos-cambios">«Un plano, en dos cambios»</a>).
+La figura usa el segundo, el mismo que el Ejercicio 38.</p>
+<figure><svg viewBox="0 0 278 459" role="img" width="278" height="459" aria-labelledby="t05-distancia-t t05-distancia-d"><title id="t05-distancia-t">La distancia de Q al plano ABC con un cambio de plano</title><desc id="t05-distancia-d">El mismo triángulo y el mismo punto Q. En el alzado, la frontal f₂ y, arriba a la derecha, la línea nueva de un cambio de plano horizontal, perpendicular a f₂, con B de referencia. Cada punto sale de su alzado por la paralela a f₂ y se aparta de la línea nueva, hacia fuera, lo que su alejamiento supera al de B, que en la planta es lo que está por debajo de la horizontal del papel por B₁: A₄, 12 mm; C₄, 27, y Q₄, 2. A₄, B₄ y C₄ quedan en línea: el plano, de canto. La perpendicular de Q₄ al canto, Q₄T₄, está en verdadera magnitud: la distancia de Q al plano, 20,2 mm. De vuelta, la paralela a f₂ por T₄ corta en el alzado a t₂, la perpendicular a f₂ por Q₂, en T₂, y T₁ está en su vertical, sobre t₁: la posición del pie.</desc><path stroke="var(--ink)" stroke-width="1.6" fill="none" stroke-linejoin="round" d="M43.6 246L180.5 195.6L115.7 130.7Z"></path><path stroke="var(--ink)" stroke-width="1.6" fill="none" stroke-linejoin="round" d="M43.6 361.3L180.5 318.1L115.7 415.3Z"></path><path stroke="var(--d1)" stroke-width="1.3" fill="none" d="M43.6 246L151.7 166.8"></path><path stroke="var(--faint)" stroke-width=".9" fill="none" stroke-dasharray="3 3" d="M29.2 318.1L194.9 318.1"></path><path stroke="var(--d1)" stroke-width="1.2" fill="none" stroke-dasharray="10 3 2 3" d="M220.2 188.8L136 74"></path><path stroke="var(--faint)" stroke-width=".9" fill="none" stroke-dasharray="3 3" d="M43.6 246L220.6 116.2"></path><path stroke="var(--faint)" stroke-width=".9" fill="none" stroke-dasharray="3 3" d="M180.5 195.6L209.6 174.3"></path><path stroke="var(--faint)" stroke-width=".9" fill="none" stroke-dasharray="3 3" d="M115.7 130.7L234.4 43.7"></path><path stroke="var(--faint)" stroke-width=".9" fill="none" stroke-dasharray="3 3" d="M94 127.1L152.5 84.3"></path><path stroke="var(--d1)" stroke-width="1.9" fill="none" d="M209.6 174.3L234.4 43.7"></path><path stroke="var(--faint)" stroke-width=".9" fill="none" d="M216.3 96.4L217.8 88.6L225.6 90.1"></path><path stroke="var(--live)" stroke-width="2.6" fill="none" d="M152.5 84.3L224.1 97.9"></path><path stroke="var(--live)" stroke-width="1.4" fill="none" d="M87.7 118.4L136.2 184.7"></path><path stroke="var(--live)" stroke-width="1.4" fill="none" d="M88.3 316.1L135.2 390.2"></path><path stroke="var(--faint)" stroke-width=".9" fill="none" stroke-dasharray="3 3" d="M224.1 97.9L125.6 170.1"></path><path stroke="var(--faint)" stroke-width=".9" fill="none" stroke-dasharray="3 3" d="M125.6 170.1L125.6 374.9"></path><circle fill="var(--paper)" stroke="var(--ink)" stroke-width="1.4" cx="94" cy="127.1" r="3"></circle><circle fill="var(--paper)" stroke="var(--ink)" stroke-width="1.4" cx="94" cy="325.3" r="3"></circle><circle fill="var(--paper)" stroke="var(--ink)" stroke-width="1.4" cx="152.5" cy="84.3" r="3"></circle><circle fill="var(--live)" stroke="none" cx="224.1" cy="97.9" r="2.6"></circle><circle fill="var(--live)" stroke="none" cx="125.6" cy="170.1" r="2.6"></circle><circle fill="var(--live)" stroke="none" cx="125.6" cy="374.9" r="2.6"></circle><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="25.6" y="250" text-anchor="start" fill="var(--ink)">A₂</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="184.5" y="210.6" text-anchor="start" fill="var(--ink)">B₂</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="119.7" y="124.7" text-anchor="start" fill="var(--ink)">C₂</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="74" y="123.1" text-anchor="start" fill="var(--ink)">Q₂</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="149.7" y="180.8" text-anchor="start">f₂</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="25.6" y="365.3" text-anchor="start" fill="var(--ink)">A₁</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="186.5" y="322.1" text-anchor="start" fill="var(--ink)">B₁</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="109.7" y="430.3" text-anchor="start" fill="var(--ink)">C₁</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="74" y="339.3" text-anchor="start" fill="var(--ink)">Q₁</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="226.6" y="132.2" text-anchor="start" fill="var(--ink)">A₄</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="215.6" y="184.3" text-anchor="start" fill="var(--ink)">B₄</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="214.4" y="39.7" text-anchor="start" fill="var(--ink)">C₄</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="132.5" y="80.3" text-anchor="start" fill="var(--ink)">Q₄</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="230.1" y="109.9" text-anchor="start" fill="var(--live)">T₄</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="131.6" y="165.1" text-anchor="start" fill="var(--live)">T₂</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="132.6" y="378.9" text-anchor="start" fill="var(--live)">T₁</text></svg><figcaption>El mismo triángulo y el mismo punto Q. Un cambio de plano horizontal, con la línea nueva perpendicular a f₂ y B de referencia: cada punto se aparta de ella lo que su alejamiento supera al de B. A₄, B₄ y C₄ en línea son el plano de canto, y Q₄T₄, perpendicular al canto, es la distancia en verdadera magnitud, 20,2 mm. La paralela a f₂ por T₄ devuelve el pie a t₂, en T₂, y T₁ está en su vertical.</figcaption></figure>
+<h3 id="de-una-recta-a-un-plano-paralelo-y-entre-planos-paralelos">De una recta a un plano paralelo, y entre planos paralelos</h3>
+<p>Si la recta es paralela al plano, todos sus puntos están a la misma distancia de él, y vale cualquiera
+(pág. 9). Si además la recta es frontal, el cambio horizontal con la línea nueva perpendicular a su
+alzado la deja de punta, como un punto, y en la misma vista el plano sale de canto, porque sus
+frontales son paralelas a ella; con una recta horizontal, lo mismo con un cambio vertical. Es lo que
+pasa en el Ejercicio 38. Entre dos planos paralelos se hace igual (pág. 10): un cambio que los pone
+de canto a los dos, y la perpendicular entre los dos cantos.</p>
+<div class="error-tipico" data-astro-cid-jdnpk4r2><p class="titulo" data-astro-cid-jdnpk4r2>La distancia, medida en una proyección</p><div class="cuerpo" data-astro-cid-jdnpk4r2><p>En el Ejercicio 38, r₂ y f₂ son paralelas en el papel, y es tentador medir lo que las separa: 21,11
+mm. Falla dos veces. El alzado no enseña que r y la frontal del plano tienen alejamientos distintos
+—r está 15,24 mm más cerca del plano vertical—; contándolo, lo que separa las dos rectas es 26,04
+mm. Y ni eso es la distancia al plano, porque la perpendicular a una recta del plano no es la
+perpendicular al plano: la distancia de verdad, en la vista nueva, mide 25,76 mm. Una distancia
+solo se mide en la vista donde su segmento está en verdadera magnitud.</p></div></div>
+<h3 id="de-un-punto-a-una-recta-y-entre-dos-rectas-que-se-cruzan">De un punto a una recta, y entre dos rectas que se cruzan</h3>
+<p>De un punto a una recta, las diapositivas dan dos caminos (pág. 4). Uno es ver en verdadera magnitud
+el plano que forman el punto y la recta, con un abatimiento por ejemplo, y da la distancia y su
+posición. El otro es poner la recta de punta con dos cambios de plano, y la diapositiva avisa de
+que así sale la verdadera magnitud «pero NO LA UBICACIÓN». En la vista final es verdad: el pie de
+la perpendicular cae en el punto en que se ve la recta, y no dice en qué sitio de ella está. Pero
+el pie se recupera en la vista intermedia: tras el primer cambio la recta está en verdadera
+magnitud, el ángulo recto con la perpendicular se ve recto, y la perpendicular desde el punto la
+corta en el pie, que se lleva de vuelta a las vistas de partida. Es lo que hace el Ejercicio 39.</p>
+<p>Entre dos rectas que se cruzan, la distancia es la de su <strong>perpendicular común</strong>, la única recta que
+corta a las dos y es perpendicular a ambas (págs. 7 y 8). Se pone una de las dos de punta, con dos
+cambios de plano; en esa vista la perpendicular común sale del punto en que se ve la primera, es
+perpendicular a la otra y está en verdadera magnitud. Para la posición, sus extremos se llevan hacia
+atrás, vista a vista. Es lo que piden el refuerzo del apartado 3 B del Ejercicio 53, el tren y el
+cable del apartado 3 del 54 y el apartado 1 d del 55.</p>
+<div class="error-tipico" data-astro-cid-jdnpk4r2><p class="titulo" data-astro-cid-jdnpk4r2>La perpendicular a una sola de las dos rectas</p><div class="cuerpo" data-astro-cid-jdnpk4r2><p>La perpendicular desde un punto de una recta a la otra no suele ser perpendicular a la primera, y
+mide más que la distancia mínima. La perpendicular común lo es a las dos a la vez. Con una de ellas
+de punta, la perpendicular común es paralela a esa vista, así que se ve en verdadera magnitud, y el
+ángulo recto con la otra se ve recto: por eso se busca ahí y no en las vistas de partida.</p></div></div>
+<h2 id="cómo-se-trabaja-aquí">Cómo se trabaja aquí</h2>
+<p>El primero es un ejemplo de entrada nuestro: la distancia de un punto a un plano que ya viene de
+canto, sin cambio de plano. Los de la colección que se corrigen aquí son el 12 (SD15), la chapa
+doblada por una arista,
+con las caras abatidas; el 33 (SD47), el tubo perpendicular al fondo de una tolva; el 35 (SD50), el
+cuadrado paralelo al plano a 20 mm por encima, con el plano de canto y un segundo cambio para verlo
+en verdadera magnitud; el 36 (SD51), la pirámide recta de base rectangular, con el vértice donde la
+perpendicular a la base por su centro corta un plano horizontal; el 37 (SD53), la pirámide recta de
+base triangular y eje dado, con el eje de punta tras dos cambios de plano para dibujar la base en
+verdadera magnitud; el 38 (SD54), la recta paralela al plano por P y su distancia al plano; el 39
+(SD55), la tubería más corta de un punto a otra, con dos cambios de plano; el 40 (SD56), la tubería
+más corta entre dos que se cruzan, con una de ellas de punta en un solo cambio, porque ya es
+frontal; el 41 (SD57), el mismo croquis con las dos tuberías paralelas, donde la más corta no es
+única; el 42 (SD58), la tubería más corta a una tolva, comprobando en qué cara cae el pie; y el 51
+(SD67), en dos ejercicios, uno por apartado: el prisma hexagonal oblicuo con una base en el plano de
+una recta de máxima pendiente, y su sección por un plano proyectante vertical a 60°, en verdadera
+magnitud. Son todos los de la colección de este tema, y la
+<a href="/expresion-grafica/expresion-grafica/coleccion/">página de la colección</a> los enlaza desde su
+número. Se construyen sobre la lámina con las herramientas de papel —en el 38, la frontal del plano,
+r₂, la línea nueva y el canto—, y cada punto se corrige con la tolerancia de una regla, un milímetro.</p>
+<p>Las preguntas de este tema en los Ejercicios 52 a 55, cada una resuelta en su página:</p>
+<ul>
+<li>el <a href="/expresion-grafica/expresion-grafica/examenes/ejercicio-52/">Ejercicio 52</a>, apartado 1: el
+agujero de sección cuadrada perpendicular a la cara oblicua de una pieza, con el cuadrado sobre la
+cara abatida y cada arista, perpendicular a la cara, seguida hasta la cara por la que sale;
+apartado 2: el tronco de pirámide regular sobre un cuadrado que se completa desde su alzado, con
+el eje por la perpendicular a su plano y la altura en verdadera magnitud; y apartado 4: la chapa
+igual y paralela a 25 mm por encima, por la perpendicular al plano y con los 25 mm en verdadera
+magnitud;</li>
+<li>el <a href="/expresion-grafica/expresion-grafica/examenes/ejercicio-53/">Ejercicio 53</a>, apartado 3 B: el
+refuerzo entre AD y BC, la perpendicular común de dos rectas que se cruzan;</li>
+<li>el <a href="/expresion-grafica/expresion-grafica/examenes/ejercicio-54/">Ejercicio 54</a>, apartado 2 b: el
+rectángulo perpendicular al trapecio, por la perpendicular a su plano; y apartado 3: el tren y el
+cable, a escala 1:100, otra perpendicular común;</li>
+<li>el <a href="/expresion-grafica/expresion-grafica/examenes/ejercicio-55/">Ejercicio 55</a>, apartado 1 c y d:
+la distancia de un punto a una cara y la de dos rectas que se cruzan; apartado 2: la pirámide de
+mayor cota, con la altura por la perpendicular al plano de la base; y apartado 3: las dos tuberías
+iguales, con el plano mediador.</li>
+</ul>
+<h2 id="lo-que-hay-que-llevar-sabido">Lo que hay que llevar sabido</h2>
+<ul>
+<li><strong>Rectas paralelas</strong>: las dos proyecciones paralelas, salvo las de perfil, que piden la tercera
+vista.</li>
+<li><strong>Recta paralela a un plano</strong>: paralela a una recta del plano. Si te dan una proyección, esa
+proyección elige la recta del plano: con r₁ horizontal, una frontal.</li>
+<li><strong>Planos paralelos</strong>: dos rectas que se cortan, paralelas a dos del otro plano; por un punto, las
+paralelas a una horizontal y a una frontal.</li>
+<li><strong>Recta perpendicular a un plano</strong>: la planta, perpendicular a h₁; el alzado, perpendicular a f₂.
+El pie sale de cortarla con el plano.</li>
+<li><strong>Plano perpendicular a una recta</strong>: la horizontal con la planta perpendicular a a₁ y la frontal
+con el alzado perpendicular a a₂. El mediador, por el punto medio del segmento.</li>
+<li><strong>Una distancia es un segmento perpendicular visto en verdadera magnitud</strong> (la de dos puntos, el
+segmento que los une): con el plano de canto, para un punto, una recta paralela o un plano
+paralelo; con una recta de punta, para un punto y una recta o para la perpendicular común.</li>
+<li><strong>No se mide en una proyección</strong>: en el Ejercicio 38, la separación de r₂ y f₂ da 21,11 mm, y la
+distancia es 25,76.</li>
+</ul><div class="practica no-imprimir" data-practica data-astro-cid-ln5sr2am><p class="rotulo pr-k" data-astro-cid-ln5sr2am>Practica lo que acabas de leer</p><p class="pr-tit" data-astro-cid-ln5sr2am>La distancia de un punto a un plano de canto</p><p class="pr-sub" data-astro-cid-ln5sr2am>Ejemplo introductorio, para entrar de cero. Cada paso equivocado recibe su diagnóstico, no un «incorrecto».</p><a class="pr-cta" href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-ri4-la-distancia-de-q-a-un-plano-de-canto" data-astro-cid-ln5sr2am>Hacer el ejercicio →</a></div><nav class="pasos no-imprimir" data-pasos hidden aria-label="Navegación por apartados" data-astro-cid-j54e57cz><button type="button" data-ir="-1" data-astro-cid-j54e57cz>← anterior</button><button type="button" data-ir="1" data-astro-cid-j54e57cz>siguiente →</button></nav></div><script type="module">var e=document.querySelector(`[data-lectura]`),t=document.querySelector(`[data-modos]`),n=document.querySelector(`[data-pasos]`);if(e&&t&&n){let r=[...e.children],i=[],a=null;for(let t of r)t.matches(`[data-modos], [data-pasos], [data-practica]`)||(t.tagName===`H2`&&(a=document.createElement(`section`),a.className=`grupo`,e.insertBefore(a,t),i.push(a)),a&&t!==a&&a.appendChild(t));if(i.length>1){let r=document.querySelector(`[data-avance]`),a=[...t.querySelectorAll(`[data-modo]`)],o=`guiado`,s=0;function c(){e.dataset.modo=o,i.forEach((e,t)=>{e.hidden=o===`guiado`&&t!==s}),n.hidden=o!==`guiado`,r.textContent=o===`guiado`?`${s+1} de ${i.length}`:`${i.length} apartados`;for(let e of a)e.setAttribute(`aria-pressed`,String(e.dataset.modo===o));for(let e of n.querySelectorAll(`[data-ir]`)){let t=Number(e.dataset.ir);e.disabled=t<0&&s===0||t>0&&s===i.length-1}}for(let e of a)e.addEventListener(`click`,()=>{o=e.dataset.modo;try{localStorage.setItem(`modo-lectura`,o)}catch{}c()});for(let e of n.querySelectorAll(`[data-ir]`))e.addEventListener(`click`,()=>{s=Math.max(0,Math.min(i.length-1,s+Number(e.dataset.ir))),c(),i[s].querySelector(`h2`)?.scrollIntoView({block:`start`})});for(let e of document.querySelectorAll(`.rail a`))e.addEventListener(`click`,()=>{let t=decodeURIComponent(e.hash.slice(1)),n=i.findIndex(e=>e.querySelector(`h2`)?.id===t);n>=0&&(s=n,c())});window.addEventListener(`beforeprint`,()=>{for(let e of i)e.hidden=!1}),window.addEventListener(`afterprint`,c);try{localStorage.getItem(`modo-lectura`)===`completo`&&(o=`completo`)}catch{}function l(){let e=decodeURIComponent(location.hash.slice(1));if(!e)return!1;let t=i.findIndex(t=>t.id===e||!!t.querySelector(`#${CSS.escape(e)}`));return t<0?!1:(s=t,!0)}let u=l();t.hidden=!1,c(),u&&document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({block:`start`}),window.addEventListener(`hashchange`,()=>{l()&&(c(),document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({block:`start`}))})}}var r=[...document.querySelectorAll(`.rail a`)],i=r.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e);if(i.length){let e=new IntersectionObserver(e=>{for(let t of e)if(t.isIntersecting){for(let e of r)e.removeAttribute(`aria-current`);r.find(e=>decodeURIComponent(e.hash.slice(1))===t.target.id)?.setAttribute(`aria-current`,`true`)}},{rootMargin:`-20% 0px -70% 0px`});for(let t of i)e.observe(t)}</script></section><section id="ejercicios" class="panel" aria-label="Ejercicios" data-astro-cid-ktanj4pa><div class="bloque-ej" data-bloque data-astro-cid-ktanj4pa><p class="rotulo be-cab" data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/" data-astro-cid-ktanj4pa>Ejercicios del 1 al 10</a></p><ol class="be-lista" start="1" data-astro-cid-ktanj4pa><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-ri4-la-distancia-de-q-a-un-plano-de-canto" data-astro-cid-ktanj4pa>La distancia de un punto a un plano de canto</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd15-la-chapa-soldada-en-la-arista-be" data-astro-cid-ktanj4pa>La chapa de 20 × 30 cm soldada en la arista BE de la campana</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd47-el-tubo-perpendicular-al-fondo-de-la-tolva" data-astro-cid-ktanj4pa>El tubo perpendicular al fondo de la tolva, de P al suelo</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd50-el-cuadrado-paralelo-a-abc-por-p" data-astro-cid-ktanj4pa>El cuadrado de 35 mm paralelo al plano ABC, con P a 20 mm por encima</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd51-la-piramide-recta-de-base-rectangular" data-astro-cid-ktanj4pa>La pirámide recta de base rectangular, con el vértice en el plano α</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd53-la-piramide-recta-de-eje-e" data-astro-cid-ktanj4pa>La pirámide recta de base triangular y eje e, con la base vista de punta a e</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd54-la-recta-paralela-al-plano-y-su-distancia" data-astro-cid-ktanj4pa>La recta r paralela al plano ABC por P, y su distancia al plano</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd55-la-tuberia-mas-corta-de-p-a-ab" data-astro-cid-ktanj4pa>La tubería más corta de P a la tubería AB, y su distancia</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd56-la-tuberia-mas-corta-entre-ab-y-cd" data-astro-cid-ktanj4pa>La tubería más corta entre las tuberías AB y CD, con CD de punta</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/1/#ej-sd57-la-tuberia-mas-corta-entre-ab-y-cd-paralelas" data-astro-cid-ktanj4pa>La tubería más corta entre AB y CD, cuando son paralelas</a></li></ol></div><div class="bloque-ej" data-bloque data-astro-cid-ktanj4pa><p class="rotulo be-cab" data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/2/" data-astro-cid-ktanj4pa>Ejercicios del 11 al 13</a></p><ol class="be-lista" start="11" data-astro-cid-ktanj4pa><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/2/#ej-sd58-la-tuberia-mas-corta-hasta-la-tolva" data-astro-cid-ktanj4pa>La tubería más corta de P a la tolva</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/2/#ej-sd67a-el-prisma-hexagonal-oblicuo" data-astro-cid-ktanj4pa>El prisma hexagonal regular oblicuo, de eje sobre la horizontal e y una base en el plano de r</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t05-paralelismo-perpendicularidad-distancias/ejercicios/2/#ej-sd67b-la-seccion-del-prisma-por-el-plano-a-60" data-astro-cid-ktanj4pa>La sección del prisma por el plano proyectante vertical a 60°, en verdadera magnitud</a></li></ol></div></section><nav class="seguir no-imprimir" aria-label="Seguir desde aquí" data-astro-cid-zyhexgpy><div class="s-lados" data-astro-cid-zyhexgpy><a class="s-tema s-ant" href="/expresion-grafica/expresion-grafica/t04-intersecciones/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>← tema 04</span><span class="s-t" data-astro-cid-zyhexgpy>Intersecciones</span></a><a class="s-tema s-sig" href="/expresion-grafica/expresion-grafica/t06-angulos/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>tema 06 →</span><span class="s-t" data-astro-cid-zyhexgpy>Ángulos</span></a></div><div class="s-otros" data-astro-cid-zyhexgpy><a class="s-otro" href="/expresion-grafica/expresion-grafica/preparar/1c-control/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>ruta de estudio</span><span class="s-t" data-astro-cid-zyhexgpy>Preparar el control del bloque 1, el diédrico</span></a><a class="s-otro" href="/expresion-grafica/expresion-grafica/examenes/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>exámenes</span><span class="s-t" data-astro-cid-zyhexgpy>Las 4 convocatorias, resueltas enteras</span></a></div></nav><footer class="pie" data-astro-cid-ktanj4pa><p class="rotulo" data-astro-cid-ktanj4pa>Entrena COMP1 · COMP2 · COMP4</p><p class="rotulo fuente" data-astro-cid-ktanj4pa>Adaptado de las diapositivas «Paralelismo y perpendicularidad» y «Distancias» de Expresión Gráfica, UPV/EHU, que en eGela 2026-27 son los temas 6 y 8 del bloque de diédrico. Los ejercicios citados son los de la colección de ejercicios de diédrico directo del Dpto. de Expresión Gráfica y Proyectos de Ingeniería de la EIG. Las figuras, el triángulo y el punto Q que recorren son nuestros.</p></footer></div></div><script type="module">var e=document.querySelector(`[data-armazon]`),t=JSON.parse(e?.dataset.direcciones||`{}`),n=e=>{let n=e;try{n=decodeURIComponent(e)}catch{}let r=t[n];return!r||document.getElementById(n)?!1:(location.replace(r),!0)};if(e&&!n(location.hash.slice(1))){let t=[...e.querySelectorAll(`[data-pestana]`)];function r(n,r){e.dataset.panel=n;for(let e of t)e.dataset.pestana===n?e.setAttribute(`aria-current`,`page`):e.removeAttribute(`aria-current`);r&&history.replaceState(null,``,`#${n}`)}for(let e of t)e.addEventListener(`click`,t=>{t.preventDefault(),r(e.dataset.pestana,!0)});let i=e=>e===`ejercicios`||e.startsWith(`ej-`)?`ejercicios`:`teoria`;r(i(location.hash.slice(1)),!1),window.addEventListener(`hashchange`,()=>{let e=location.hash.slice(1);n(e)||r(i(e),!1)}),window.addEventListener(`beforeprint`,()=>e.dataset.panel=`todo`),window.addEventListener(`afterprint`,()=>r(i(location.hash.slice(1)),!1));let a=[...e.querySelectorAll(`#teoria figure.sim[id]`)],o=a[0],s=e.querySelector(`[data-ir-sim]`);if(o&&s){s.href=`#${o.id}`,e.querySelector(`[data-ir-sim-nombre]`).textContent=o.querySelector(`.sim-head h3`)?.textContent?.trim()??`ábrelo`,s.hidden=!1;let t=[...e.querySelectorAll(`#teoria h2[id]`)];for(let n of a){let r=t.filter(e=>e.compareDocumentPosition(n)&Node.DOCUMENT_POSITION_FOLLOWING).pop(),i=r&&e.querySelector(`.rail a[href="#${CSS.escape(r.id)}"] .t`);if(!i||i.querySelector(`.chip`))continue;let a=document.createElement(`span`);a.className=`chip`,a.textContent=`simulador`,i.append(a)}s.addEventListener(`click`,e=>{location.hash===s.hash&&(e.preventDefault(),o.scrollIntoView({block:`start`}))})}}</script></main><footer class="pie-edicion" style="border-top: 1px solid var(--rule); margin-top: 3rem; padding: 1rem 1.25rem 1.5rem; color: var(--faint); font-size: .8rem; text-align: center"><p style="margin: 0">Edición de una sola asignatura de <strong>Road to Ingeniería</strong>.<a href="/expresion-grafica/" style="margin-left: .6rem; color: inherit; text-decoration: underline; text-underline-offset: .2em">Portada y buscador de esta edición</a></p></footer><script>
+      /* Marca las fórmulas de bloque que no caben en su columna.
+       *
+       * `.katex-display` ya se puede desplazar de lado, pero **no lo dice**, y
+       * eso es peor que no poder: el 4 de septiembre de 2026, barriendo las
+       * 167 páginas, salieron **doce fórmulas cortadas** y la peor era el
+       * enunciado de un ejercicio de Álgebra que define tres conjuntos y solo
+       * enseñaba dos y medio — con la pregunta pidiendo «cuáles de los tres».
+       * El lector ve una fórmula que acaba a media letra y no tiene por qué
+       * imaginarse que hay más a la derecha.
+       *
+       * Se hace aquí, con JavaScript, porque el CSS no sabe si algo desborda.
+       * Es lo mínimo: una clase, y el resto lo pinta `base.css`. */
+      (() => {
+        const marca = () => {
+          for (const f of document.querySelectorAll('.katex-display')) {
+            const d = f.firstElementChild;
+            f.classList.toggle('se-desplaza', !!d && d.scrollWidth > f.clientWidth + 4);
+          }
+        };
+        const cuando = () => requestAnimationFrame(marca);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(cuando);
+        else cuando();
+        addEventListener('resize', cuando);
+        /* Los paneles y los bloques plegables cambian el ancho al abrirse. */
+        addEventListener('toggle', cuando, true);
+        document.addEventListener('click', cuando);
+      })();
+    </script></body></html>

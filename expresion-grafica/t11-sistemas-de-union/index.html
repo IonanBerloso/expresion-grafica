@@ -1,0 +1,442 @@
+<!DOCTYPE html><html lang="es" data-theme="claro" style="--acento: var(--a-expresion)"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sistemas de unión — Expresión Gráfica</title><meta name="description" content="Cómo se dibuja y se acota una rosca, y cómo se lee cada línea de una lista de piezas, del tornillo al rodamiento, para dibujar lo que esa unión pide a la pieza."><meta property="og:title" content="Sistemas de unión — Expresión Gráfica"><meta property="og:description" content="Cómo se dibuja y se acota una rosca, y cómo se lee cada línea de una lista de piezas, del tornillo al rodamiento, para dibujar lo que esa unión pide a la pieza."><meta property="og:type" content="website"><link rel="canonical" href="https://ionanberloso.github.io/expresion-grafica/expresion-grafica/t11-sistemas-de-union/"><link rel="icon" type="image/svg+xml" href="/expresion-grafica/favicon.svg"><meta name="color-scheme" content="light dark"><script>
+      // Antes del primer pintado, para que no haya destello al recargar.
+      // La lectura va en su propio try: si el almacenamiento está bloqueado,
+      // la preferencia del sistema tiene que seguir mirándose (§02, regla 3).
+      let guardado = null;
+      try {
+        guardado = localStorage.getItem('tema');
+      } catch {}
+      if (guardado === 'oscuro' || guardado === 'claro') {
+        document.documentElement.dataset.theme = guardado;
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.dataset.theme = 'oscuro';
+      }
+    </script><link rel="stylesheet" href="/expresion-grafica/_astro/Cabecera.DzRFyI4l.css"><link rel="stylesheet" href="/expresion-grafica/_astro/Seguir.FVhjhl9z.css"><link rel="stylesheet" href="/expresion-grafica/_astro/_tema_.BaggnrbY.css"><link rel="stylesheet" href="/expresion-grafica/_astro/EnlaceAsignatura.CuotzBn5.css"><link rel="stylesheet" href="/expresion-grafica/_astro/ErrorTipico.QoP1w63h.css"></head><body><a class="saltar" href="#principal">Saltar al contenido</a><header class="top" data-astro-cid-zze2dqe4><a class="brand" href="/expresion-grafica/expresion-grafica/" data-astro-cid-zze2dqe4>Road to <span data-astro-cid-zze2dqe4>Ingeniería</span></a><span class="rotulo crumb" data-astro-cid-zze2dqe4>Expresión Gráfica · tema 11</span><span class="spacer" data-astro-cid-zze2dqe4></span><div class="modos no-imprimir" role="group" aria-label="Modo de lectura" data-modos hidden data-astro-cid-ln5sr2am><button type="button" data-modo="guiado" aria-pressed="true" data-astro-cid-ln5sr2am>guiado</button><button type="button" data-modo="completo" aria-pressed="false" data-astro-cid-ln5sr2am>completo</button><span class="rotulo avance" data-avance data-astro-cid-ln5sr2am></span></div><button class="toggle" type="button" data-cambia-tema aria-live="polite" data-astro-cid-zze2dqe4>tema</button></header><script>
+  (() => {
+    const boton = document.querySelector('[data-cambia-tema]');
+    if (!boton) return;
+    const pinta = () => {
+      const oscuro = document.documentElement.dataset.theme === 'oscuro';
+      boton.textContent = oscuro ? 'claro' : 'oscuro';
+      boton.setAttribute('aria-label', oscuro ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+    };
+    boton.addEventListener('click', () => {
+      const oscuro = document.documentElement.dataset.theme === 'oscuro';
+      document.documentElement.dataset.theme = oscuro ? 'claro' : 'oscuro';
+      try {
+        localStorage.setItem('tema', oscuro ? 'claro' : 'oscuro');
+      } catch {}
+      pinta();
+    });
+    pinta();
+  })();
+</script><main id="principal" data-astro-cid-ln5sr2am><div class="shell" data-armazon data-direcciones="{&quot;ej-tornillo-m6x40-paso-y-fondo&quot;:&quot;/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-tornillo-m6x40-paso-y-fondo&quot;,&quot;ej-pasador-conico-5x50&quot;:&quot;/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-pasador-conico-5x50&quot;,&quot;ej-polipasto-anillo-a30-din-471&quot;:&quot;/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-polipasto-anillo-a30-din-471&quot;,&quot;ej-polipasto-rodamientos-6306&quot;:&quot;/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-polipasto-rodamientos-6306&quot;,&quot;ej-polipasto-pasador-6m6x60&quot;:&quot;/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-polipasto-pasador-6m6x60&quot;}" data-astro-cid-ktanj4pa><nav class="rail" aria-label="Índice del tema" data-astro-cid-ktanj4pa><div class="rail-bloque" data-de="teoria" data-astro-cid-ktanj4pa><h2 class="rotulo" data-astro-cid-ktanj4pa>En este tema</h2><ol data-astro-cid-ktanj4pa><li data-astro-cid-ktanj4pa><a href="#uniones-que-se-desmontan-y-uniones-que-no" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Uniones que se desmontan y uniones que no</span></a></li><li data-astro-cid-ktanj4pa><a href="#la-rosca-vértice-fondo-y-paso" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>La rosca: vértice, fondo y paso</span></a></li><li data-astro-cid-ktanj4pa><a href="#cómo-se-lee-la-designación-de-un-tornillo" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Cómo se lee la designación de un tornillo</span></a></li><li data-astro-cid-ktanj4pa><a href="#espárragos-y-tuercas" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Espárragos y tuercas</span></a></li><li data-astro-cid-ktanj4pa><a href="#cómo-se-dibuja-una-rosca" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Cómo se dibuja una rosca</span></a></li><li data-astro-cid-ktanj4pa><a href="#cómo-se-acota-una-rosca" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Cómo se acota una rosca</span></a></li><li data-astro-cid-ktanj4pa><a href="#pasadores" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Pasadores</span></a></li><li data-astro-cid-ktanj4pa><a href="#chavetas-y-lengüetas" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Chavetas y lengüetas</span></a></li><li data-astro-cid-ktanj4pa><a href="#anillos-de-seguridad" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Anillos de seguridad</span></a></li><li data-astro-cid-ktanj4pa><a href="#rodamientos" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Rodamientos</span></a></li><li data-astro-cid-ktanj4pa><a href="#lo-que-la-lista-de-piezas-le-pide-al-despiece" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Lo que la lista de piezas le pide al despiece</span></a></li><li data-astro-cid-ktanj4pa><a href="#lo-que-hay-que-llevar-sabido" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Lo que hay que llevar sabido</span></a></li></ol></div><div class="rail-bloque" data-de="ejercicios" data-astro-cid-ktanj4pa><h2 class="rotulo" data-astro-cid-ktanj4pa>Ejercicios</h2><ol data-astro-cid-ktanj4pa><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-tornillo-m6x40-paso-y-fondo" data-astro-cid-ktanj4pa>Leer un tornillo de la lista, el M6 x 40 y el M4x25</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-pasador-conico-5x50" data-astro-cid-ktanj4pa>El pasador cónico 5 x 50, por el extremo grueso</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-polipasto-anillo-a30-din-471" data-astro-cid-ktanj4pa>La ranura del anillo A30 DIN 471 del polipasto</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-polipasto-rodamientos-6306" data-astro-cid-ktanj4pa>Los rodamientos 6306 de las poleas del polipasto</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-polipasto-pasador-6m6x60" data-astro-cid-ktanj4pa>Las desviaciones del pasador 6m6x60 del polipasto</a></li></ol></div></nav><div class="col" data-astro-cid-ktanj4pa><p class="rotulo rotulo--live eyebrow" data-astro-cid-ktanj4pa><a class="asignatura" href="/expresion-grafica/expresion-grafica/" data-asignatura="expresion-grafica" data-astro-cid-ololhd5l>Expresión Gráfica</a> · tema 11</p><h1 data-astro-cid-ktanj4pa>Sistemas de unión</h1><p class="lede" data-astro-cid-ktanj4pa>Cómo se dibuja y se acota una rosca, y cómo se lee cada línea de una lista de piezas, del tornillo al rodamiento, para dibujar lo que esa unión pide a la pieza.</p><a class="ir-sim no-imprimir" data-ir-sim href="#" hidden data-astro-cid-ktanj4pa><span class="rotulo rotulo--live" data-astro-cid-ktanj4pa>este tema trae un simulador</span><span class="nombre" data-ir-sim-nombre data-astro-cid-ktanj4pa></span></a><nav class="pestanas" aria-label="Secciones del tema" data-astro-cid-ktanj4pa><a href="#teoria" data-pestana="teoria" aria-current="page" data-astro-cid-ktanj4pa>Teoría</a><a href="#ejercicios" data-pestana="ejercicios" data-astro-cid-ktanj4pa>Ejercicios<span class="cuenta" data-astro-cid-ktanj4pa>5</span></a></nav><section id="teoria" class="panel" aria-label="Teoría" data-astro-cid-ktanj4pa><div class="read" data-lectura data-astro-cid-j54e57cz><p>En el examen del bloque 2 dibujas el despiece de unas piezas de un conjunto. Los
+tornillos, los pasadores, los anillos y los rodamientos de ese conjunto <strong>no se
+dibujan en el despiece</strong>: están normalizados, y basta con escribirlos en la lista de
+piezas con su designación (el libro de normalización lo dice de los tornillos, pág. 5-25,
+y vale para todo elemento normalizado). Pero cada uno le pide
+algo a la pieza que sí dibujas: un agujero roscado, una ranura, un asiento con su
+tolerancia. Este tema enseña a leer una designación y a convertirla en esas medidas,
+y a dibujar y acotar una rosca, que es uno de los mínimos sin los que no te corrigen
+el ejercicio.</p>
+<h2 id="uniones-que-se-desmontan-y-uniones-que-no">Uniones que se desmontan y uniones que no</h2>
+<p>Una unión <strong>permanente</strong> no se separa sin romper alguna pieza: el moldeo, el remache,
+la soldadura, la cola y el ajuste con apriete, en el que el eje es más gordo que el
+agujero. Una unión <strong>desmontable</strong> se monta y se desmonta sin romper nada, y es la que
+ocupa casi todo el tema:</p>
+<ul>
+<li>los <strong>elementos roscados</strong>: tornillos, pernos, tuercas y espárragos;</li>
+<li>los <strong>pasadores</strong>, que fijan una pieza a otra o aseguran su posición;</li>
+<li>las <strong>chavetas</strong> y las <strong>lengüetas</strong>, que transmiten el giro de un eje a una rueda;</li>
+<li>los <strong>anillos de seguridad</strong>, que impiden que algo se salga de un eje o de un agujero;</li>
+<li>y los <strong>rodamientos</strong>, que dejan girar una pieza sobre otra.</li>
+</ul>
+<p>La unión con juego, en la que el agujero es más grande que el eje, también es
+desmontable. Esas dos, la del apriete y la del juego, son las que el tema de ajustes
+convierte en números.</p>
+<h2 id="la-rosca-vértice-fondo-y-paso">La rosca: vértice, fondo y paso</h2>
+<p>Una rosca es un hilo enrollado en hélice. Lo de fuera del hilo es el <strong>vértice</strong> (o
+cresta) y lo de dentro, el <strong>fondo</strong>. La distancia entre dos vértices seguidos del mismo
+hilo es el <strong>paso</strong>. Hay rosca <strong>exterior</strong>, la del tornillo o el espárrago, y rosca
+<strong>interior</strong>, la de la tuerca o el agujero roscado. Y el diámetro que las nombra a las
+dos, el <strong>nominal</strong>, es siempre el mayor:</p>
+<ul>
+<li>en la rosca exterior, el nominal está en el <strong>vértice</strong>: es el contorno del tornillo;</li>
+<li>en la rosca interior, el nominal está en el <strong>fondo</strong>: el agujero que ves es más
+estrecho que la rosca que lo nombra.</li>
+</ul>
+<p>Por eso un tornillo y su tuerca llevan <strong>el mismo diámetro nominal</strong>. Un M10 enrosca en
+un agujero M10; en un M12, no. Los <em>Criterios</em> de corrección lo castigan como error muy
+grave, con dos puntos: «Definir un montaje mecánico imposible (p.e. agujero M10 y eje
+M12…)».</p>
+<p>El perfil del hilo depende del trabajo. Para <strong>fijar</strong> se usan perfiles triangulares
+—«Todas las roscas normalizadas que se utilizan para fijación son de sección triangular»
+(pág. 5-10)—: la rosca <strong>métrica</strong>, de triángulo equilátero, a 60°, y la <strong>Whitworth</strong>, a
+55° y en pulgadas. Para <strong>transmitir</strong> movimiento se usan la <strong>trapecial</strong>, la de <strong>diente
+de sierra</strong> y la <strong>redonda</strong>. Cada una se designa con su símbolo y su diámetro exterior,
+salvo la de tubo, que da el interior del tubo. El libro da estos ejemplos, y en ellos la
+Whitworth normal va sin símbolo (pág. 5-22):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>rosca</th><th>se escribe</th><th>quiere decir</th></tr></thead><tbody><tr><td>métrica</td><td>M 42</td><td>42 mm de diámetro, paso normal</td></tr><tr><td>métrica fina</td><td>M16x1,2</td><td>16 mm, paso de 1,2 mm</td></tr><tr><td>Whitworth</td><td>2”</td><td>2 pulgadas de diámetro</td></tr><tr><td>Whitworth fina</td><td>W84x1/6”</td><td>84 mm, paso de 1/6 de pulgada</td></tr><tr><td>Whitworth de tubo</td><td>R 2”</td><td>tubo de 2 pulgadas de diámetro interior</td></tr><tr><td>trapecial</td><td>Tr48x3</td><td>48 mm, paso de 3 mm</td></tr><tr><td>redonda</td><td>Rd40x1/6”</td><td>40 mm, paso de 1/6 de pulgada</td></tr><tr><td>diente de sierra</td><td>S70x10</td><td>70 mm, paso de 10 mm</td></tr></tbody></table>
+<p>En las roscas de pulgada, la tabla del libro se ha quedado vieja. La diapositiva de la
+asignatura ya no deja la Whitworth sin símbolo: le pone una G junto al nombre y la designa
+«R o G d (pulgadas)» («Tema 6. Uniones», pág. 5). Esas dos letras son las de las normas de
+rosca de tubo que se usan hoy, y lo que sigue ya no lo dice el material: lo añadimos
+nosotros. La <strong>G</strong>, de la ISO 228-1, es la rosca cilíndrica que no cierra en la propia
+rosca —la estanquidad la pone una junta— y se escribe G 1/2. La <strong>R</strong>, de la ISO 7-1, es la
+que sí cierra en la propia rosca: la exterior, R, es siempre cónica, y la interior puede ser
+cónica, Rc, o cilíndrica, Rp. En las dos, la cifra en pulgadas es la medida nominal del tubo
+y no un diámetro de la rosca: una G 1/2 mide 20,955 mm por fuera. La G no sale en la tabla
+del libro; si la ves en un plano, es esta.</p>
+<p>Fíjate en la métrica. <strong>M12 a secas es paso normal</strong>, y el paso solo se escribe cuando
+es fino: «M 6 x 0,75 significa rosca métrica fina» (pág. 5-19). El paso normal de cada
+diámetro lo da la tabla de la rosca métrica (pág. 5-10). Las filas que usa este tema:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>d (mm)</th><th>paso P</th><th>núcleo d₃</th><th>altura del filete h₃</th></tr></thead><tbody><tr><td>6</td><td>1</td><td>4,8</td><td>0,6</td></tr><tr><td>8</td><td>1,25</td><td>6,5</td><td>0,8</td></tr><tr><td>10</td><td>1,5</td><td>8,2</td><td>0,9</td></tr><tr><td>12</td><td>1,75</td><td>9,9</td><td>1,1</td></tr></tbody></table>
+<p>El núcleo es el diámetro del fondo de la rosca exterior: el nominal menos la altura del
+filete por cada lado, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>3</mn></msub><mo>=</mo><mi>d</mi><mo>−</mo><mn>2</mn><mtext> </mtext><msub><mi>h</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">d_3 = d - 2\,h_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span>, que en el M6 es <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mo>−</mo><mn>2</mn><mo>⋅</mo><mn>0,6</mn><mo>=</mo><mn>4,8</mn></mrow><annotation encoding="application/x-tex">6 - 2 \cdot 0{,}6 = 4{,}8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">4</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">8</span></span></span></span> mm.
+Tómalo de la tabla y no de la resta: las cifras van redondeadas a la décima, y en el M8
+la resta da 6,4 donde la tabla dice 6,5. Una rosca que gira al revés lleva «izq.»
+detrás: M 60 izq.</p>
+<h2 id="cómo-se-lee-la-designación-de-un-tornillo">Cómo se lee la designación de un tornillo</h2>
+<p>En una lista de piezas, un tornillo se nombra así, de izquierda a derecha (pág. 5-26):</p>
+<ul>
+<li>la <strong>denominación</strong>: tornillo hexagonal, cilíndrico, avellanado…;</li>
+<li>la <strong>rosca</strong>: M20, o M 20 x 2 si es fina;</li>
+<li>la <strong>longitud</strong>: la del vástago, sin la cabeza, salvo en los tornillos avellanados, en
+los que cuenta también la cabeza cónica (pág. 5-30);</li>
+<li>la <strong>norma</strong>, que fija la forma de la cabeza y todas las medidas que no se escriben;</li>
+<li>y a veces la ejecución y la <strong>clase de resistencia</strong>.</li>
+</ul>
+<p>El ejemplo del libro, «Tornillo hexagonal M 20 x 2 x 60 DIN 960 - mg 8.8», se lee:
+rosca métrica fina de 20 mm y paso 2, vástago de 60 mm, forma según DIN 960, ejecución
+semibasta y clase 8.8. En la clase, la primera cifra es la décima parte de la tensión
+mínima de rotura por tracción, en kg/mm², y la segunda, diez veces la relación entre la
+tensión de fluencia y la de rotura; su producto, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mo>⋅</mo><mn>8</mn><mo>=</mo><mn>64</mn></mrow><annotation encoding="application/x-tex">8 \cdot 8 = 64</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">64</span></span></span></span> kg/mm², es la tensión
+mínima de fluencia (pág. 5-27). Hoy la clase se lee en MPa, como la da la ISO 898-1, y
+esto ya no lo dice el libro: lo añadimos nosotros. La primera cifra por 100 es la
+resistencia nominal a la tracción, 800 MPa en un 8.8, y el producto de las dos por 10, el
+límite elástico nominal, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mo>⋅</mo><mn>8</mn><mo>⋅</mo><mn>10</mn><mo>=</mo><mn>640</mn></mrow><annotation encoding="application/x-tex">8 \cdot 8 \cdot 10 = 640</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">640</span></span></span></span> MPa. Las dos lecturas casi coinciden:
+80 kg/mm² son unos 785 MPa.</p>
+<p>La norma dice qué cabeza tiene el tornillo. Las que salen en el material de la
+asignatura son la <strong>hexagonal</strong> (DIN 931, en la «Polea directriz»), la <strong>cilíndrica con
+hexágono interior</strong> (DIN 912, que se aprieta con una llave metida en la cabeza, para que
+esta quede oculta o cuando no hay sitio alrededor) y la <strong>avellanada</strong>, de cabeza cónica,
+para que no sobresalga de una pieza delgada (pág. 5-30). Y la norma da también lo que va
+roscado: en la tabla del DIN 931 del libro, un M6 de hasta 125 mm de largo lleva roscados
+15 mm (pág. 5-29; el libro escribe «125 cm», pero la tabla va en mm). Ese 15 es el que usan
+los ejercicios de este tema. Las tablas de la norma dan otro, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>2</mn><mi>d</mi><mo>+</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">b = 2d + 6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em"></span><span class="mord">2</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">6</span></span></span></span> en los tornillos
+de hasta 125 mm, que en un M6 son 18 mm: lo dan la ISO 4014, que hoy sustituye al DIN 931,
+y el propio DIN 931 en su edición de 1987. Esto no lo trae el material, lo añadimos
+nosotros. Dibuja con la tabla que tengas delante: con la del libro, 15; con una de la
+norma, 18.</p>
+<div class="error-tipico" data-astro-cid-jdnpk4r2><p class="titulo" data-astro-cid-jdnpk4r2>«M4x25: el 25 es el paso»</p><div class="cuerpo" data-astro-cid-jdnpk4r2><p>En la lista del gancho de polipasto hay seis «Tornillo avellanado M4x25 DIN 963». El
+25 es la <strong>longitud</strong> del tornillo. Un paso de 25 en un tornillo de 4 mm haría que cada
+vuelta del hilo avanzara seis veces lo que mide de ancho: no se puede tallar. Detrás de
+la x de una <strong>rosca</strong> va el paso fino, una cifra pequeña (M 6 x 0,75); detrás de la x de
+un <strong>tornillo</strong>, la longitud. Si las dos cosas aparecen, el paso va en medio:
+M 20 x 2 x 60.</p></div></div>
+<h2 id="espárragos-y-tuercas">Espárragos y tuercas</h2>
+<p>El <strong>espárrago</strong> es una varilla roscada por los dos extremos. Uno se rosca en una pieza
+maciza, con una longitud de 1,5 veces el diámetro en metales duros y de 2 veces en
+blandos, y en el otro va la tuerca. Su longitud nominal <strong>no cuenta</strong> la parte que se
+mete en la pieza, igual que la de un tornillo de cabeza hexagonal no cuenta la cabeza
+(pág. 5-31). Si las dos roscas giran en sentidos contrarios, se dice detrás de cada
+designación: «Las roscas derecha e izquierda en una misma pieza se indican agregando
+“der” e “izq” detrás de su denominación» (pág. 5-20). Es el espárrago de «Tema 6.
+Uniones» (pág. 8): «M12 der» en un extremo y «M12 izq» en el otro, 25 mm de rosca útil en
+cada uno, 15 de tramo liso en medio y 65 en total.</p>
+<p>La <strong>tuerca hexagonal</strong> normal mide de alto 0,8 veces el diámetro del tornillo; la alta,
+uno; la baja, medio (pág. 5-43). Lo que define su tamaño es la distancia entre caras
+opuestas, porque es la medida de la llave. En un plano de conjunto, las cabezas y las
+tuercas hexagonales se dibujan con <strong>tres caras vistas</strong>, con la diagonal del hexágono
+paralela al plano del dibujo, y con unas proporciones convencionales —la cabeza, dos
+diámetros de ancho y 0,7 de alto; la tuerca, el mismo ancho y la altura de arriba— que se
+dibujan pero no se acotan (págs. 5-40 y 5-41).</p>
+<p>Para que una tuerca no se afloje con las vibraciones se le pone un <strong>freno</strong>: una
+contratuerca o una arandela elástica, que limitan el aflojamiento, o una tuerca
+almenada atravesada por un <strong>pasador de aletas</strong>, que lo impide del todo.</p>
+<h2 id="cómo-se-dibuja-una-rosca">Cómo se dibuja una rosca</h2>
+<p>Una rosca no se dibuja hilo a hilo: se dibuja con una <strong>representación simplificada</strong>,
+la misma para cualquier perfil. Cuatro reglas, todas de «Tema 6. Uniones» (págs. 6 y 7)
+y del libro (págs. 5-14 y 5-15):</p>
+<ol>
+<li><strong>Rosca vista</strong>: el vértice, en línea <strong>continua gruesa</strong>; el fondo, en <strong>continua
+fina</strong>; el final de la rosca útil, en continua gruesa. En el tornillo, la gruesa es el
+contorno y la fina va por dentro; en el agujero roscado, al revés: la gruesa es el
+agujero que se ve y la fina, la rosca que lo nombra, por fuera.</li>
+<li><strong>Rosca oculta</strong>: vértice, fondo y final de rosca, los tres en <strong>discontinua</strong>.</li>
+<li><strong>Vista frontal</strong>: el fondo es un <strong>arco fino de unos tres cuartos de
+circunferencia</strong>, abierto en un cuadrante. Así se distingue de la circunferencia
+gruesa aunque el grosor de las dos líneas no se aprecie bien (libro, pág. 5-15).</li>
+<li><strong>En corte</strong>, el rayado llega <strong>hasta el vértice</strong>, hasta la línea gruesa: en un
+agujero roscado, el rayado entra en la rosca hasta el agujero.</li>
+</ol>
+<p>Y dos más para los conjuntos. Las piezas <strong>macizas</strong>, como los ejes y los tornillos, no
+se cortan a lo largo. Y cuando un tornillo entra en un agujero roscado, <strong>manda la rosca
+exterior</strong>: en el tramo común se dibuja el tornillo, y la rosca del agujero solo se ve
+donde el tornillo no llega. En un agujero ciego, la rosca no llega al fondo (pág. 5-17) y
+el fondo del taladro termina en «la huella de la broca, de forma cónica a 120º»
+(pág. 5-42).</p>
+<p>Dibujar bien al menos una rosca es un mínimo de los <em>Criterios</em>: «Dibujar bien, al
+menos, una rosca (3/4 en la vista frontal, diferenciar el tipo de línea, en caso de
+tratarse de un corte que esté bien representada)».</p>
+<div class="error-tipico" data-astro-cid-jdnpk4r2><p class="titulo" data-astro-cid-jdnpk4r2>El rayado que se para en la línea fina</p><div class="cuerpo" data-astro-cid-jdnpk4r2><p>En un agujero roscado cortado, la tentación es rayar hasta la línea fina, porque es la
+que está más lejos del eje y parece el borde de la pieza. Es al revés: el rayado llega
+hasta la <strong>gruesa</strong>, el vértice del hilo de la tuerca, que es el agujero de verdad. La
+fina queda dentro del rayado. Los <em>Criterios</em> lo cuentan aparte: «Rayadura mal indicada
+en un agujero roscado: −0,5 por cada caso».</p></div></div>
+<h2 id="cómo-se-acota-una-rosca">Cómo se acota una rosca</h2>
+<p>Una rosca se acota con su <strong>perfil y su diámetro nominal juntos</strong>, M12, y con la
+<strong>longitud de rosca útil</strong>; la salida de la rosca, fuera de esa longitud, normalmente no
+se acota (págs. 5-18 y 5-19). En «Tema 6. Uniones» (págs. 8 y 9):</p>
+<ul>
+<li>en una rosca <strong>exterior</strong>, M12 y el final de la rosca útil, 24;</li>
+<li>en un <strong>agujero pasante</strong> roscado, solo M12;</li>
+<li>en un <strong>agujero ciego</strong> roscado, M12, el final de la rosca útil (14) y la
+<strong>profundidad del agujero</strong> (20), que es más larga que la rosca.</li>
+</ul>
+<p>El M se puede escribir en la vista longitudinal o en la frontal, sobre el diámetro.</p>
+<div class="error-tipico" data-astro-cid-jdnpk4r2><p class="titulo" data-astro-cid-jdnpk4r2>Ø12 donde va M12</p><div class="cuerpo" data-astro-cid-jdnpk4r2><p>Una rosca acotada con Ø dice que ahí hay un cilindro liso de 12 mm, y el que fabrique la
+pieza no la roscará. Es otro mínimo de los <em>Criterios</em>: «Al acotar una rosca, utilizar
+el símbolo M y no el símbolo de diámetro Ø (puede que el valor de cota no sea válido,
+pero al menos se utiliza el símbolo M)». Y la longitud también cuenta: «No acotar la
+longitud/profundidad de la rosca: −0,5 por cada caso».</p></div></div>
+<h2 id="pasadores">Pasadores</h2>
+<p>Un <strong>pasador</strong> es una varilla que atraviesa dos piezas para <strong>fijar</strong> una a la otra o
+para <strong>asegurar su posición</strong> relativa. También hace de eje en las uniones de rótula.</p>
+<p>El <strong>cilíndrico</strong> es de acero calibrado y lleva la tolerancia del diámetro en la
+designación: m6, h8 u h11 (apuntes «Pasadores y chavetas», pág. 2). El libro lo designa
+como diámetro por longitud, «Pasador cilíndrico 8 x 30 DIN 7» (pág. 5-51), y los apuntes
+con una letra de tipo delante, «Pasador cilíndrico B 4 x 10 UNE 22238:1993», en la que B
+es la tolerancia h8. La lista del polipasto la escribe directamente:
+«Pasador cilíndrico 6m6x60 DIN 7» es un pasador de 6 mm con tolerancia m6 y 60 de largo.</p>
+<p>El <strong>cónico</strong> tiene una conicidad de 1:50, y su medida nominal es la del <strong>extremo
+delgado</strong>, que es la del agujero (pág. 5-50). La conicidad de un tronco de cono es la
+diferencia de diámetros partida por su longitud (tema IV, pág. 4-19):</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mrow><mi>D</mi><mo>−</mo><mi>d</mi></mrow><mi>h</mi></mfrac><mo>=</mo><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{D - d}{h} = \frac{1}{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em"><span style="top:-2.314em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal">h</span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0278em">D</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord mathnormal">d</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:2.0074em;vertical-align:-0.686em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em"><span style="top:-2.314em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal">x</span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>así que el «Pasador cónico 5 x 50» del libro pasa de 5 mm a <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>+</mo><mfrac><mn>50</mn><mn>50</mn></mfrac><mo>=</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">5 + \frac{50}{50} = 6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">50</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">50</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">6</span></span></span></span> mm en
+sus 50 mm de largo. Hay además pasadores <strong>elásticos</strong> (una chapa curvada que se aprieta
+sola en el agujero), <strong>ranurados</strong> y <strong>de aletas</strong>, que son los que frenan las tuercas
+almenadas.</p>
+<h2 id="chavetas-y-lengüetas">Chavetas y lengüetas</h2>
+<p>Las dos son piezas prismáticas que se meten en unos alojamientos tallados en el eje y en
+el cubo de la rueda, los <strong>chaveteros</strong>, para que el giro de uno pase al otro. No se
+calculan: sus medidas salen de la norma según el diámetro del eje (pág. 5-67).</p>
+<ul>
+<li>La <strong>chaveta</strong> tiene una cara inclinada al 1 %, 1:100, y entra a presión como una
+cuña: trabaja por las caras de arriba y de abajo, y entre sus flancos y el chavetero
+queda holgura. Sin talón es DIN 6886 y con talón, DIN 6887, y se designa por anchura,
+altura y longitud: «Chaveta 20 x 12 x 125 DIN 6886».</li>
+<li>La <strong>lengüeta</strong> tiene las caras paralelas, ajusta sin juego en el eje y trabaja por
+los flancos. Como no se acuña, permite que el cubo se deslice a lo largo del eje:
+«Lengüeta 12 x 8 x 56 DIN 6885». La <strong>chaveta de disco</strong>, DIN 6888, es media luna y se
+designa solo por anchura y altura: «8 x 11».</li>
+</ul>
+<p>En el despiece, el chavetero del eje se acota por su anchura y por lo que queda de eje
+debajo, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>−</mo><msub><mi>h</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">d - h_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span>; el del cubo, por su anchura y por <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo>+</mo><msub><mi>h</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">d + h_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em"></span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span>, medido desde el lado
+opuesto del agujero. Si es para una chaveta, se dibuja la inclinación 1:100 con su flecha
+(apuntes, pág. 6; libro, pág. 5-73).</p>
+<h2 id="anillos-de-seguridad">Anillos de seguridad</h2>
+<p>El <strong>anillo de seguridad</strong>, o circlip, es un aro abierto que se mete en una ranura
+para que lo que está montado en un eje, o dentro de un agujero, no se salga a lo largo.
+Hay dos, y no se cambian uno por otro («Uniones desmontables – Circlip», págs. 1 y 2):</p>
+<ul>
+<li>el anillo <strong>para ejes</strong>, o circlip exterior, DIN 471, en una ranura por fuera del eje;</li>
+<li>el anillo <strong>para agujeros</strong>, o circlip interior, DIN 472, en una ranura por dentro del
+agujero.</li>
+</ul>
+<p>Se designan por el diámetro del eje o del agujero, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">d_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span>, y el espesor del anillo, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">s</span></span></span></span>:
+«Anillo de seguridad 30 x 1,5 DIN 471». Lo que se dibuja en el despiece es <strong>la ranura</strong>,
+y sus medidas salen de la tabla de la norma: el fondo, a un diámetro <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">d_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span> algo menor que
+el eje en el DIN 471, o algo mayor que el agujero en el DIN 472, y el ancho, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mi>s</mi><mo>+</mo><mn>0,1</mn></mrow><annotation encoding="application/x-tex">m = s + 0{,}1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">1</span></span></span></span>, una décima más que el anillo para que entre (diapositiva, pág. 2; libro,
+pág. 5-63). En el gancho de polipasto, el anillo de la marca 12, «A30 DIN 471», pide en el
+eje de 30 mm una ranura de 1,6 mm de ancho con el fondo a 28,6 mm.</p>
+<p>Esa décima vale hasta <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1,75</mn></mrow><annotation encoding="application/x-tex">s = 1{,}75</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">1</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">75</span></span></span></span>. Las tablas del material llegan a anillos de 2 mm en el
+DIN 471 y de 2,5 en el DIN 472, y ahí las tablas completas de las dos normas dan una ranura
+0,15 más ancha que el anillo, no 0,1: 2,15 mm para <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">s = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">2</span></span></span></span> y 2,65 para <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>2,5</mn></mrow><annotation encoding="application/x-tex">s = 2{,}5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">2</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">5</span></span></span></span>. Esto no
+lo trae el material, lo añadimos nosotros. En el A30 del polipasto, con <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1,5</mn></mrow><annotation encoding="application/x-tex">s = 1{,}5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">1</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">5</span></span></span></span>, la
+regla de la diapositiva vale.</p>
+<h2 id="rodamientos">Rodamientos</h2>
+<p>Un <strong>rodamiento</strong> pone bolas o rodillos entre dos anillos para que una pieza gire sobre
+otra rozando hasta cien veces menos que en un cojinete («Rodamientos», pág. 2). De fuera
+adentro: el anillo exterior, su pista, los elementos rodantes con su jaula, la pista del
+anillo interior y el anillo interior (pág. 3). Los <strong>radiales</strong> aguantan cargas
+perpendiculares al eje y los <strong>axiales</strong>, cargas a lo largo de él.</p>
+<p><strong>La designación.</strong> Las cifras se leen en dos partes (pág. 4). Las primeras son la serie:
+el <strong>tipo</strong> y la serie de dimensiones. Las dos últimas son el <strong>tamaño</strong>, que es el
+diámetro del agujero partido por cinco. La misma diapositiva lo comprueba con el 6205,
+que tiene un agujero de 25 mm. En el polipasto:</p>
+<ul>
+<li><strong>6306</strong>: tipo 6, rígido de una hilera de bolas; tamaño 06, así que el agujero mide
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo>⋅</mo><mn>6</mn><mo>=</mo><mn>30</mn></mrow><annotation encoding="application/x-tex">5 \cdot 6 = 30</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">30</span></span></span></span> mm. La serie es la 03, y el cero no se escribe, como en el 6205, que
+es de la serie 02;</li>
+<li><strong>51206</strong>: tipo 5, axial de bolas; serie 12; tamaño 06, otra vez 30 mm.</li>
+</ul>
+<p>La cuenta no vale para los tamaños más pequeños —con 00 saldría un agujero de 0 mm—, y la
+diapositiva no dice qué pasa con ellos. Los del polipasto son de tamaño 06, y los ejemplos
+de la diapositiva, de 05.</p>
+<p><strong>El ajuste.</strong> Un rodamiento no va con cualquier tolerancia. La regla es de cada anillo
+por separado, y depende de <strong>la carga respecto de ese anillo</strong> (págs. 8 a 12):</p>
+<ul>
+<li>el anillo que ve la carga <strong>girar</strong> respecto de él necesita un <strong>ajuste forzado</strong>, o
+indeterminado, para no deslizar;</li>
+<li>el anillo que ve la carga <strong>quieta</strong> puede ir <strong>con juego</strong>.</li>
+</ul>
+<p>Con el eje girando y la carga fija, como en un ventilador, la carga gira respecto del
+anillo interior: el eje va forzado (j6, k6, m6 o n6) y el alojamiento con juego (H7).
+Con el alojamiento girando y la carga fija, como en una polea, es al revés: el
+alojamiento va forzado (M7 o N7) y el eje con juego (h6 o g6). Ese es el caso de las
+poleas del polipasto, que giran sobre un eje quieto: la tolerancia del eje que dibujas en
+el despiece sale de aquí.</p>
+<div class="error-tipico" data-astro-cid-jdnpk4r2><p class="titulo" data-astro-cid-jdnpk4r2>El apriete, en el anillo que gira</p><div class="cuerpo" data-astro-cid-jdnpk4r2><p>Suena razonable y en la polea acierta: el anillo exterior gira y va forzado. Pero la
+regla no mira qué anillo gira, sino <strong>si la carga gira respecto del anillo</strong>. En el
+tambor de una mezcladora, el eje gira y la carga gira con él: para el anillo interior la
+carga está siempre en el mismo sitio, y ese anillo, que es el que gira, va con juego
+(«Rodamientos», pág. 11).</p></div></div>
+<h2 id="lo-que-la-lista-de-piezas-le-pide-al-despiece">Lo que la lista de piezas le pide al despiece</h2>
+<p>Junta todo lo anterior en la pregunta del examen. De cada línea de la lista sale una
+medida de alguna pieza que sí dibujas:</p>
+<ul>
+<li>un <strong>tornillo</strong> pide un agujero roscado en una pieza, acotado con M, su rosca útil y,
+si es ciego, su profundidad; y en las otras, un taladro pasante sin rosca;</li>
+<li>un <strong>anillo de seguridad</strong> pide una ranura de ancho <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>+</mo><mn>0,1</mn></mrow><annotation encoding="application/x-tex">s + 0{,}1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">1</span></span></span></span> (hasta <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1,75</mn></mrow><annotation encoding="application/x-tex">s = 1{,}75</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">1</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">75</span></span></span></span>;
+desde <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">s = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">2</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>+</mo><mn>0,15</mn></mrow><annotation encoding="application/x-tex">s + 0{,}15</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">15</span></span></span></span>) y fondo <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">d_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span>;</li>
+<li>un <strong>rodamiento</strong> pide un asiento con el diámetro de su agujero (o el exterior) y la
+tolerancia que da la regla de la carga;</li>
+<li>un <strong>pasador</strong> pide un taladro de su diámetro en las dos piezas que une;</li>
+<li>una <strong>chaveta</strong> o una <strong>lengüeta</strong> piden un chavetero en el eje y otro en el cubo.</li>
+</ul>
+<h2 id="lo-que-hay-que-llevar-sabido">Lo que hay que llevar sabido</h2>
+<ol>
+<li>Rosca <strong>exterior</strong>: el nominal en el <strong>vértice</strong>. Rosca <strong>interior</strong>: en el
+<strong>fondo</strong>. Tornillo y tuerca, el <strong>mismo</strong> nominal.</li>
+<li><strong>M12</strong> a secas es paso normal; <strong>M 6 x 0,75</strong>, paso fino. En un <strong>tornillo</strong>,
+M6 x 40: el 40 es la <strong>longitud</strong>.</li>
+<li>El fondo de un tornillo está en el núcleo, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">d_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span>, que da la tabla. Para el M6,
+4,8 mm.</li>
+<li>Vista: vértice <strong>grueso</strong>, fondo <strong>fino</strong>, final de rosca <strong>grueso</strong>. Oculta: todo
+<strong>discontinuo</strong>. Frontal: arco fino de <strong>3/4</strong>.</li>
+<li>El rayado llega hasta la línea <strong>gruesa</strong>. Manda la rosca <strong>exterior</strong>. Los ejes y los
+tornillos no se cortan a lo largo.</li>
+<li>Se acota <strong>M</strong>, no Ø, y la <strong>longitud de rosca útil</strong>; en un agujero ciego, además,
+su profundidad.</li>
+<li>Conicidad: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi>D</mi><mo>−</mo><mi>d</mi></mrow><mi>h</mi></mfrac><mo>=</mo><mfrac><mn>1</mn><mi>x</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{D - d}{h} = \frac{1}{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2251em;vertical-align:-0.345em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">h</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0278em">D</span><span class="mbin mtight">−</span><span class="mord mathnormal mtight">d</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>. En el pasador cónico, el nominal es el
+diámetro <strong>menor</strong>.</li>
+<li>Anillo DIN 471 (eje) o DIN 472 (agujero): ranura de ancho <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mi>s</mi><mo>+</mo><mn>0,1</mn></mrow><annotation encoding="application/x-tex">m = s + 0{,}1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">1</span></span></span></span> hasta
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>1,75</mn></mrow><annotation encoding="application/x-tex">s = 1{,}75</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">1</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">75</span></span></span></span> (desde <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">s = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">2</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>+</mo><mn>0,15</mn></mrow><annotation encoding="application/x-tex">s + 0{,}15</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">15</span></span></span></span>) y fondo <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>d</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">d_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em"></span><span class="mord"><span class="mord mathnormal">d</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em"><span></span></span></span></span></span></span></span></span></span>, de la tabla.</li>
+<li>Rodamiento: los dos últimos dígitos son <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi mathvariant="normal">/</mi><mn>5</mn></mrow><annotation encoding="application/x-tex">d/5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal">d</span><span class="mord">/5</span></span></span></span>, salvo en los tamaños más pequeños.
+6306 y 51206: agujero de 30 mm.</li>
+<li>Carga que <strong>gira</strong> respecto del anillo: <strong>forzado</strong>. Carga <strong>quieta</strong>: <strong>juego</strong>.</li>
+</ol><div class="practica no-imprimir" data-practica data-astro-cid-ln5sr2am><p class="rotulo pr-k" data-astro-cid-ln5sr2am>Practica lo que acabas de leer</p><p class="pr-tit" data-astro-cid-ln5sr2am>Leer un tornillo de la lista, el M6 x 40 y el M4x25</p><p class="pr-sub" data-astro-cid-ln5sr2am>Ejemplo introductorio, para entrar de cero. Cada paso equivocado recibe su diagnóstico, no un «incorrecto».</p><a class="pr-cta" href="/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-tornillo-m6x40-paso-y-fondo" data-astro-cid-ln5sr2am>Hacer el ejercicio →</a></div><nav class="pasos no-imprimir" data-pasos hidden aria-label="Navegación por apartados" data-astro-cid-j54e57cz><button type="button" data-ir="-1" data-astro-cid-j54e57cz>← anterior</button><button type="button" data-ir="1" data-astro-cid-j54e57cz>siguiente →</button></nav></div><script type="module">var e=document.querySelector(`[data-lectura]`),t=document.querySelector(`[data-modos]`),n=document.querySelector(`[data-pasos]`);if(e&&t&&n){let r=[...e.children],i=[],a=null;for(let t of r)t.matches(`[data-modos], [data-pasos], [data-practica]`)||(t.tagName===`H2`&&(a=document.createElement(`section`),a.className=`grupo`,e.insertBefore(a,t),i.push(a)),a&&t!==a&&a.appendChild(t));if(i.length>1){let r=document.querySelector(`[data-avance]`),a=[...t.querySelectorAll(`[data-modo]`)],o=`guiado`,s=0;function c(){e.dataset.modo=o,i.forEach((e,t)=>{e.hidden=o===`guiado`&&t!==s}),n.hidden=o!==`guiado`,r.textContent=o===`guiado`?`${s+1} de ${i.length}`:`${i.length} apartados`;for(let e of a)e.setAttribute(`aria-pressed`,String(e.dataset.modo===o));for(let e of n.querySelectorAll(`[data-ir]`)){let t=Number(e.dataset.ir);e.disabled=t<0&&s===0||t>0&&s===i.length-1}}for(let e of a)e.addEventListener(`click`,()=>{o=e.dataset.modo;try{localStorage.setItem(`modo-lectura`,o)}catch{}c()});for(let e of n.querySelectorAll(`[data-ir]`))e.addEventListener(`click`,()=>{s=Math.max(0,Math.min(i.length-1,s+Number(e.dataset.ir))),c(),i[s].querySelector(`h2`)?.scrollIntoView({block:`start`})});for(let e of document.querySelectorAll(`.rail a`))e.addEventListener(`click`,()=>{let t=decodeURIComponent(e.hash.slice(1)),n=i.findIndex(e=>e.querySelector(`h2`)?.id===t);n>=0&&(s=n,c())});window.addEventListener(`beforeprint`,()=>{for(let e of i)e.hidden=!1}),window.addEventListener(`afterprint`,c);try{localStorage.getItem(`modo-lectura`)===`completo`&&(o=`completo`)}catch{}function l(){let e=decodeURIComponent(location.hash.slice(1));if(!e)return!1;let t=i.findIndex(t=>t.id===e||!!t.querySelector(`#${CSS.escape(e)}`));return t<0?!1:(s=t,!0)}let u=l();t.hidden=!1,c(),u&&document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({block:`start`}),window.addEventListener(`hashchange`,()=>{l()&&(c(),document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({block:`start`}))})}}var r=[...document.querySelectorAll(`.rail a`)],i=r.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e);if(i.length){let e=new IntersectionObserver(e=>{for(let t of e)if(t.isIntersecting){for(let e of r)e.removeAttribute(`aria-current`);r.find(e=>decodeURIComponent(e.hash.slice(1))===t.target.id)?.setAttribute(`aria-current`,`true`)}},{rootMargin:`-20% 0px -70% 0px`});for(let t of i)e.observe(t)}</script></section><section id="ejercicios" class="panel" aria-label="Ejercicios" data-astro-cid-ktanj4pa><div class="bloque-ej" data-bloque data-astro-cid-ktanj4pa><p class="rotulo be-cab" data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/" data-astro-cid-ktanj4pa>Ejercicios del 1 al 5</a></p><ol class="be-lista" start="1" data-astro-cid-ktanj4pa><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-tornillo-m6x40-paso-y-fondo" data-astro-cid-ktanj4pa>Leer un tornillo de la lista, el M6 x 40 y el M4x25</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-pasador-conico-5x50" data-astro-cid-ktanj4pa>El pasador cónico 5 x 50, por el extremo grueso</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-polipasto-anillo-a30-din-471" data-astro-cid-ktanj4pa>La ranura del anillo A30 DIN 471 del polipasto</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-polipasto-rodamientos-6306" data-astro-cid-ktanj4pa>Los rodamientos 6306 de las poleas del polipasto</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t11-sistemas-de-union/ejercicios/1/#ej-polipasto-pasador-6m6x60" data-astro-cid-ktanj4pa>Las desviaciones del pasador 6m6x60 del polipasto</a></li></ol></div></section><nav class="seguir no-imprimir" aria-label="Seguir desde aquí" data-astro-cid-zyhexgpy><div class="s-lados" data-astro-cid-zyhexgpy><a class="s-tema s-ant" href="/expresion-grafica/expresion-grafica/t10-acotacion/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>← tema 10</span><span class="s-t" data-astro-cid-zyhexgpy>Acotación</span></a><a class="s-tema s-sig" href="/expresion-grafica/expresion-grafica/t12-acabados-y-tolerancias/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>tema 12 →</span><span class="s-t" data-astro-cid-zyhexgpy>Acabados, tolerancias y ajustes</span></a></div><div class="s-otros" data-astro-cid-zyhexgpy><a class="s-otro" href="/expresion-grafica/expresion-grafica/examenes/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>exámenes</span><span class="s-t" data-astro-cid-zyhexgpy>Las 4 convocatorias, resueltas enteras</span></a></div></nav><footer class="pie" data-astro-cid-ktanj4pa><p class="rotulo" data-astro-cid-ktanj4pa>Entrena COMP1 · COMP2 · COMP4</p><p class="rotulo fuente" data-astro-cid-ktanj4pa>Adaptado de «Tema 6. Uniones» y de las diapositivas «Uniones desmontables – Circlip» y «Rodamientos» · Expresión Gráfica, UPV/EHU; de los apuntes «Pasadores y chavetas»; y del tema V, «Sistemas de fijación desmontables», del libro «Normalización básica. Dibujo técnico» del Dpto. de Expresión Gráfica y Proyectos de Ingeniería; y de los «Criterios para la corrección de ejercicios y exámenes» de la asignatura. Las designaciones de los ejercicios son las de las listas de piezas de los planos «Gancho de polipasto» y «Polea directriz» de la asignatura. Lo que se cita de las ISO 228-1, ISO 7-1, ISO 898-1 e ISO 4014, de la edición de 1987 del DIN 931 y de las tablas completas de DIN 471 y DIN 472 no es del material; lo añadimos nosotros, y la página lo dice donde sale.</p></footer></div></div><script type="module">var e=document.querySelector(`[data-armazon]`),t=JSON.parse(e?.dataset.direcciones||`{}`),n=e=>{let n=e;try{n=decodeURIComponent(e)}catch{}let r=t[n];return!r||document.getElementById(n)?!1:(location.replace(r),!0)};if(e&&!n(location.hash.slice(1))){let t=[...e.querySelectorAll(`[data-pestana]`)];function r(n,r){e.dataset.panel=n;for(let e of t)e.dataset.pestana===n?e.setAttribute(`aria-current`,`page`):e.removeAttribute(`aria-current`);r&&history.replaceState(null,``,`#${n}`)}for(let e of t)e.addEventListener(`click`,t=>{t.preventDefault(),r(e.dataset.pestana,!0)});let i=e=>e===`ejercicios`||e.startsWith(`ej-`)?`ejercicios`:`teoria`;r(i(location.hash.slice(1)),!1),window.addEventListener(`hashchange`,()=>{let e=location.hash.slice(1);n(e)||r(i(e),!1)}),window.addEventListener(`beforeprint`,()=>e.dataset.panel=`todo`),window.addEventListener(`afterprint`,()=>r(i(location.hash.slice(1)),!1));let a=[...e.querySelectorAll(`#teoria figure.sim[id]`)],o=a[0],s=e.querySelector(`[data-ir-sim]`);if(o&&s){s.href=`#${o.id}`,e.querySelector(`[data-ir-sim-nombre]`).textContent=o.querySelector(`.sim-head h3`)?.textContent?.trim()??`ábrelo`,s.hidden=!1;let t=[...e.querySelectorAll(`#teoria h2[id]`)];for(let n of a){let r=t.filter(e=>e.compareDocumentPosition(n)&Node.DOCUMENT_POSITION_FOLLOWING).pop(),i=r&&e.querySelector(`.rail a[href="#${CSS.escape(r.id)}"] .t`);if(!i||i.querySelector(`.chip`))continue;let a=document.createElement(`span`);a.className=`chip`,a.textContent=`simulador`,i.append(a)}s.addEventListener(`click`,e=>{location.hash===s.hash&&(e.preventDefault(),o.scrollIntoView({block:`start`}))})}}</script></main><footer class="pie-edicion" style="border-top: 1px solid var(--rule); margin-top: 3rem; padding: 1rem 1.25rem 1.5rem; color: var(--faint); font-size: .8rem; text-align: center"><p style="margin: 0">Edición de una sola asignatura de <strong>Road to Ingeniería</strong>.<a href="/expresion-grafica/" style="margin-left: .6rem; color: inherit; text-decoration: underline; text-underline-offset: .2em">Portada y buscador de esta edición</a></p></footer><script>
+      /* Marca las fórmulas de bloque que no caben en su columna.
+       *
+       * `.katex-display` ya se puede desplazar de lado, pero **no lo dice**, y
+       * eso es peor que no poder: el 4 de septiembre de 2026, barriendo las
+       * 167 páginas, salieron **doce fórmulas cortadas** y la peor era el
+       * enunciado de un ejercicio de Álgebra que define tres conjuntos y solo
+       * enseñaba dos y medio — con la pregunta pidiendo «cuáles de los tres».
+       * El lector ve una fórmula que acaba a media letra y no tiene por qué
+       * imaginarse que hay más a la derecha.
+       *
+       * Se hace aquí, con JavaScript, porque el CSS no sabe si algo desborda.
+       * Es lo mínimo: una clase, y el resto lo pinta `base.css`. */
+      (() => {
+        const marca = () => {
+          for (const f of document.querySelectorAll('.katex-display')) {
+            const d = f.firstElementChild;
+            f.classList.toggle('se-desplaza', !!d && d.scrollWidth > f.clientWidth + 4);
+          }
+        };
+        const cuando = () => requestAnimationFrame(marca);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(cuando);
+        else cuando();
+        addEventListener('resize', cuando);
+        /* Los paneles y los bloques plegables cambian el ancho al abrirse. */
+        addEventListener('toggle', cuando, true);
+        document.addEventListener('click', cuando);
+      })();
+    </script></body></html>

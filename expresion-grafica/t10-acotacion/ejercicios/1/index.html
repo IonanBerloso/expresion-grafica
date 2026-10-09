@@ -1,0 +1,491 @@
+<!DOCTYPE html><html lang="es" data-theme="claro" style="--acento: var(--a-expresion)"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ejercicios del 1 al 2 · Acotación — Expresión Gráfica</title><meta name="description" content="Los ejercicios del 1 al 2 del tema 10 de Expresión Gráfica, «Acotación», guiados paso a paso: cada respuesta equivocada recibe su diagnóstico."><meta property="og:title" content="Ejercicios del 1 al 2 · Acotación — Expresión Gráfica"><meta property="og:description" content="Los ejercicios del 1 al 2 del tema 10 de Expresión Gráfica, «Acotación», guiados paso a paso: cada respuesta equivocada recibe su diagnóstico."><meta property="og:type" content="website"><link rel="canonical" href="https://ionanberloso.github.io/expresion-grafica/expresion-grafica/t10-acotacion/ejercicios/1/"><link rel="icon" type="image/svg+xml" href="/expresion-grafica/favicon.svg"><meta name="color-scheme" content="light dark"><script>
+      // Antes del primer pintado, para que no haya destello al recargar.
+      // La lectura va en su propio try: si el almacenamiento está bloqueado,
+      // la preferencia del sistema tiene que seguir mirándose (§02, regla 3).
+      let guardado = null;
+      try {
+        guardado = localStorage.getItem('tema');
+      } catch {}
+      if (guardado === 'oscuro' || guardado === 'claro') {
+        document.documentElement.dataset.theme = guardado;
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.dataset.theme = 'oscuro';
+      }
+    </script><link rel="stylesheet" href="/expresion-grafica/_astro/Cabecera.DzRFyI4l.css"><link rel="stylesheet" href="/expresion-grafica/_astro/Armazon.Buy206qR.css"><link rel="stylesheet" href="/expresion-grafica/_astro/Seguir.FVhjhl9z.css"><link rel="stylesheet" href="/expresion-grafica/_astro/_pagina_.w3HNbXqb.css"><link rel="stylesheet" href="/expresion-grafica/_astro/EnlaceAsignatura.CuotzBn5.css"><link rel="stylesheet" href="/expresion-grafica/_astro/EjercicioGuiado.DqHD3KCD.css"></head><body><a class="saltar" href="#principal">Saltar al contenido</a><header class="top" data-astro-cid-zze2dqe4><a class="brand" href="/expresion-grafica/expresion-grafica/" data-astro-cid-zze2dqe4>Road to <span data-astro-cid-zze2dqe4>Ingeniería</span></a><span class="rotulo crumb" data-astro-cid-zze2dqe4>Expresión Gráfica · tema 10 · ejercicios</span><span class="spacer" data-astro-cid-zze2dqe4></span><button class="toggle" type="button" data-cambia-tema aria-live="polite" data-astro-cid-zze2dqe4>tema</button></header><script>
+  (() => {
+    const boton = document.querySelector('[data-cambia-tema]');
+    if (!boton) return;
+    const pinta = () => {
+      const oscuro = document.documentElement.dataset.theme === 'oscuro';
+      boton.textContent = oscuro ? 'claro' : 'oscuro';
+      boton.setAttribute('aria-label', oscuro ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+    };
+    boton.addEventListener('click', () => {
+      const oscuro = document.documentElement.dataset.theme === 'oscuro';
+      document.documentElement.dataset.theme = oscuro ? 'claro' : 'oscuro';
+      try {
+        localStorage.setItem('tema', oscuro ? 'claro' : 'oscuro');
+      } catch {}
+      pinta();
+    });
+    pinta();
+  })();
+</script><main id="principal"><div class="shell" data-astro-cid-x57pktau><nav class="rail" aria-label="Ejercicios de este bloque" data-astro-cid-x57pktau><h2 class="rotulo" data-astro-cid-sclkkb3f>Ejercicios del 1 al 2</h2><ol style="counter-reset: s 0" data-astro-cid-sclkkb3f><li data-astro-cid-sclkkb3f><a href="#ej-acot-que-cotas-sobran" data-astro-cid-sclkkb3f>Un soporte con trece cotas, y cuáles sobran</a></li><li data-astro-cid-sclkkb3f><a href="#ej-acot-que-cotas-faltan" data-astro-cid-sclkkb3f>Un eje con ocho cotas, y cuáles le faltan</a></li></ol></nav><div class="col" data-astro-cid-x57pktau><p class="rotulo rotulo--live eyebrow" data-astro-cid-sclkkb3f><a class="asignatura" href="/expresion-grafica/expresion-grafica/" data-asignatura="expresion-grafica" data-astro-cid-ololhd5l>Expresión Gráfica</a> · tema 10</p><h1 data-astro-cid-sclkkb3f>Acotación</h1><p class="lede" data-astro-cid-sclkkb3f>Los 2 ejercicios del tema. La teoría y el índice de todos están en <a href="/expresion-grafica/expresion-grafica/t10-acotacion/" data-astro-cid-sclkkb3f>la página del tema</a>.</p><section class="panel" aria-label="Ejercicios del 1 al 2" data-astro-cid-sclkkb3f><section class="ejercicio" data-ejercicio="acot-que-cotas-sobran" aria-labelledby="ej-acot-que-cotas-sobran" data-astro-cid-pfgd23mp><header class="ej-cab" data-astro-cid-pfgd23mp><p class="ej-meta" data-astro-cid-pfgd23mp><span class="chip-nivel" data-astro-cid-pfgd23mp>nivel: ejemplo</span><span class="fuente rotulo" data-astro-cid-pfgd23mp>Ejemplo introductorio · Road to Ingeniería. La pieza y su acotación son nuestras. No es de examen ni de la colección de ejercicios.</span></p><h3 id="ej-acot-que-cotas-sobran" data-astro-cid-pfgd23mp>Un soporte con trece cotas, y cuáles sobran</h3></header><div class="modos no-imprimir" role="group" aria-label="Modo del ejercicio" data-astro-cid-pfgd23mp><button type="button" data-modo="guiado" aria-pressed="true" data-astro-cid-pfgd23mp>guiado</button><button type="button" data-modo="completo" aria-pressed="false" data-astro-cid-pfgd23mp>resolución completa</button><span class="rotulo avance" data-avance data-astro-cid-pfgd23mp>paso 1 de 3</span></div><p class="modo-pista rotulo" data-modo-pista data-astro-cid-pfgd23mp>1.er intento a pelo · al 2.º aparece la pista, al 3.º el desarrollo — la solución nunca se da al fallar: se te dice en qué te has ido y por qué.</p><div class="enunciado" data-astro-cid-pfgd23mp><p class="rotulo" data-astro-cid-pfgd23mp>Enunciado</p><div class="prosa" data-astro-cid-pfgd23mp><p>Un compañero ha acotado este soporte en alzado y planta, y le han salido trece cotas.
+Cada una lleva su número en un círculo, que solo sirve para nombrarla aquí: no es
+parte del plano.</p>
+<figure class="figura-examen">
+<svg viewBox="0 0 360 470" role="img" width="360" height="470" aria-labelledby="ej-acot-que-cotas-sobran-ej-sobran-t ej-acot-que-cotas-sobran-ej-sobran-d">
+  <title id="ej-acot-que-cotas-sobran-ej-sobran-t">Un soporte en L en alzado y planta, con trece cotas numeradas</title>
+  <desc id="ej-acot-que-cotas-sobran-ej-sobran-d">Arriba, el alzado: una base de 90 de largo y 14 de alto, y a la izquierda un respaldo de 18 de espesor que sube hasta 60, con un chaflán en su arista alta exterior. Dos agujeros de la base se ven como líneas de trazos. Abajo, la planta: un rectángulo de 90 por 50 con la línea del respaldo y la del chaflán, y los dos agujeros vistos como circunferencias. Cotas, cada una con su número en un círculo. Alzado: 1, el chaflán 2×45°; 2, la altura total 60, a la izquierda; 3 y 4, a la derecha y en serie, 46 desde la base hasta arriba y 14 de espesor de la base; 5, Ø12 entre las líneas de trazos del primer agujero, debajo del alzado. Planta: 6, el fondo 50, a la izquierda; 7, 2×Ø12 en el primer agujero; 8, Ø12 en el segundo; 9, 25 desde el borde delantero hasta los ejes de los agujeros, a la derecha; debajo, 10, el espesor del respaldo 18; 11, 26 entre los ejes de los agujeros; 12, 48 desde el borde izquierdo hasta el primer agujero; y 13, el largo total 90.</desc>
+  <style>
+      .ej-sobran-eje { stroke: var(--rule); stroke-width: 1.1; fill: none; }
+      .ej-sobran-c { stroke: var(--d1); stroke-width: 2.8; fill: none; }
+      .ej-sobran-c2 { stroke: var(--alt); stroke-width: 2.8; fill: none; }
+      .ej-sobran-cp { stroke: var(--d1); stroke-width: 2.4; fill: none; stroke-dasharray: 6 4; }
+      .ej-sobran-cp2 { stroke: var(--alt); stroke-width: 2.4; fill: none; stroke-dasharray: 6 4; }
+      .ej-sobran-g { stroke: var(--faint); stroke-width: 1.1; fill: none; stroke-dasharray: 3 3; }
+      .ej-sobran-fue { stroke: var(--faint); stroke-width: 1.4; fill: none; stroke-dasharray: 5 4; }
+      .ej-sobran-f { fill: var(--live); fill-opacity: .12; stroke: none; }
+      .ej-sobran-f2 { fill: var(--alt); fill-opacity: .12; stroke: none; }
+      .ej-sobran-pt { fill: var(--live); }
+      .ej-sobran-punta { fill: var(--live); stroke: none; }
+      .ej-sobran-hueco { fill: var(--paper); stroke: var(--live); stroke-width: 2; }
+      .ej-sobran-o { fill: var(--flag); }
+      .ej-sobran-n { fill: var(--faint); font-size: 10px; font-family: var(--mono); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+      .ej-sobran-l { font-size: 10.5px; font-family: var(--mono); font-weight: 700; paint-order: stroke; stroke: var(--paper); stroke-width: 3.4px; stroke-linejoin: round; }
+      .ej-sobran-vis { stroke: var(--ink); stroke-width: 2.1; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+      .ej-sobran-fina { stroke: var(--ink); stroke-width: .9; fill: none; }
+      .ej-sobran-ocu { stroke: var(--ink); stroke-width: 1; fill: none; stroke-dasharray: 5 3; }
+      .ej-sobran-ej { stroke: var(--faint); stroke-width: .9; fill: none; stroke-dasharray: 12 3 2 3; }
+      .ej-sobran-ct { stroke: var(--ink); stroke-width: .8; fill: none; }
+      .ej-sobran-ctc { stroke: var(--alt); stroke-width: 1; fill: none; }
+      .ej-sobran-fl { fill: var(--ink); stroke: none; }
+      .ej-sobran-flc { fill: var(--alt); stroke: none; }
+      .ej-sobran-cf { fill: var(--ink); font-size: 10.5px; font-weight: 400; font-family: var(--mono); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+      .ej-sobran-cfc { fill: var(--alt); font-size: 10.5px; font-weight: 700; font-family: var(--mono); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+      .ej-sobran-nota { fill: var(--faint); font-size: 10px; font-weight: 400; font-family: var(--mono); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+      .ej-sobran-tag { fill: var(--paper); stroke: var(--live); stroke-width: 1.3; }
+      .ej-sobran-tagn { fill: var(--live); font-size: 9.5px; font-weight: 700; font-family: var(--mono); }
+  </style>
+  <path class="ej-sobran-vis" d="M67.1 208.8L303.4 208.8L303.4 172L114.4 172L114.4 51.3L72.4 51.3L67.1 56.5Z"></path>
+  <path class="ej-sobran-ocu" d="M177.4 208.8L177.4 172"></path>
+  <path class="ej-sobran-ocu" d="M208.9 208.8L208.9 172"></path>
+  <path class="ej-sobran-ej" d="M193.1 216.6L193.1 164.1"></path>
+  <path class="ej-sobran-ocu" d="M245.6 208.8L245.6 172"></path>
+  <path class="ej-sobran-ocu" d="M277.1 208.8L277.1 172"></path>
+  <path class="ej-sobran-ej" d="M261.4 216.6L261.4 164.1"></path>
+  <path class="ej-sobran-vis" d="M67.1 397.8L303.4 397.8L303.4 266.5L67.1 266.5Z"></path>
+  <path class="ej-sobran-vis" d="M114.4 397.8L114.4 266.5"></path>
+  <path class="ej-sobran-vis" d="M72.4 397.8L72.4 266.5"></path>
+  <path class="ej-sobran-vis" d="M208.9 332.1L208.8 331.1L208.7 330.1L208.6 329.1L208.3 328L208 327.1L207.7 326.1L207.3 325.2L206.8 324.3L206.2 323.4L205.6 322.5L205 321.7L204.3 321L203.5 320.3L202.7 319.6L201.9 319L201 318.5L200.1 318L199.2 317.6L198.2 317.2L197.2 316.9L196.2 316.7L195.2 316.5L194.2 316.4L193.1 316.4L192.1 316.4L191.1 316.5L190.1 316.7L189 316.9L188.1 317.2L187.1 317.6L186.2 318L185.3 318.5L184.4 319L183.5 319.6L182.7 320.3L182 321L181.3 321.7L180.6 322.5L180 323.4L179.5 324.3L179 325.2L178.6 326.1L178.2 327.1L177.9 328L177.7 329.1L177.5 330.1L177.4 331.1L177.4 332.1L177.4 333.2L177.5 334.2L177.7 335.2L177.9 336.2L178.2 337.2L178.6 338.2L179 339.1L179.5 340L180 340.9L180.6 341.7L181.3 342.5L182 343.3L182.7 344L183.5 344.6L184.4 345.2L185.3 345.8L186.2 346.3L187.1 346.7L188.1 347L189 347.3L190.1 347.6L191.1 347.7L192.1 347.8L193.1 347.9L194.2 347.8L195.2 347.7L196.2 347.6L197.2 347.3L198.2 347L199.2 346.7L200.1 346.3L201 345.8L201.9 345.2L202.7 344.6L203.5 344L204.3 343.3L205 342.5L205.6 341.7L206.2 340.9L206.8 340L207.3 339.1L207.7 338.2L208 337.2L208.3 336.2L208.6 335.2L208.7 334.2L208.8 333.2L208.9 332.1Z"></path>
+  <path class="ej-sobran-ej" d="M169.5 332.1L216.8 332.1"></path>
+  <path class="ej-sobran-ej" d="M193.1 355.8L193.1 308.5"></path>
+  <path class="ej-sobran-vis" d="M277.1 332.1L277.1 331.1L277 330.1L276.8 329.1L276.6 328L276.3 327.1L275.9 326.1L275.5 325.2L275 324.3L274.5 323.4L273.9 322.5L273.2 321.7L272.5 321L271.8 320.3L271 319.6L270.1 319L269.3 318.5L268.3 318L267.4 317.6L266.4 317.2L265.5 316.9L264.4 316.7L263.4 316.5L262.4 316.4L261.4 316.4L260.3 316.4L259.3 316.5L258.3 316.7L257.3 316.9L256.3 317.2L255.3 317.6L254.4 318L253.5 318.5L252.6 319L251.8 319.6L251 320.3L250.2 321L249.5 321.7L248.9 322.5L248.3 323.4L247.7 324.3L247.2 325.2L246.8 326.1L246.5 327.1L246.2 328L245.9 329.1L245.8 330.1L245.7 331.1L245.6 332.1L245.7 333.2L245.8 334.2L245.9 335.2L246.2 336.2L246.5 337.2L246.8 338.2L247.2 339.1L247.7 340L248.3 340.9L248.9 341.7L249.5 342.5L250.2 343.3L251 344L251.8 344.6L252.6 345.2L253.5 345.8L254.4 346.3L255.3 346.7L256.3 347L257.3 347.3L258.3 347.6L259.3 347.7L260.3 347.8L261.4 347.9L262.4 347.8L263.4 347.7L264.4 347.6L265.5 347.3L266.4 347L267.4 346.7L268.3 346.3L269.3 345.8L270.1 345.2L271 344.6L271.8 344L272.5 343.3L273.2 342.5L273.9 341.7L274.5 340.9L275 340L275.5 339.1L275.9 338.2L276.3 337.2L276.6 336.2L276.8 335.2L277 334.2L277.1 333.2L277.1 332.1Z"></path>
+  <path class="ej-sobran-ej" d="M237.8 332.1L285 332.1"></path>
+  <path class="ej-sobran-ej" d="M261.4 355.8L261.4 308.5"></path>
+  <path class="ej-sobran-ct" d="M69.8 53.9L82.7 40.9L126.2 40.9"></path>
+  <path class="ej-sobran-fl" d="M69.8 53.9L73.5 47.7L76 50.2Z"></path>
+  <text class="ej-sobran-cf" x="104.5" y="38.4" text-anchor="middle">2×45°</text>
+  <circle class="ej-sobran-tag" cx="136.5" cy="37.9" r="6.8"></circle>
+  <text class="ej-sobran-tagn" x="136.5" y="41.2" text-anchor="middle">1</text>
+  <path class="ej-sobran-ct" d="M67.1 208.8L40.9 208.8"></path>
+  <path class="ej-sobran-ct" d="M72.4 51.3L40.9 51.3"></path>
+  <path class="ej-sobran-ct" d="M46.1 208.8L46.1 51.3"></path>
+  <path class="ej-sobran-fl" d="M46.1 208.8L44.4 201.8L47.8 201.8Z"></path>
+  <path class="ej-sobran-fl" d="M46.1 51.3L47.8 58.3L44.4 58.3Z"></path>
+  <text class="ej-sobran-cf" x="43.6" y="130" text-anchor="middle" transform="rotate(-90 43.6 130)">60</text>
+  <circle class="ej-sobran-tag" cx="37.1" cy="160" r="6.8"></circle>
+  <text class="ej-sobran-tagn" x="37.1" y="163.3" text-anchor="middle">2</text>
+  <path class="ej-sobran-ct" d="M303.4 172L329.6 172"></path>
+  <path class="ej-sobran-ct" d="M114.4 51.3L329.6 51.3"></path>
+  <path class="ej-sobran-ct" d="M324.4 172L324.4 51.3"></path>
+  <path class="ej-sobran-fl" d="M324.4 172L322.7 165L326.1 165Z"></path>
+  <path class="ej-sobran-fl" d="M324.4 51.3L326.1 58.3L322.7 58.3Z"></path>
+  <text class="ej-sobran-cf" x="321.9" y="111.6" text-anchor="middle" transform="rotate(-90 321.9 111.6)">46</text>
+  <circle class="ej-sobran-tag" cx="315.4" cy="133.6" r="6.8"></circle>
+  <text class="ej-sobran-tagn" x="315.4" y="136.9" text-anchor="middle">3</text>
+  <path class="ej-sobran-ct" d="M303.4 208.8L329.6 208.8"></path>
+  <path class="ej-sobran-ct" d="M324.4 208.8L324.4 172"></path>
+  <path class="ej-sobran-fl" d="M324.4 208.8L322.7 201.8L326.1 201.8Z"></path>
+  <path class="ej-sobran-fl" d="M324.4 172L326.1 179L322.7 179Z"></path>
+  <text class="ej-sobran-cf" x="321.9" y="190.4" text-anchor="middle" transform="rotate(-90 321.9 190.4)">14</text>
+  <circle class="ej-sobran-tag" cx="335.4" cy="190.4" r="6.8"></circle>
+  <text class="ej-sobran-tagn" x="335.4" y="193.7" text-anchor="middle">4</text>
+  <path class="ej-sobran-ct" d="M177.4 208.8L177.4 235"></path>
+  <path class="ej-sobran-ct" d="M208.9 208.8L208.9 235"></path>
+  <path class="ej-sobran-ct" d="M177.4 229.8L208.9 229.8"></path>
+  <path class="ej-sobran-fl" d="M177.4 229.8L184.4 228.1L184.4 231.5Z"></path>
+  <path class="ej-sobran-fl" d="M208.9 229.8L201.9 231.5L201.9 228.1Z"></path>
+  <text class="ej-sobran-cf" x="193.1" y="227.3" text-anchor="middle">Ø12</text>
+  <circle class="ej-sobran-tag" cx="219.1" cy="221.8" r="6.8"></circle>
+  <text class="ej-sobran-tagn" x="219.1" y="225.1" text-anchor="middle">5</text>
+  <path class="ej-sobran-ct" d="M67.1 397.8L40.9 397.8"></path>
+  <path class="ej-sobran-ct" d="M67.1 266.5L40.9 266.5"></path>
+  <path class="ej-sobran-ct" d="M46.1 397.8L46.1 266.5"></path>
+  <path class="ej-sobran-fl" d="M46.1 397.8L44.4 390.8L47.8 390.8Z"></path>
+  <path class="ej-sobran-fl" d="M46.1 266.5L47.8 273.5L44.4 273.5Z"></path>
+  <text class="ej-sobran-cf" x="43.6" y="332.1" text-anchor="middle" transform="rotate(-90 43.6 332.1)">50</text>
+  <circle class="ej-sobran-tag" cx="37.1" cy="358.1" r="6.8"></circle>
+  <text class="ej-sobran-tagn" x="37.1" y="361.4" text-anchor="middle">6</text>
+  <path class="ej-sobran-ct" d="M184.1 319.2L176.6 308.5L133.1 308.5"></path>
+  <path class="ej-sobran-fl" d="M184.1 319.2L178.7 314.4L181.5 312.5Z"></path>
+  <text class="ej-sobran-cf" x="154.9" y="306" text-anchor="middle">2×Ø12</text>
+  <circle class="ej-sobran-tag" cx="124.9" cy="305.5" r="6.8"></circle>
+  <text class="ej-sobran-tagn" x="124.9" y="308.8" text-anchor="middle">7</text>
+  <path class="ej-sobran-ct" d="M269.3 318.5L277.1 304.8L249.4 304.8"></path>
+  <path class="ej-sobran-fl" d="M269.3 318.5L271.3 311.6L274.3 313.3Z"></path>
+  <text class="ej-sobran-cf" x="263.3" y="302.3" text-anchor="middle">Ø12</text>
+  <circle class="ej-sobran-tag" cx="241.3" cy="301.8" r="6.8"></circle>
+  <text class="ej-sobran-tagn" x="241.3" y="305.1" text-anchor="middle">8</text>
+  <path class="ej-sobran-ct" d="M303.4 397.8L329.6 397.8"></path>
+  <path class="ej-sobran-ct" d="M285 332.1L329.6 332.1"></path>
+  <path class="ej-sobran-ct" d="M324.4 397.8L324.4 332.1"></path>
+  <path class="ej-sobran-fl" d="M324.4 397.8L322.7 390.8L326.1 390.8Z"></path>
+  <path class="ej-sobran-fl" d="M324.4 332.1L326.1 339.1L322.7 339.1Z"></path>
+  <text class="ej-sobran-cf" x="321.9" y="364.9" text-anchor="middle" transform="rotate(-90 321.9 364.9)">25</text>
+  <circle class="ej-sobran-tag" cx="315.4" cy="342.9" r="6.8"></circle>
+  <text class="ej-sobran-tagn" x="315.4" y="346.2" text-anchor="middle">9</text>
+  <path class="ej-sobran-ct" d="M67.1 397.8L67.1 424"></path>
+  <path class="ej-sobran-ct" d="M114.4 397.8L114.4 424"></path>
+  <path class="ej-sobran-ct" d="M67.1 418.8L114.4 418.8"></path>
+  <path class="ej-sobran-fl" d="M67.1 418.8L74.1 417.1L74.1 420.5Z"></path>
+  <path class="ej-sobran-fl" d="M114.4 418.8L107.4 420.5L107.4 417.1Z"></path>
+  <text class="ej-sobran-cf" x="98.6" y="416.3" text-anchor="middle">18</text>
+  <circle class="ej-sobran-tag" cx="81.6" cy="410.8" r="6.8"></circle>
+  <text class="ej-sobran-tagn" x="81.6" y="414.1" text-anchor="middle">10</text>
+  <path class="ej-sobran-ct" d="M193.1 355.8L193.1 424"></path>
+  <path class="ej-sobran-ct" d="M261.4 355.8L261.4 424"></path>
+  <path class="ej-sobran-ct" d="M193.1 418.8L261.4 418.8"></path>
+  <path class="ej-sobran-fl" d="M193.1 418.8L200.1 417.1L200.1 420.5Z"></path>
+  <path class="ej-sobran-fl" d="M261.4 418.8L254.4 420.5L254.4 417.1Z"></path>
+  <text class="ej-sobran-cf" x="227.3" y="416.3" text-anchor="middle">26</text>
+  <circle class="ej-sobran-tag" cx="209.3" cy="410.8" r="6.8"></circle>
+  <text class="ej-sobran-tagn" x="209.3" y="414.1" text-anchor="middle">11</text>
+  <path class="ej-sobran-ct" d="M67.1 397.8L67.1 437.1"></path>
+  <path class="ej-sobran-ct" d="M193.1 355.8L193.1 437.1"></path>
+  <path class="ej-sobran-ct" d="M67.1 431.9L193.1 431.9"></path>
+  <path class="ej-sobran-fl" d="M67.1 431.9L74.1 430.2L74.1 433.6Z"></path>
+  <path class="ej-sobran-fl" d="M193.1 431.9L186.1 433.6L186.1 430.2Z"></path>
+  <text class="ej-sobran-cf" x="130.1" y="429.4" text-anchor="middle">48</text>
+  <circle class="ej-sobran-tag" cx="148.1" cy="423.9" r="6.8"></circle>
+  <text class="ej-sobran-tagn" x="148.1" y="427.2" text-anchor="middle">12</text>
+  <path class="ej-sobran-ct" d="M67.1 397.8L67.1 450.3"></path>
+  <path class="ej-sobran-ct" d="M303.4 397.8L303.4 450.3"></path>
+  <path class="ej-sobran-ct" d="M67.1 445L303.4 445"></path>
+  <path class="ej-sobran-fl" d="M67.1 445L74.1 443.3L74.1 446.7Z"></path>
+  <path class="ej-sobran-fl" d="M303.4 445L296.4 446.7L296.4 443.3Z"></path>
+  <text class="ej-sobran-cf" x="185.3" y="442.5" text-anchor="middle">90</text>
+  <circle class="ej-sobran-tag" cx="203.3" cy="437" r="6.8"></circle>
+  <text class="ej-sobran-tagn" x="203.3" y="440.3" text-anchor="middle">13</text>
+</svg>
+</figure>
+<p>En el montaje mandan tres medidas, que son las <strong>funcionales</strong>: el espesor de la base,
+la altura total y la distancia entre los dos agujeros. Los agujeros atraviesan la base.</p>
+<p>¿Qué cotas sobran? Quítalas de forma que la pieza siga definida, que ninguna medida
+salga dos veces y que no quede ninguna cota donde no se puede poner.</p></div><div class="prosa pide" data-astro-cid-pfgd23mp><p>Los números de las cotas que hay que quitar para que la acotación sea la necesaria y suficiente.</p></div></div><ol class="pasos" data-astro-cid-pfgd23mp><li class="paso" data-paso="0" data-tipo="reconocer" data-astro-cid-pfgd23mp><div class="paso-cab" data-astro-cid-pfgd23mp><span class="rotulo n" data-astro-cid-pfgd23mp>01</span><h4 data-astro-cid-pfgd23mp>Reconocer el camino</h4><span class="rotulo comp" data-astro-cid-pfgd23mp>COMP1</span><span class="tick" aria-hidden="true" data-astro-cid-pfgd23mp>✓</span></div><div class="paso-cuerpo" data-astro-cid-pfgd23mp><div class="prosa" data-astro-cid-pfgd23mp><p>Una misma medida aparece dos veces en un plano. ¿Con cuál te quedas?</p></div><ul class="opciones no-imprimir" data-astro-cid-pfgd23mp><li data-astro-cid-pfgd23mp><button type="button" class="opcion" data-opcion="0" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>Con la del alzado, que es la vista principal</p></span></button><div class="msg" data-msg-opcion="0" hidden data-astro-cid-pfgd23mp><p>El alzado es la vista que más dice de la pieza, pero no de cada elemento. Un agujero
+que atraviesa una base se ve entero en la planta; en el alzado son dos líneas de
+trazos, y esas no se acotan.</p></div></li><li data-astro-cid-pfgd23mp><button type="button" class="opcion" data-opcion="1" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>Con la de la vista donde su elemento se ve más claro, junto a las demás cotas de ese elemento</p></span></button><div class="msg" data-msg-opcion="1" hidden data-astro-cid-pfgd23mp><p>Eso es. El libro lo pide con todas las letras: cada cota se escribe nada más una
+vez, y sobre la vista que representa más claramente los elementos (pág. 4-5). Y las
+diapositivas añaden que las cotas de un mismo elemento van agrupadas, en la misma
+vista (pág. 7).</p></div></li><li data-astro-cid-pfgd23mp><button type="button" class="opcion" data-opcion="2" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>Con la que esté más cerca de la pieza</p></span></button><div class="msg" data-msg-opcion="2" hidden data-astro-cid-pfgd23mp><p>La cercanía no decide. Decide en qué vista se ve mejor el elemento: el diámetro de un
+agujero, donde el agujero es una circunferencia, y no donde son dos líneas de trazos.</p></div></li><li data-astro-cid-pfgd23mp><button type="button" class="opcion" data-opcion="3" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>Con las dos, para que quien fabrica la pieza tenga dónde mirar</p></span></button><div class="msg" data-msg-opcion="3" hidden data-astro-cid-pfgd23mp><p>Dos cotas de la misma medida son dos sitios donde puede haber dos números distintos,
+y entonces nadie sabe cuál vale. Por eso cada cota se escribe nada más una vez.</p></div></li></ul><div aria-live="polite" aria-atomic="true" data-astro-cid-pfgd23mp><div class="fb" data-fb hidden data-astro-cid-pfgd23mp></div></div></div></li><li class="paso bloqueado" data-paso="1" data-tipo="calcular" data-astro-cid-pfgd23mp><div class="paso-cab" data-astro-cid-pfgd23mp><span class="rotulo n" data-astro-cid-pfgd23mp>02</span><h4 data-astro-cid-pfgd23mp>Las cotas que sobran</h4><span class="rotulo comp" data-astro-cid-pfgd23mp>COMP2</span><span class="tick" aria-hidden="true" data-astro-cid-pfgd23mp>✓</span></div><div class="paso-cuerpo" data-astro-cid-pfgd23mp><div class="prosa" data-astro-cid-pfgd23mp><p>Escribe los números de las cotas que sobran.</p></div><div class="respuesta no-imprimir" data-astro-cid-pfgd23mp><label class="solo-lectores" for="in-acot-que-cotas-sobran-1" data-astro-cid-pfgd23mp>Tu respuesta al paso 2</label><input id="in-acot-que-cotas-sobran-1" type="text" inputmode="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="…" data-astro-cid-pfgd23mp><span class="formato rotulo" data-astro-cid-pfgd23mp>los números de las cotas, separados por comas</span><button type="button" class="comprobar" data-comprobar data-astro-cid-pfgd23mp>Comprobar</button><button type="button" class="fantasma" data-pedir-pista data-astro-cid-pfgd23mp>Pista</button></div><div class="msg" data-msg-distractor="0" hidden data-astro-cid-pfgd23mp><p>Te faltan la 5 y la 8. La 5 da el diámetro del primer agujero sobre sus líneas de
+trazos: repite el que ya da la 7 en la planta, y acotar líneas discontinuas es uno de
+los errores muy graves de la hoja de criterios, −2. Y la 8 repite el diámetro que el
+«2×» de la 7 ya da a los dos agujeros.</p></div><div class="msg" data-msg-distractor="1" hidden data-astro-cid-pfgd23mp><p>Te faltan la 3 y la 8. 14 + 46 = 60 es una cadena cerrada, así que una de las tres
+sobra; como 14 y 60 son funcionales y van expresas, sobra la 46, la 3. Y la 8 repite lo
+que ya dice el «2×Ø12» de la 7.</p></div><div class="msg" data-msg-distractor="2" hidden data-astro-cid-pfgd23mp><p>Te faltan la 3 y la 5. La 46 cierra la cadena 14 + 46 = 60, en la que 14 y 60 son
+funcionales. Y la 5 da el diámetro sobre las líneas de trazos del alzado: repite la 7, y
+acotar líneas discontinuas es un error muy grave, −2.</p></div><div class="msg" data-msg-distractor="3" hidden data-astro-cid-pfgd23mp><p>Te falta la 8. El «2×» de la 7 ya dice que los dos agujeros miden Ø12, así que el Ø12
+del segundo repite una medida que ya está.</p></div><div class="msg" data-msg-distractor="4" hidden data-astro-cid-pfgd23mp><p>Te falta la 5. El diámetro sobre las líneas de trazos del alzado repite la 7 y, además,
+«Acotar rayas discontinuas» es uno de los errores muy graves de la hoja de criterios:
+−2.</p></div><div class="msg" data-msg-distractor="5" hidden data-astro-cid-pfgd23mp><p>Te falta la 3. 14 + 46 = 60 cierra una cadena, así que una de las tres sobra. 14 y 60
+son funcionales y tienen que ir expresas, sin sumar otras para sacarlas: la que sobra
+es la 46.</p></div><div class="msg" data-msg-distractor="6" hidden data-astro-cid-pfgd23mp><p>Has quitado la 7 y has dejado la 5. El primer agujero se queda con su diámetro sobre
+las líneas de trazos del alzado, y «Acotar rayas discontinuas» es uno de los errores
+muy graves de la hoja de criterios: −2. Quita la 5, que repite a la 7, y deja la 7 en
+la planta, donde el agujero es una circunferencia.</p></div><div class="msg" data-msg-distractor="7" hidden data-astro-cid-pfgd23mp><p>Quitas la 2, el 60, que es funcional. La cadena 14 + 46 = 60 tenía que perder una, pero
+no esa: las funcionales van expresas, sin tener que sumar otras para sacarlas. En la
+hoja de criterios, «Faltan cotas funcionales: -0,5 por cada una (máximo -1,5 por
+pieza)». La que sobra es la 46.</p></div><div class="msg" data-msg-distractor="8" hidden data-astro-cid-pfgd23mp><p>Quitas la 4, el 14, que es funcional: es el espesor de la base. La cadena 14 + 46 = 60
+tenía que perder una, pero no una funcional. En la hoja de criterios, «Faltan cotas
+funcionales: -0,5 por cada una (máximo -1,5 por pieza)». La que sobra es la 46.</p></div><div class="msg" data-msg-distractor="9" hidden data-astro-cid-pfgd23mp><p>La 9 no sobra. Que los agujeros estén a 25 de un fondo de 50 no lo dice nada del dibujo
+hasta que lo dice una cota, o el signo = de una simetría: sin ella, quien fabrica la
+pieza no sabe dónde taladrar. Falta una cota no funcional, y la hoja de criterios cobra
+«-0,25 por cada una (máximo -1 por pieza)».</p></div><div class="msg" data-msg-distractor="10" hidden data-astro-cid-pfgd23mp><p>La 13 no sobra. Sin el 90, nada dice dónde acaba la base por la derecha: ninguna otra
+cota llega a ese extremo. Falta una cota no funcional, y la hoja de criterios cobra
+«-0,25 por cada una (máximo -1 por pieza)».</p></div><div class="msg" data-msg-distractor="11" hidden data-astro-cid-pfgd23mp><p>Has quitado la 7 en vez de la 8. El «2×» era lo que daba el diámetro a los dos
+agujeros: sin él, el primero se queda sin diámetro, porque la 5, que lo daba sobre las
+líneas de trazos, también la quitas. Falta una cota no funcional, y la hoja de
+criterios cobra «-0,25 por cada una (máximo -1 por pieza)». Deja la 7 y quita la 8.</p></div><div class="msg" data-msg-pista hidden data-astro-cid-pfgd23mp><p>Busca tres cosas: una cadena cerrada de cotas en un mismo eje, un diámetro escrito dos
+veces y una cota que se apoya en líneas de trazos.</p></div><div class="solucion" hidden data-astro-cid-pfgd23mp><template data-cuerpo data-astro-cid-pfgd23mp><p class="rotulo" data-astro-cid-pfgd23mp>Desarrollo</p><div class="prosa" data-astro-cid-pfgd23mp><p>Eje por eje, cada medida tiene que salir una sola vez.</p>
+<ul>
+<li><strong>Alturas.</strong> 14 + 46 = 60: la 4, la 3 y la 2 forman una cadena cerrada, y sobra una.
+14 y 60 son funcionales y van expresas, así que sobra la <strong>3</strong>.</li>
+<li><strong>Diámetros.</strong> La 7, «2×Ø12», da el diámetro de los dos agujeros. La <strong>8</strong> lo repite
+en el segundo, y la <strong>5</strong> lo repite en el primero sobre sus líneas de trazos, que es
+además un error muy grave.</li>
+<li><strong>Lo demás no sobra.</strong> A lo largo: 18, 48, 26 y 90 sitúan el respaldo, los dos
+agujeros y el final, y ninguna se deduce de las otras. A lo ancho: 50 y 25. El
+chaflán, con su 2×45°.</li>
+</ul>
+<p>Sobran la 3, la 5 y la 8.</p></div></template></div><div aria-live="polite" aria-atomic="true" data-astro-cid-pfgd23mp><div class="fb" data-fb hidden data-astro-cid-pfgd23mp></div></div></div></li><li class="paso bloqueado" data-paso="2" data-tipo="justificar" data-astro-cid-pfgd23mp><div class="paso-cab" data-astro-cid-pfgd23mp><span class="rotulo n" data-astro-cid-pfgd23mp>03</span><h4 data-astro-cid-pfgd23mp>Justificar el argumento</h4><span class="rotulo comp" data-astro-cid-pfgd23mp>COMP4</span><span class="tick" aria-hidden="true" data-astro-cid-pfgd23mp>✓</span></div><div class="paso-cuerpo" data-astro-cid-pfgd23mp><div class="prosa" data-astro-cid-pfgd23mp><p>Ordena por qué sobran esas tres. Una pieza es falsa.</p></div><ol class="montaje no-imprimir" data-montaje aria-live="polite" data-astro-cid-pfgd23mp><li class="vacio" data-astro-cid-pfgd23mp>Ve eligiendo las piezas en orden.</li></ol><ul class="piezas no-imprimir" data-astro-cid-pfgd23mp><li data-astro-cid-pfgd23mp><button type="button" class="pieza" data-pieza="0" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>La 9 también sobra, porque 25 es la mitad de 50 y se ve que los agujeros están en medio.</p></span></button><div class="msg" data-msg-trampa hidden data-astro-cid-pfgd23mp><p>Verse no basta: el dibujo no es una medida. Sin la cota, o sin el signo = que declara
+la simetría, nada dice que los agujeros estén en medio, y quitarla es dejar una cota
+no funcional sin poner.</p></div></li><li data-astro-cid-pfgd23mp><button type="button" class="pieza" data-pieza="1" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>La 8 repite el diámetro que el «2×» de la 7 ya da a los dos agujeros.</p></span></button></li><li data-astro-cid-pfgd23mp><button type="button" class="pieza" data-pieza="2" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>14 + 46 = 60 cierra una cadena, y como 14 y 60 son funcionales y van expresas, sobra la 3.</p></span></button></li><li data-astro-cid-pfgd23mp><button type="button" class="pieza" data-pieza="3" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>Cada medida se da una sola vez, en la vista donde mejor se ve su elemento.</p></span></button></li><li data-astro-cid-pfgd23mp><button type="button" class="pieza" data-pieza="4" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>La 5 da el diámetro del primer agujero sobre líneas de trazos y repite la 7, así que sobra, y además es un error muy grave.</p></span></button></li></ul><div class="solucion" hidden data-astro-cid-pfgd23mp><template data-cuerpo data-astro-cid-pfgd23mp><p class="rotulo" data-astro-cid-pfgd23mp>El razonamiento, en orden</p><ol class="orden-bueno" data-astro-cid-pfgd23mp><li class="prosa" data-astro-cid-pfgd23mp><p>Cada medida se da una sola vez, en la vista donde mejor se ve su elemento.</p></li><li class="prosa" data-astro-cid-pfgd23mp><p>14 + 46 = 60 cierra una cadena, y como 14 y 60 son funcionales y van expresas, sobra la 3.</p></li><li class="prosa" data-astro-cid-pfgd23mp><p>La 5 da el diámetro del primer agujero sobre líneas de trazos y repite la 7, así que sobra, y además es un error muy grave.</p></li><li class="prosa" data-astro-cid-pfgd23mp><p>La 8 repite el diámetro que el «2×» de la 7 ya da a los dos agujeros.</p></li></ol></template></div><div aria-live="polite" aria-atomic="true" data-astro-cid-pfgd23mp><div class="fb" data-fb hidden data-astro-cid-pfgd23mp></div></div></div></li></ol><div class="resolucion" data-resolucion hidden data-astro-cid-pfgd23mp><template data-cuerpo data-astro-cid-pfgd23mp><p class="rotulo rotulo--live" data-astro-cid-pfgd23mp>Resolución completa</p><div class="prosa" data-astro-cid-pfgd23mp><p><strong>Necesarias y suficientes.</strong> Cada medida tiene que poder leerse sin medir el dibujo, y
+ninguna puede salir dos veces. En una pieza así se comprueba eje por eje: cada elemento
+tiene que quedar sujeto a los demás por una cadena de cotas, y ninguna cadena puede
+cerrarse.</p>
+<p><strong>La cadena cerrada.</strong> En las alturas, 14 + 46 = 60: sobra una de las tres. Como el
+espesor de la base y la altura total son funcionales, van expresas, y la que sobra es la
+46, la cota 3.</p>
+<p><strong>Los diámetros.</strong> El «2×Ø12» de la 7 vale para los dos agujeros, así que el Ø12 de la 8
+lo repite. Y la 5 lo repite otra vez, ahora sobre las líneas de trazos del alzado: además
+de repetida, es el error muy grave de acotar líneas discontinuas, que cuesta dos puntos.</p>
+<p><strong>Lo que no sobra.</strong> 18, 48, 26 y 90 sitúan a lo largo el respaldo, los dos agujeros y
+el final de la base; 50 y 25, a lo ancho; y 2×45° es el chaflán. Sobran la 3, la 5 y la
+8.</p></div></template></div><p class="avisar" data-astro-cid-pfgd23mp><a href="mailto:ionanberloso@gmail.com?subject=%5BRoad%20to%20Ingenier%C3%ADa%5D%20%5Bexpresion-grafica%5D%20acot-que-cotas-sobran&amp;body=Ejercicio%3A%20acot-que-cotas-sobran%0D%0AP%C3%A1gina%3A%20https%3A%2F%2Fionanberloso.github.io%2Fexpresion-grafica%2Fexpresion-grafica%2Ft10-acotacion%2Fejercicios%2F1%2F%0D%0A%0D%0AQu%C3%A9%20est%C3%A1%20mal%2C%20y%20d%C3%B3nde%20(el%20paso%2C%20el%20n%C3%BAmero%20o%20la%20frase)%3A%0D%0A%0D%0A" data-avisar-correo data-astro-cid-pfgd23mp>¿Esto está mal? Dilo por correo →</a><span class="avisar-nota" data-astro-cid-pfgd23mp>La resolución es nuestra y puede tener fallos. El enunciado es el original.</span></p><script type="application/json" data-datos>[{"tipo":"reconocer","correcta":1},{"tipo":"calcular","respuesta":{"tipo":"conjunto","valor":"3, 5, 8","tolerancia":0.1,"formato":"los números de las cotas, separados por comas"},"distractores":["3","5","8","3, 5","3, 8","5, 8","3, 7","2, 5, 8","4, 5, 8","3, 5, 8, 9","3, 5, 8, 13","3, 5, 7"],"tambienValen":[],"raices":false},{"tipo":"justificar","orden":[3,2,4,1],"trampa":0}]</script></section><script type="module" src="/expresion-grafica/_astro/EjercicioGuiado.astro_astro_type_script_index_0_lang.KMiPsqRf.js"></script><section class="ejercicio" data-ejercicio="acot-que-cotas-faltan" aria-labelledby="ej-acot-que-cotas-faltan" data-astro-cid-pfgd23mp><header class="ej-cab" data-astro-cid-pfgd23mp><p class="ej-meta" data-astro-cid-pfgd23mp><span class="chip-nivel" data-astro-cid-pfgd23mp>nivel: ejemplo</span><span class="fuente rotulo" data-astro-cid-pfgd23mp>Ejemplo introductorio · Road to Ingeniería. La pieza y su acotación son nuestras. No es de examen ni de la colección de ejercicios.</span></p><h3 id="ej-acot-que-cotas-faltan" data-astro-cid-pfgd23mp>Un eje con ocho cotas, y cuáles le faltan</h3></header><div class="modos no-imprimir" role="group" aria-label="Modo del ejercicio" data-astro-cid-pfgd23mp><button type="button" data-modo="guiado" aria-pressed="true" data-astro-cid-pfgd23mp>guiado</button><button type="button" data-modo="completo" aria-pressed="false" data-astro-cid-pfgd23mp>resolución completa</button><span class="rotulo avance" data-avance data-astro-cid-pfgd23mp>paso 1 de 3</span></div><p class="modo-pista rotulo" data-modo-pista data-astro-cid-pfgd23mp>1.er intento a pelo · al 2.º aparece la pista, al 3.º el desarrollo — la solución nunca se da al fallar: se te dice en qué te has ido y por qué.</p><div class="enunciado" data-astro-cid-pfgd23mp><p class="rotulo" data-astro-cid-pfgd23mp>Enunciado</p><div class="prosa" data-astro-cid-pfgd23mp><p>Este eje está dibujado a escala 1:2, en una sola vista, y la figura respeta sus
+proporciones. Ya tiene puestas ocho cotas, de la 1 a la 8, y están bien. Para
+terminarlo hay seis candidatas, de la 9 a la 14, dibujadas en otro color. El número en
+un círculo solo sirve para nombrar cada cota.</p>
+<figure class="figura-examen">
+<svg viewBox="0 0 360 220" role="img" width="360" height="220" aria-labelledby="ej-acot-que-cotas-faltan-ej-faltan-t ej-acot-que-cotas-faltan-ej-faltan-d">
+  <title id="ej-acot-que-cotas-faltan-ej-faltan-t">Un eje escalonado en una vista, con ocho cotas puestas y seis candidatas</title>
+  <desc id="ej-acot-que-cotas-faltan-ej-faltan-d">Un eje de 114 de largo, de izquierda a derecha: un tramo de 24 roscado en sus primeros 20, dibujado con las crestas en gruesa y el fondo en fina; un tramo de Ø25 y 40 de largo; un collar de Ø35 y 10; y un tramo de Ø20 hasta el final, atravesado por un agujero de Ø6 que se ve como una circunferencia; el agujero queda mucho más cerca del extremo derecho que del collar. Cotas puestas, en negro: 1, Ø25; 2, Ø35; 3, Ø20; 4, Ø6 en el agujero; debajo, en serie, 5, 24; 6, 40; 7, 10; y 8, el largo total 114. Candidatas, en otro color: 9, M16, y 10, Ø16, las dos dentro del tramo roscado; arriba a la izquierda, 11, 20, del extremo al final de la rosca, y 12, 4, del final de la rosca al primer escalón; arriba a la derecha, en serie, 13, una cota que dice 14 del collar al eje del agujero, y 14, 12, del eje del agujero al extremo derecho.</desc>
+  <style>
+      .ej-faltan-eje { stroke: var(--rule); stroke-width: 1.1; fill: none; }
+      .ej-faltan-c { stroke: var(--d1); stroke-width: 2.8; fill: none; }
+      .ej-faltan-c2 { stroke: var(--alt); stroke-width: 2.8; fill: none; }
+      .ej-faltan-cp { stroke: var(--d1); stroke-width: 2.4; fill: none; stroke-dasharray: 6 4; }
+      .ej-faltan-cp2 { stroke: var(--alt); stroke-width: 2.4; fill: none; stroke-dasharray: 6 4; }
+      .ej-faltan-g { stroke: var(--faint); stroke-width: 1.1; fill: none; stroke-dasharray: 3 3; }
+      .ej-faltan-fue { stroke: var(--faint); stroke-width: 1.4; fill: none; stroke-dasharray: 5 4; }
+      .ej-faltan-f { fill: var(--live); fill-opacity: .12; stroke: none; }
+      .ej-faltan-f2 { fill: var(--alt); fill-opacity: .12; stroke: none; }
+      .ej-faltan-pt { fill: var(--live); }
+      .ej-faltan-punta { fill: var(--live); stroke: none; }
+      .ej-faltan-hueco { fill: var(--paper); stroke: var(--live); stroke-width: 2; }
+      .ej-faltan-o { fill: var(--flag); }
+      .ej-faltan-n { fill: var(--faint); font-size: 10px; font-family: var(--mono); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+      .ej-faltan-l { font-size: 10.5px; font-family: var(--mono); font-weight: 700; paint-order: stroke; stroke: var(--paper); stroke-width: 3.4px; stroke-linejoin: round; }
+      .ej-faltan-vis { stroke: var(--ink); stroke-width: 2.1; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+      .ej-faltan-fina { stroke: var(--ink); stroke-width: .9; fill: none; }
+      .ej-faltan-ocu { stroke: var(--ink); stroke-width: 1; fill: none; stroke-dasharray: 5 3; }
+      .ej-faltan-ej { stroke: var(--faint); stroke-width: .9; fill: none; stroke-dasharray: 12 3 2 3; }
+      .ej-faltan-ct { stroke: var(--ink); stroke-width: .8; fill: none; }
+      .ej-faltan-ctc { stroke: var(--alt); stroke-width: 1; fill: none; }
+      .ej-faltan-fl { fill: var(--ink); stroke: none; }
+      .ej-faltan-flc { fill: var(--alt); stroke: none; }
+      .ej-faltan-cf { fill: var(--ink); font-size: 10.5px; font-weight: 400; font-family: var(--mono); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+      .ej-faltan-cfc { fill: var(--alt); font-size: 10.5px; font-weight: 700; font-family: var(--mono); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+      .ej-faltan-nota { fill: var(--faint); font-size: 10px; font-weight: 400; font-family: var(--mono); paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+      .ej-faltan-tag { fill: var(--paper); stroke: var(--live); stroke-width: 1.3; }
+      .ej-faltan-tagn { fill: var(--live); font-size: 9.5px; font-weight: 700; font-family: var(--mono); }
+  </style>
+  <path class="ej-faltan-vis" d="M20.8 83.5L87.8 83.5L87.8 70.9L199.6 70.9L199.6 56.9L227.5 56.9L227.5 77.9L339.2 77.9"></path>
+  <path class="ej-faltan-vis" d="M20.8 128.2L87.8 128.2L87.8 140.7L199.6 140.7L199.6 154.7L227.5 154.7L227.5 133.7L339.2 133.7"></path>
+  <path class="ej-faltan-vis" d="M20.8 128.2L20.8 83.5"></path>
+  <path class="ej-faltan-vis" d="M87.8 140.7L87.8 70.9"></path>
+  <path class="ej-faltan-vis" d="M199.6 154.7L199.6 56.9"></path>
+  <path class="ej-faltan-vis" d="M227.5 154.7L227.5 56.9"></path>
+  <path class="ej-faltan-vis" d="M339.2 133.7L339.2 77.9"></path>
+  <path class="ej-faltan-fina" d="M20.8 87L76.6 87"></path>
+  <path class="ej-faltan-fina" d="M20.8 124.7L76.6 124.7"></path>
+  <path class="ej-faltan-vis" d="M76.6 128.2L76.6 83.5"></path>
+  <path class="ej-faltan-ej" d="M9.6 105.8L350.4 105.8"></path>
+  <path class="ej-faltan-vis" d="M314.1 105.8L314.1 105.3L314 104.7L313.9 104.2L313.8 103.6L313.7 103.1L313.5 102.6L313.2 102.1L313 101.6L312.7 101.2L312.4 100.7L312 100.3L311.6 99.9L311.2 99.5L310.8 99.2L310.4 98.8L309.9 98.6L309.4 98.3L308.9 98.1L308.4 97.9L307.9 97.7L307.3 97.6L306.8 97.5L306.3 97.4L305.7 97.4L305.2 97.4L304.6 97.5L304.1 97.6L303.5 97.7L303 97.9L302.5 98.1L302 98.3L301.5 98.6L301.1 98.8L300.6 99.2L300.2 99.5L299.8 99.9L299.4 100.3L299.1 100.7L298.7 101.2L298.5 101.6L298.2 102.1L298 102.6L297.8 103.1L297.6 103.6L297.5 104.2L297.4 104.7L297.4 105.3L297.3 105.8L297.4 106.4L297.4 106.9L297.5 107.4L297.6 108L297.8 108.5L298 109L298.2 109.5L298.5 110L298.7 110.5L299.1 110.9L299.4 111.3L299.8 111.7L300.2 112.1L300.6 112.5L301.1 112.8L301.5 113.1L302 113.3L302.5 113.6L303 113.7L303.5 113.9L304.1 114L304.6 114.1L305.2 114.2L305.7 114.2L306.3 114.2L306.8 114.1L307.3 114L307.9 113.9L308.4 113.7L308.9 113.6L309.4 113.3L309.9 113.1L310.4 112.8L310.8 112.5L311.2 112.1L311.6 111.7L312 111.3L312.4 110.9L312.7 110.5L313 110L313.2 109.5L313.5 109L313.7 108.5L313.8 108L313.9 107.4L314 106.9L314.1 106.4L314.1 105.8Z"></path>
+  <path class="ej-faltan-ej" d="M305.7 122.6L305.7 89"></path>
+  <path class="ej-faltan-ct" d="M143.7 140.7L143.7 70.9"></path>
+  <path class="ej-faltan-fl" d="M143.7 140.7L142 133.7L145.4 133.7Z"></path>
+  <path class="ej-faltan-fl" d="M143.7 70.9L145.4 77.9L142 77.9Z"></path>
+  <text class="ej-faltan-cf" x="141.2" y="105.8" text-anchor="middle" transform="rotate(-90 141.2 105.8)">Ø25</text>
+  <circle class="ej-faltan-tag" cx="143.7" cy="59.7" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="143.7" y="63" text-anchor="middle">1</text>
+  <path class="ej-faltan-ct" d="M213.5 154.7L213.5 56.9"></path>
+  <path class="ej-faltan-fl" d="M213.5 154.7L211.8 147.7L215.2 147.7Z"></path>
+  <path class="ej-faltan-fl" d="M213.5 56.9L215.2 63.9L211.8 63.9Z"></path>
+  <text class="ej-faltan-cf" x="211" y="105.8" text-anchor="middle" transform="rotate(-90 211 105.8)">Ø35</text>
+  <circle class="ej-faltan-tag" cx="213.5" cy="45.7" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="213.5" y="49" text-anchor="middle">2</text>
+  <path class="ej-faltan-ct" d="M244.3 133.7L244.3 77.9"></path>
+  <path class="ej-faltan-fl" d="M244.3 133.7L242.6 126.7L246 126.7Z"></path>
+  <path class="ej-faltan-fl" d="M244.3 77.9L246 84.9L242.6 84.9Z"></path>
+  <text class="ej-faltan-cf" x="241.8" y="105.8" text-anchor="middle" transform="rotate(-90 241.8 105.8)">Ø20</text>
+  <circle class="ej-faltan-tag" cx="244.3" cy="66.7" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="244.3" y="70" text-anchor="middle">3</text>
+  <path class="ej-faltan-ct" d="M299.8 111.7L287.9 123.6L268.1 123.6"></path>
+  <path class="ej-faltan-fl" d="M299.8 111.7L296.1 117.9L293.6 115.4Z"></path>
+  <text class="ej-faltan-cf" x="278" y="121.1" text-anchor="middle">Ø6</text>
+  <circle class="ej-faltan-tag" cx="259.9" cy="118.7" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="259.9" y="122" text-anchor="middle">4</text>
+  <path class="ej-faltan-ct" d="M20.8 128.2L20.8 184"></path>
+  <path class="ej-faltan-ct" d="M87.8 140.7L87.8 184"></path>
+  <path class="ej-faltan-ct" d="M20.8 178.4L87.8 178.4"></path>
+  <path class="ej-faltan-fl" d="M20.8 178.4L27.8 176.7L27.8 180.1Z"></path>
+  <path class="ej-faltan-fl" d="M87.8 178.4L80.8 180.1L80.8 176.7Z"></path>
+  <text class="ej-faltan-cf" x="54.3" y="175.9" text-anchor="middle">24</text>
+  <circle class="ej-faltan-tag" cx="72.3" cy="170.4" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="72.3" y="173.7" text-anchor="middle">5</text>
+  <path class="ej-faltan-ct" d="M199.6 154.7L199.6 184"></path>
+  <path class="ej-faltan-ct" d="M87.8 178.4L199.6 178.4"></path>
+  <path class="ej-faltan-fl" d="M87.8 178.4L94.8 176.7L94.8 180.1Z"></path>
+  <path class="ej-faltan-fl" d="M199.6 178.4L192.6 180.1L192.6 176.7Z"></path>
+  <text class="ej-faltan-cf" x="143.7" y="175.9" text-anchor="middle">40</text>
+  <circle class="ej-faltan-tag" cx="161.7" cy="170.4" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="161.7" y="173.7" text-anchor="middle">6</text>
+  <path class="ej-faltan-ct" d="M227.5 154.7L227.5 184"></path>
+  <path class="ej-faltan-ct" d="M199.6 178.4L227.5 178.4"></path>
+  <path class="ej-faltan-fl" d="M199.6 178.4L206.6 176.7L206.6 180.1Z"></path>
+  <path class="ej-faltan-fl" d="M227.5 178.4L220.5 180.1L220.5 176.7Z"></path>
+  <text class="ej-faltan-cf" x="213.5" y="175.9" text-anchor="middle">10</text>
+  <circle class="ej-faltan-tag" cx="235.5" cy="170.4" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="235.5" y="173.7" text-anchor="middle">7</text>
+  <path class="ej-faltan-ct" d="M20.8 128.2L20.8 198"></path>
+  <path class="ej-faltan-ct" d="M339.2 133.7L339.2 198"></path>
+  <path class="ej-faltan-ct" d="M20.8 192.4L339.2 192.4"></path>
+  <path class="ej-faltan-fl" d="M20.8 192.4L27.8 190.7L27.8 194.1Z"></path>
+  <path class="ej-faltan-fl" d="M339.2 192.4L332.2 194.1L332.2 190.7Z"></path>
+  <text class="ej-faltan-cf" x="180" y="189.9" text-anchor="middle">114</text>
+  <circle class="ej-faltan-tag" cx="180" cy="205" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="180" y="208.3" text-anchor="middle">8</text>
+  <path class="ej-faltan-ctc" d="M40.3 128.2L40.3 83.5"></path>
+  <path class="ej-faltan-flc" d="M40.3 128.2L38.6 121.2L42 121.2Z"></path>
+  <path class="ej-faltan-flc" d="M40.3 83.5L42 90.5L38.6 90.5Z"></path>
+  <text class="ej-faltan-cfc" x="37.8" y="105.8" text-anchor="middle" transform="rotate(-90 37.8 105.8)">M16</text>
+  <circle class="ej-faltan-tag" cx="40.3" cy="138.2" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="40.3" y="141.5" text-anchor="middle">9</text>
+  <path class="ej-faltan-ctc" d="M65.5 128.2L65.5 83.5"></path>
+  <path class="ej-faltan-flc" d="M65.5 128.2L63.8 121.2L67.2 121.2Z"></path>
+  <path class="ej-faltan-flc" d="M65.5 83.5L67.2 90.5L63.8 90.5Z"></path>
+  <text class="ej-faltan-cfc" x="63" y="105.8" text-anchor="middle" transform="rotate(-90 63 105.8)">Ø16</text>
+  <circle class="ej-faltan-tag" cx="65.5" cy="138.2" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="65.5" y="141.5" text-anchor="middle">10</text>
+  <path class="ej-faltan-ctc" d="M20.8 83.5L20.8 55.5"></path>
+  <path class="ej-faltan-ctc" d="M76.6 83.5L76.6 55.5"></path>
+  <path class="ej-faltan-ctc" d="M20.8 61.1L76.6 61.1"></path>
+  <path class="ej-faltan-flc" d="M20.8 61.1L27.8 59.4L27.8 62.8Z"></path>
+  <path class="ej-faltan-flc" d="M76.6 61.1L69.6 62.8L69.6 59.4Z"></path>
+  <text class="ej-faltan-cfc" x="48.7" y="58.6" text-anchor="middle">20</text>
+  <circle class="ej-faltan-tag" cx="66.7" cy="53.1" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="66.7" y="56.4" text-anchor="middle">11</text>
+  <path class="ej-faltan-ctc" d="M76.6 61.1L76.6 41.6"></path>
+  <path class="ej-faltan-ctc" d="M87.8 70.9L87.8 41.6"></path>
+  <path class="ej-faltan-ctc" d="M57.1 47.1L107.4 47.1"></path>
+  <path class="ej-faltan-flc" d="M76.6 47.1L69.6 48.8L69.6 45.4Z"></path>
+  <path class="ej-faltan-flc" d="M87.8 47.1L94.8 45.4L94.8 48.8Z"></path>
+  <text class="ej-faltan-cfc" x="82.2" y="44.6" text-anchor="middle">4</text>
+  <circle class="ej-faltan-tag" cx="117.1" cy="43.8" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="117.1" y="47.1" text-anchor="middle">12</text>
+  <path class="ej-faltan-ctc" d="M305.7 89L305.7 29"></path>
+  <path class="ej-faltan-ctc" d="M339.2 77.9L339.2 29"></path>
+  <path class="ej-faltan-ctc" d="M305.7 34.6L339.2 34.6"></path>
+  <path class="ej-faltan-flc" d="M305.7 34.6L312.7 32.9L312.7 36.3Z"></path>
+  <path class="ej-faltan-flc" d="M339.2 34.6L332.2 36.3L332.2 32.9Z"></path>
+  <text class="ej-faltan-cfc" x="322.5" y="32.1" text-anchor="middle">12</text>
+  <circle class="ej-faltan-tag" cx="322.5" cy="14.6" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="322.5" y="17.9" text-anchor="middle">14</text>
+  <path class="ej-faltan-ctc" d="M227.5 56.9L227.5 29"></path>
+  <path class="ej-faltan-ctc" d="M227.5 34.6L305.7 34.6"></path>
+  <path class="ej-faltan-flc" d="M227.5 34.6L234.5 32.9L234.5 36.3Z"></path>
+  <path class="ej-faltan-flc" d="M305.7 34.6L298.7 36.3L298.7 32.9Z"></path>
+  <text class="ej-faltan-cfc" x="266.6" y="32.1" text-anchor="middle">14</text>
+  <circle class="ej-faltan-tag" cx="284.6" cy="26.6" r="6.8"></circle>
+  <text class="ej-faltan-tagn" x="284.6" y="29.9" text-anchor="middle">13</text>
+</svg>
+</figure>
+<p>El tramo de la izquierda está roscado en sus primeros 20 mm, y el agujero de Ø6 atraviesa
+el eje. Son <strong>funcionales</strong> el asiento del rodamiento, que es el tramo de Ø25, y la rosca:
+su designación y su longitud útil.</p>
+<p>¿Qué candidatas hay que añadir para que el eje quede definido, sin repetir ninguna medida
+y sin ningún descuento de la hoja de criterios?</p></div><div class="prosa pide" data-astro-cid-pfgd23mp><p>Los números de las candidatas que completan la acotación del eje.</p></div></div><ol class="pasos" data-astro-cid-pfgd23mp><li class="paso" data-paso="0" data-tipo="reconocer" data-astro-cid-pfgd23mp><div class="paso-cab" data-astro-cid-pfgd23mp><span class="rotulo n" data-astro-cid-pfgd23mp>01</span><h4 data-astro-cid-pfgd23mp>Reconocer el camino</h4><span class="rotulo comp" data-astro-cid-pfgd23mp>COMP1</span><span class="tick" aria-hidden="true" data-astro-cid-pfgd23mp>✓</span></div><div class="paso-cuerpo" data-astro-cid-pfgd23mp><div class="prosa" data-astro-cid-pfgd23mp><p>Este eje se dibuja en una sola vista. ¿Por qué es suficiente una?</p></div><ul class="opciones no-imprimir" data-astro-cid-pfgd23mp><li data-astro-cid-pfgd23mp><button type="button" class="opcion" data-opcion="0" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>Porque a escala 1:2 no cabe otra vista en la hoja</p></span></button><div class="msg" data-msg-opcion="0" hidden data-astro-cid-pfgd23mp><p>La escala no tiene nada que ver. Aunque cupieran tres vistas, en una pieza de
+revolución sobran: el Ø de cada tramo ya dice que es un cilindro.</p></div></li><li data-astro-cid-pfgd23mp><button type="button" class="opcion" data-opcion="1" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>Porque el símbolo Ø delante de cada diámetro ya dice que cada tramo es un cilindro</p></span></button><div class="msg" data-msg-opcion="1" hidden data-astro-cid-pfgd23mp><p>Eso es. El libro lo dice así: utilizar los símbolos evita hacer una nueva vista para
+conocer la forma de la pieza (pág. 4-10). Y la hoja de criterios cobra la vista de
+más: «En una pieza por revolución no normalizada, indicar otra vista además de la
+vista principal (quizás se necesiten detalles, cortes o secciones): -1 por cada vista
+principal extra».</p></div></li><li data-astro-cid-pfgd23mp><button type="button" class="opcion" data-opcion="2" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>No es suficiente, hace falta un perfil que enseñe que las secciones son circulares</p></span></button><div class="msg" data-msg-opcion="2" hidden data-astro-cid-pfgd23mp><p>El Ø ya lo dice, y el perfil sería una vista principal de más. La hoja de criterios
+la cobra: −1 por cada vista principal extra en una pieza de revolución.</p></div></li></ul><div aria-live="polite" aria-atomic="true" data-astro-cid-pfgd23mp><div class="fb" data-fb hidden data-astro-cid-pfgd23mp></div></div></div></li><li class="paso bloqueado" data-paso="1" data-tipo="calcular" data-astro-cid-pfgd23mp><div class="paso-cab" data-astro-cid-pfgd23mp><span class="rotulo n" data-astro-cid-pfgd23mp>02</span><h4 data-astro-cid-pfgd23mp>Las candidatas que faltan</h4><span class="rotulo comp" data-astro-cid-pfgd23mp>COMP2</span><span class="tick" aria-hidden="true" data-astro-cid-pfgd23mp>✓</span></div><div class="paso-cuerpo" data-astro-cid-pfgd23mp><div class="prosa" data-astro-cid-pfgd23mp><p>Escribe los números de las candidatas que hay que añadir.</p></div><div class="respuesta no-imprimir" data-astro-cid-pfgd23mp><label class="solo-lectores" for="in-acot-que-cotas-faltan-1" data-astro-cid-pfgd23mp>Tu respuesta al paso 2</label><input id="in-acot-que-cotas-faltan-1" type="text" inputmode="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="…" data-astro-cid-pfgd23mp><span class="formato rotulo" data-astro-cid-pfgd23mp>los números de las cotas, separados por comas</span><button type="button" class="comprobar" data-comprobar data-astro-cid-pfgd23mp>Comprobar</button><button type="button" class="fantasma" data-pedir-pista data-astro-cid-pfgd23mp>Pista</button></div><div class="msg" data-msg-distractor="0" hidden data-astro-cid-pfgd23mp><p>Te faltan la 11 y la 14. Sin la 11, la longitud de la rosca no está acotada, y la hoja
+de criterios la cobra aparte: «No acotar la longitud/profundidad de la rosca: -0,5 por
+cada caso». Sin la 14, nada sitúa el agujero de Ø6 a lo largo del eje.</p></div><div class="msg" data-msg-distractor="1" hidden data-astro-cid-pfgd23mp><p>Te faltan la 9 y la 14. Sin la 9, la rosca se queda sin designación: ni diámetro ni
+paso. Es funcional —en el tornillo de las diapositivas, el diámetro y la longitud de
+la rosca van marcados F (pág. 4)—, y una funcional que falta cuesta −0,5. Sin la 14,
+nada sitúa el agujero.</p></div><div class="msg" data-msg-distractor="2" hidden data-astro-cid-pfgd23mp><p>Te faltan la 9 y la 11: la designación de la rosca y su longitud. Sin la 9 la rosca no
+tiene ni diámetro ni paso, y es funcional (−0,5). Sin la 11, «No acotar la
+longitud/profundidad de la rosca: -0,5 por cada caso».</p></div><div class="msg" data-msg-distractor="3" hidden data-astro-cid-pfgd23mp><p>Te falta la 14. Nada sitúa el agujero de Ø6 a lo largo del eje: las cotas puestas
+llegan a los escalones y al final, pero ninguna a su eje. Falta una cota no funcional,
+y la hoja de criterios cobra «-0,25 por cada una (máximo -1 por pieza)».</p></div><div class="msg" data-msg-distractor="4" hidden data-astro-cid-pfgd23mp><p>Te falta la 11, la longitud de la rosca. El 24 llega al primer escalón, no al final de
+la rosca, y la hoja de criterios lo cobra: «No acotar la longitud/profundidad de la
+rosca: -0,5 por cada caso».</p></div><div class="msg" data-msg-distractor="5" hidden data-astro-cid-pfgd23mp><p>Te falta la 9. La rosca se queda sin designación: ni diámetro ni paso. Es funcional
+—en el tornillo de las diapositivas, el diámetro y la longitud de la rosca van
+marcados F (pág. 4)—, y una funcional que falta cuesta −0,5.</p></div><div class="msg" data-msg-distractor="6" hidden data-astro-cid-pfgd23mp><p>La 10 acota la rosca con Ø. Eso dice que ahí hay un cilindro liso de 16 mm, y quien
+fabrique la pieza no la roscará. Está entre los mínimos para comenzar a corregir el
+ejercicio: «Al acotar una rosca, utilizar el símbolo M y no el símbolo de diámetro
+Ø». La buena es la 9, M16.</p></div><div class="msg" data-msg-distractor="7" hidden data-astro-cid-pfgd23mp><p>Con la 12, el final de la rosca sale por diferencia, 24 − 4 = 20, y ninguna cota da la
+longitud de la rosca. El libro acota la rosca útil desde el extremo, como la 11, y no lo
+que queda entre la rosca y el escalón (pág. 5-18). Y el enunciado dice que esa longitud
+es funcional: las funcionales van expresas, sin tener que consultar otras cotas
+(diapositivas, pág. 7). En la hoja de criterios, una longitud de rosca sin acotar es «No
+acotar la longitud/profundidad de la rosca: -0,5 por cada caso», y como funcional que
+falta el precio es el mismo: «Faltan cotas funcionales: -0,5 por cada una (máximo -1,5
+por pieza)». La rosca útil se acota directamente, con la 11.</p></div><div class="msg" data-msg-distractor="8" hidden data-astro-cid-pfgd23mp><p>La 13 dice 14, y la pieza mide 28: si el agujero está a 12 del extremo, como dice la
+14, está a 114 − 12 − 74 = 28 del collar, y la figura, que guarda las proporciones, lo
+enseña así. 14 es justo la mitad: es lo que mide en el papel a escala 1:2. «Acotar
+y/o dibujar sin tener en cuenta la escala» es un error muy grave de la hoja de
+criterios: −2. La cota dice siempre la medida real.</p></div><div class="msg" data-msg-distractor="9" hidden data-astro-cid-pfgd23mp><p>Las dos cotas del agujero no pueden ir juntas: con el collar a 74 del extremo, 74 + 28</p>
+<ul>
+<li>12 = 114 ya cierra la cadena. Y la 13, además, dice 14 donde la pieza mide 28: es la
+medida del papel a escala 1:2, el error muy grave de «Acotar y/o dibujar sin tener en
+cuenta la escala» (−2). Quédate con la 14.</li>
+</ul></div><div class="msg" data-msg-pista hidden data-astro-cid-pfgd23mp><p>Mira qué no sale de las cotas puestas: la rosca, su longitud y la posición del agujero.
+Para cada una hay una candidata buena y otra con trampa.</p></div><div class="solucion" hidden data-astro-cid-pfgd23mp><template data-cuerpo data-astro-cid-pfgd23mp><p class="rotulo" data-astro-cid-pfgd23mp>Desarrollo</p><div class="prosa" data-astro-cid-pfgd23mp><p>Lo que las cotas puestas ya definen: los diámetros de los tres tramos lisos, el agujero
+de Ø6, los escalones (24, 40 y 10) y el largo total (114). Lo que falta, y quién lo da:</p>
+<ul>
+<li><strong>La rosca.</strong> M16, la <strong>9</strong>. La 10 la acota con Ø, y eso es un mínimo de la hoja de
+criterios.</li>
+<li><strong>Su longitud.</strong> 20, la <strong>11</strong>, expresa: el enunciado dice que es funcional, y el libro
+acota la rosca útil desde el extremo (pág. 5-18). Con la 12 saldría por diferencia,
+24 − 4, y ninguna cota la daría.</li>
+<li><strong>El agujero.</strong> 12 desde el extremo, la <strong>14</strong>. La 13 dice 14 donde la pieza mide
+114 − 12 − 74 = 28: es la medida del papel a 1:2.</li>
+</ul>
+<p>Faltan la 9, la 11 y la 14.</p></div></template></div><div aria-live="polite" aria-atomic="true" data-astro-cid-pfgd23mp><div class="fb" data-fb hidden data-astro-cid-pfgd23mp></div></div></div></li><li class="paso bloqueado" data-paso="2" data-tipo="justificar" data-astro-cid-pfgd23mp><div class="paso-cab" data-astro-cid-pfgd23mp><span class="rotulo n" data-astro-cid-pfgd23mp>03</span><h4 data-astro-cid-pfgd23mp>Justificar el argumento</h4><span class="rotulo comp" data-astro-cid-pfgd23mp>COMP4</span><span class="tick" aria-hidden="true" data-astro-cid-pfgd23mp>✓</span></div><div class="paso-cuerpo" data-astro-cid-pfgd23mp><div class="prosa" data-astro-cid-pfgd23mp><p>Ordena por qué faltan esas tres. Una pieza es falsa.</p></div><ol class="montaje no-imprimir" data-montaje aria-live="polite" data-astro-cid-pfgd23mp><li class="vacio" data-astro-cid-pfgd23mp>Ve eligiendo las piezas en orden.</li></ol><ul class="piezas no-imprimir" data-astro-cid-pfgd23mp><li data-astro-cid-pfgd23mp><button type="button" class="pieza" data-pieza="0" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>Las cotas puestas definen los diámetros, el agujero y los escalones, pero no la rosca, su longitud ni la posición del agujero.</p></span></button></li><li data-astro-cid-pfgd23mp><button type="button" class="pieza" data-pieza="1" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>Con la 9, la 11 y la 14, cada medida sale una sola vez y el eje queda definido.</p></span></button></li><li data-astro-cid-pfgd23mp><button type="button" class="pieza" data-pieza="2" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>La rosca se acota con M16 y con su longitud útil, 20, las dos expresas, que son la 9 y la 11.</p></span></button></li><li data-astro-cid-pfgd23mp><button type="button" class="pieza" data-pieza="3" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>La 12 vale igual que la 11, porque con 24 − 4 también sale el final de la rosca.</p></span></button><div class="msg" data-msg-trampa hidden data-astro-cid-pfgd23mp><p>Sale, pero sale por diferencia. La longitud útil de la rosca es funcional y va expresa
+(diapositivas, pág. 7), y el libro la acota desde el extremo (pág. 5-18). Si ninguna
+cota la da, la hoja de criterios cobra «No acotar la longitud/profundidad de la rosca:
+-0,5 por cada caso».</p></div></li><li data-astro-cid-pfgd23mp><button type="button" class="pieza" data-pieza="4" data-astro-cid-pfgd23mp><span class="prosa" data-astro-cid-pfgd23mp><p>El agujero se sitúa con la 14, a 12 del extremo, porque la 13 dice 14 donde la pieza mide 28.</p></span></button></li></ul><div class="solucion" hidden data-astro-cid-pfgd23mp><template data-cuerpo data-astro-cid-pfgd23mp><p class="rotulo" data-astro-cid-pfgd23mp>El razonamiento, en orden</p><ol class="orden-bueno" data-astro-cid-pfgd23mp><li class="prosa" data-astro-cid-pfgd23mp><p>Las cotas puestas definen los diámetros, el agujero y los escalones, pero no la rosca, su longitud ni la posición del agujero.</p></li><li class="prosa" data-astro-cid-pfgd23mp><p>La rosca se acota con M16 y con su longitud útil, 20, las dos expresas, que son la 9 y la 11.</p></li><li class="prosa" data-astro-cid-pfgd23mp><p>El agujero se sitúa con la 14, a 12 del extremo, porque la 13 dice 14 donde la pieza mide 28.</p></li><li class="prosa" data-astro-cid-pfgd23mp><p>Con la 9, la 11 y la 14, cada medida sale una sola vez y el eje queda definido.</p></li></ol></template></div><div aria-live="polite" aria-atomic="true" data-astro-cid-pfgd23mp><div class="fb" data-fb hidden data-astro-cid-pfgd23mp></div></div></div></li></ol><div class="resolucion" data-resolucion hidden data-astro-cid-pfgd23mp><template data-cuerpo data-astro-cid-pfgd23mp><p class="rotulo rotulo--live" data-astro-cid-pfgd23mp>Resolución completa</p><div class="prosa" data-astro-cid-pfgd23mp><p><strong>Lo que ya está.</strong> Los diámetros de los tres tramos lisos, el agujero de Ø6, los tres
+primeros tramos (24, 40 y 10) y el largo total, 114, que da el último por diferencia. Con
+una vista es suficiente: el Ø dice que cada tramo es un cilindro.</p>
+<p><strong>La rosca.</strong> Se acota con M16, la 9, y con su longitud útil, la 11, las dos expresas: el
+enunciado dice que son funcionales, y el libro acota la rosca útil desde el extremo
+(pág. 5-18). La 10 la acotaría con Ø, que es uno de los mínimos de la hoja de criterios, y
+con la 12 la longitud de la rosca saldría por diferencia, 24 − 4 = 20, sin ninguna cota que
+la dé.</p>
+<p><strong>El agujero.</strong> Nada lo sitúa a lo largo del eje. La 14 lo pone a 12 del extremo. La 13
+dice 14, pero entonces estaría a 28 del collar: 14 es la mitad, la medida del papel a
+escala 1:2, y una cota dice siempre la medida real.</p>
+<p>Faltan la 9, la 11 y la 14.</p></div></template></div><p class="avisar" data-astro-cid-pfgd23mp><a href="mailto:ionanberloso@gmail.com?subject=%5BRoad%20to%20Ingenier%C3%ADa%5D%20%5Bexpresion-grafica%5D%20acot-que-cotas-faltan&amp;body=Ejercicio%3A%20acot-que-cotas-faltan%0D%0AP%C3%A1gina%3A%20https%3A%2F%2Fionanberloso.github.io%2Fexpresion-grafica%2Fexpresion-grafica%2Ft10-acotacion%2Fejercicios%2F1%2F%0D%0A%0D%0AQu%C3%A9%20est%C3%A1%20mal%2C%20y%20d%C3%B3nde%20(el%20paso%2C%20el%20n%C3%BAmero%20o%20la%20frase)%3A%0D%0A%0D%0A" data-avisar-correo data-astro-cid-pfgd23mp>¿Esto está mal? Dilo por correo →</a><span class="avisar-nota" data-astro-cid-pfgd23mp>La resolución es nuestra y puede tener fallos. El enunciado es el original.</span></p><script type="application/json" data-datos>[{"tipo":"reconocer","correcta":1},{"tipo":"calcular","respuesta":{"tipo":"conjunto","valor":"9, 11, 14","tolerancia":0.1,"formato":"los números de las cotas, separados por comas"},"distractores":["9","11","14","9, 11","9, 14","11, 14","10, 11, 14","9, 12, 14","9, 11, 13","9, 11, 13, 14"],"tambienValen":[],"raices":false},{"tipo":"justificar","orden":[0,2,4,1],"trampa":3}]</script></section></section><nav class="seguir no-imprimir" aria-label="Seguir desde aquí" data-astro-cid-zyhexgpy><div class="s-lados" data-astro-cid-zyhexgpy><span data-astro-cid-zyhexgpy></span></div><div class="s-otros" data-astro-cid-zyhexgpy><a class="s-otro" href="/expresion-grafica/expresion-grafica/t10-acotacion/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>teoría</span><span class="s-t" data-astro-cid-zyhexgpy>Acotación</span></a><a class="s-otro" href="/expresion-grafica/expresion-grafica/t10-acotacion/#ejercicios" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>índice</span><span class="s-t" data-astro-cid-zyhexgpy>Los 2 ejercicios del tema</span></a></div></nav></div></div><script type="module">var e=location.hash.slice(1);try{e=decodeURIComponent(e)}catch{}if(e.startsWith(`ej-`)){let t=()=>document.getElementById(e)?.scrollIntoView({block:`start`});document.fonts?.ready?document.fonts.ready.then(()=>requestAnimationFrame(t)):requestAnimationFrame(t)}</script></main><footer class="pie-edicion" style="border-top: 1px solid var(--rule); margin-top: 3rem; padding: 1rem 1.25rem 1.5rem; color: var(--faint); font-size: .8rem; text-align: center"><p style="margin: 0">Edición de una sola asignatura de <strong>Road to Ingeniería</strong>.<a href="/expresion-grafica/" style="margin-left: .6rem; color: inherit; text-decoration: underline; text-underline-offset: .2em">Portada y buscador de esta edición</a></p></footer><script>
+      /* Marca las fórmulas de bloque que no caben en su columna.
+       *
+       * `.katex-display` ya se puede desplazar de lado, pero **no lo dice**, y
+       * eso es peor que no poder: el 4 de septiembre de 2026, barriendo las
+       * 167 páginas, salieron **doce fórmulas cortadas** y la peor era el
+       * enunciado de un ejercicio de Álgebra que define tres conjuntos y solo
+       * enseñaba dos y medio — con la pregunta pidiendo «cuáles de los tres».
+       * El lector ve una fórmula que acaba a media letra y no tiene por qué
+       * imaginarse que hay más a la derecha.
+       *
+       * Se hace aquí, con JavaScript, porque el CSS no sabe si algo desborda.
+       * Es lo mínimo: una clase, y el resto lo pinta `base.css`. */
+      (() => {
+        const marca = () => {
+          for (const f of document.querySelectorAll('.katex-display')) {
+            const d = f.firstElementChild;
+            f.classList.toggle('se-desplaza', !!d && d.scrollWidth > f.clientWidth + 4);
+          }
+        };
+        const cuando = () => requestAnimationFrame(marca);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(cuando);
+        else cuando();
+        addEventListener('resize', cuando);
+        /* Los paneles y los bloques plegables cambian el ancho al abrirse. */
+        addEventListener('toggle', cuando, true);
+        document.addEventListener('click', cuando);
+      })();
+    </script></body></html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="es" data-theme="claro" style="--acento: var(--a-expresion)"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sistemas de representación — Expresión Gráfica</title><meta name="description" content="Qué conserva cada sistema —diédrico, acotado, axonométrico y cónico—, por qué el curso dibuja en diédrico directo, sin línea de tierra, y cómo son las hojas del control del bloque 1."><meta property="og:title" content="Sistemas de representación — Expresión Gráfica"><meta property="og:description" content="Qué conserva cada sistema —diédrico, acotado, axonométrico y cónico—, por qué el curso dibuja en diédrico directo, sin línea de tierra, y cómo son las hojas del control del bloque 1."><meta property="og:type" content="website"><link rel="canonical" href="https://ionanberloso.github.io/expresion-grafica/expresion-grafica/t01-sistemas-de-representacion/"><link rel="icon" type="image/svg+xml" href="/expresion-grafica/favicon.svg"><meta name="color-scheme" content="light dark"><script>
+      // Antes del primer pintado, para que no haya destello al recargar.
+      // La lectura va en su propio try: si el almacenamiento está bloqueado,
+      // la preferencia del sistema tiene que seguir mirándose (§02, regla 3).
+      let guardado = null;
+      try {
+        guardado = localStorage.getItem('tema');
+      } catch {}
+      if (guardado === 'oscuro' || guardado === 'claro') {
+        document.documentElement.dataset.theme = guardado;
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.dataset.theme = 'oscuro';
+      }
+    </script><link rel="stylesheet" href="/expresion-grafica/_astro/Cabecera.DzRFyI4l.css"><link rel="stylesheet" href="/expresion-grafica/_astro/Seguir.FVhjhl9z.css"><link rel="stylesheet" href="/expresion-grafica/_astro/_tema_.BaggnrbY.css"><link rel="stylesheet" href="/expresion-grafica/_astro/EnlaceAsignatura.CuotzBn5.css"><link rel="stylesheet" href="/expresion-grafica/_astro/ErrorTipico.QoP1w63h.css"></head><body><a class="saltar" href="#principal">Saltar al contenido</a><header class="top" data-astro-cid-zze2dqe4><a class="brand" href="/expresion-grafica/expresion-grafica/" data-astro-cid-zze2dqe4>Road to <span data-astro-cid-zze2dqe4>Ingeniería</span></a><span class="rotulo crumb" data-astro-cid-zze2dqe4>Expresión Gráfica · tema 01</span><span class="spacer" data-astro-cid-zze2dqe4></span><div class="modos no-imprimir" role="group" aria-label="Modo de lectura" data-modos hidden data-astro-cid-ln5sr2am><button type="button" data-modo="guiado" aria-pressed="true" data-astro-cid-ln5sr2am>guiado</button><button type="button" data-modo="completo" aria-pressed="false" data-astro-cid-ln5sr2am>completo</button><span class="rotulo avance" data-avance data-astro-cid-ln5sr2am></span></div><button class="toggle" type="button" data-cambia-tema aria-live="polite" data-astro-cid-zze2dqe4>tema</button></header><script>
+  (() => {
+    const boton = document.querySelector('[data-cambia-tema]');
+    if (!boton) return;
+    const pinta = () => {
+      const oscuro = document.documentElement.dataset.theme === 'oscuro';
+      boton.textContent = oscuro ? 'claro' : 'oscuro';
+      boton.setAttribute('aria-label', oscuro ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+    };
+    boton.addEventListener('click', () => {
+      const oscuro = document.documentElement.dataset.theme === 'oscuro';
+      document.documentElement.dataset.theme = oscuro ? 'claro' : 'oscuro';
+      try {
+        localStorage.setItem('tema', oscuro ? 'claro' : 'oscuro');
+      } catch {}
+      pinta();
+    });
+    pinta();
+  })();
+</script><main id="principal" data-astro-cid-ln5sr2am><div class="shell" data-armazon data-direcciones="{&quot;ej-sr-bc-horizontal-se-mide-en-la-planta&quot;:&quot;/expresion-grafica/expresion-grafica/t01-sistemas-de-representacion/ejercicios/1/#ej-sr-bc-horizontal-se-mide-en-la-planta&quot;}" data-astro-cid-ktanj4pa><nav class="rail" aria-label="Índice del tema" data-astro-cid-ktanj4pa><div class="rail-bloque" data-de="teoria" data-astro-cid-ktanj4pa><h2 class="rotulo" data-astro-cid-ktanj4pa>En este tema</h2><ol data-astro-cid-ktanj4pa><li data-astro-cid-ktanj4pa><a href="#proyectar-una-pieza" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Proyectar una pieza</span></a></li><li data-astro-cid-ktanj4pa><a href="#los-cuatro-sistemas" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Los cuatro sistemas</span></a></li><li data-astro-cid-ktanj4pa><a href="#por-qué-diédrico" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Por qué diédrico</span></a></li><li data-astro-cid-ktanj4pa><a href="#sin-línea-de-tierra" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Sin línea de tierra</span></a></li><li data-astro-cid-ktanj4pa><a href="#cómo-es-el-control-del-bloque-1" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Cómo es el control del bloque 1</span></a></li><li data-astro-cid-ktanj4pa><a href="#cómo-se-trabaja-aquí" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Cómo se trabaja aquí</span></a></li><li data-astro-cid-ktanj4pa><a href="#lo-que-hay-que-llevar-sabido" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Lo que hay que llevar sabido</span></a></li></ol></div><div class="rail-bloque" data-de="ejercicios" data-astro-cid-ktanj4pa><h2 class="rotulo" data-astro-cid-ktanj4pa>Ejercicios</h2><ol data-astro-cid-ktanj4pa><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t01-sistemas-de-representacion/ejercicios/1/#ej-sr-bc-horizontal-se-mide-en-la-planta" data-astro-cid-ktanj4pa>BC es horizontal, y se mide en la planta</a></li></ol></div></nav><div class="col" data-astro-cid-ktanj4pa><p class="rotulo rotulo--live eyebrow" data-astro-cid-ktanj4pa><a class="asignatura" href="/expresion-grafica/expresion-grafica/" data-asignatura="expresion-grafica" data-astro-cid-ololhd5l>Expresión Gráfica</a> · tema 01</p><h1 data-astro-cid-ktanj4pa>Sistemas de representación</h1><p class="lede" data-astro-cid-ktanj4pa>Qué conserva cada sistema —diédrico, acotado, axonométrico y cónico—, por qué el curso dibuja en diédrico directo, sin línea de tierra, y cómo son las hojas del control del bloque 1.</p><a class="ir-sim no-imprimir" data-ir-sim href="#" hidden data-astro-cid-ktanj4pa><span class="rotulo rotulo--live" data-astro-cid-ktanj4pa>este tema trae un simulador</span><span class="nombre" data-ir-sim-nombre data-astro-cid-ktanj4pa></span></a><nav class="pestanas" aria-label="Secciones del tema" data-astro-cid-ktanj4pa><a href="#teoria" data-pestana="teoria" aria-current="page" data-astro-cid-ktanj4pa>Teoría</a><a href="#ejercicios" data-pestana="ejercicios" data-astro-cid-ktanj4pa>Ejercicios<span class="cuenta" data-astro-cid-ktanj4pa>1</span></a></nav><section id="teoria" class="panel" aria-label="Teoría" data-astro-cid-ktanj4pa><div class="read" data-lectura data-astro-cid-j54e57cz><p>Una pieza tiene tres dimensiones y el papel, dos. Un sistema de representación es la regla que
+decide cómo se pasa de una cosa a la otra, y ninguno lo conserva todo: los que dejan medir no se
+entienden de un vistazo, y los que se entienden de un vistazo dejan medir poco. Este tema responde a
+dos preguntas antes de empezar el diédrico. <strong>Qué conserva cada sistema</strong>, y por qué el curso usa el
+que usa. Y <strong>cómo es el control del bloque 1</strong>, que se hace a mano sobre una figura impresa.</p>
+<p>Lo que se usa aquí de las diapositivas es la introducción del tema 1 de diédrico, «Sistema diedrico
+1: Representación de punto, recta y plano» (págs. 2 a 4), que cuenta cómo se representa una pieza y
+solo habla del diédrico. Las páginas que se citan son las de ese PDF. La comparación con los otros
+tres sistemas es nuestra.</p>
+<h2 id="proyectar-una-pieza">Proyectar una pieza</h2>
+<p>Una pieza está hecha de caras, aristas y vértices, que en geometría son planos, rectas y puntos
+(diapositivas, pág. 2). Representarla es proyectar cada uno sobre un plano: por cada punto pasa un
+rayo, el <strong>rayo proyector</strong>, y donde ese rayo corta al plano está su proyección. Lo que distingue un
+sistema de otro es cómo son los rayos y cuántos planos se usan:</p>
+<ul>
+<li>si todos los rayos salen de un mismo punto, como de un ojo, la proyección es <strong>cónica</strong>;</li>
+<li>si son paralelos entre sí, como si el ojo estuviera infinitamente lejos, es <strong>cilíndrica</strong>, y
+entonces caen perpendiculares al plano, <strong>ortogonal</strong>, o inclinados, <strong>oblicua</strong>.</li>
+</ul>
+<p>El diédrico es una proyección cilíndrica ortogonal. Lo dice la pág. 2: sus rayos son «rayos
+proyectores asociados al plano de proyección», y la proyección, «cilíndrica ortogonal».</p>
+<p>Toda proyección cilíndrica, ortogonal u oblicua, conserva dos cosas. Dos rectas paralelas salen
+paralelas, salvo que se vean de punta o una encima de la otra, y el punto medio de un segmento sale
+en el punto medio de su proyección. Si además es ortogonal, <strong>una longitud nunca sale más larga de
+lo que es</strong>: sale igual si el segmento es paralelo al plano, y más corta cuanto más se inclina. Esa
+es la verdadera magnitud del tema 2, y de ahí sale todo lo que se mide en diédrico.</p>
+<h2 id="los-cuatro-sistemas">Los cuatro sistemas</h2>
+<p>Los sistemas de representación clásicos son cuatro, y la figura dibuja la misma casita en los
+cuatro. Ni la figura ni lo que sigue sale de las diapositivas, que solo tratan el diédrico.</p>
+<figure><svg viewBox="0 0 342 338" role="img" width="342" height="338" aria-labelledby="t01-cuatro-sistemas-t t01-cuatro-sistemas-d"><title id="t01-cuatro-sistemas-t">La misma casita en los cuatro sistemas de representación</title><desc id="t01-cuatro-sistemas-d">Cuatro paneles con la misma casita nuestra: planta de 30 por 24, paredes de 14 y cumbrera a 24, que corre de delante atrás. Diédrico: arriba el alzado, el hastial de delante, un pentágono, en verdadera magnitud porque es frontal; debajo la planta, un rectángulo partido por la cumbrera; las dos en las mismas verticales, que van en discontinua, y sin línea de tierra. Acotado: solo la planta, y junto a cada vértice su cota escrita, 14 en las cuatro esquinas del alero y 24 en los dos extremos de la cumbrera. Axonométrico: una isometría, mirando desde delante, a la derecha y desde arriba; las aristas paralelas siguen paralelas, y los ángulos rectos de las esquinas salen de 60 o de 120 grados. Cónico: una perspectiva desde un punto delante y a la derecha, a una altura entre el alero y la cumbrera; el horizonte, h, va en discontinua a la altura del ojo; las verticales siguen verticales, pero el alero de la derecha, la cumbrera y la arista de abajo de la pared de la derecha, que son paralelos, se juntan al prolongarlos, en punteado, en un punto del horizonte, su punto de fuga; y de las tres aristas verticales que se ven, la de la esquina más cercana sale más larga, aunque las tres miden lo mismo.</desc><g transform="translate(0 16)"><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="2" y="-5" fill="var(--live)">diédrico</text><path stroke="var(--faint)" stroke-width=".8" fill="none" stroke-dasharray="2 3" d="M33.2 67.9L33.2 82.1"></path><path stroke="var(--faint)" stroke-width=".8" fill="none" stroke-dasharray="2 3" d="M60 67.9L60 82.1"></path><path stroke="var(--faint)" stroke-width=".8" fill="none" stroke-dasharray="2 3" d="M86.7 67.9L86.7 82.1"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M33.2 66.1L86.7 66.1"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M86.7 66.1L86.7 41.2"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M86.7 41.2L60 23.3"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M60 23.3L33.2 41.2"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M33.2 41.2L33.2 66.1"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M86.7 126.7L60 126.7"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M60 126.7L33.2 126.7"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M86.7 83.9L60 83.9"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M60 83.9L33.2 83.9"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M86.7 126.7L86.7 83.9"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M33.2 126.7L33.2 83.9"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M60 126.7L60 83.9"></path><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="92" y="56.6" text-anchor="start">alzado</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="92" y="108.3" text-anchor="start">planta</text></g><g transform="translate(174 16)"><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="2" y="-5" fill="var(--live)">acotado</text><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M119.4 103.3L84 103.3"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M84 103.3L48.6 103.3"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M119.4 46.7L84 46.7"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M84 46.7L48.6 46.7"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M119.4 103.3L119.4 46.7"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M48.6 103.3L48.6 46.7"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M84 103.3L84 46.7"></path><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="44.6" y="42.7" text-anchor="end" fill="var(--ink)">14</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="123.4" y="42.7" text-anchor="start" fill="var(--ink)">14</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="123.4" y="116.3" text-anchor="start" fill="var(--ink)">14</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="44.6" y="116.3" text-anchor="end" fill="var(--ink)">14</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="84" y="40.7" text-anchor="middle" fill="var(--ink)">24</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="84" y="119.3" text-anchor="middle" fill="var(--ink)">24</text></g><g transform="translate(0 188)"><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="2" y="-5" fill="var(--live)">axonométrico</text><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M30.1 90.5L90 125.1"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M90 125.1L90 92.8"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M90 92.8L60.1 52.5"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M60.1 52.5L30.1 58.3"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M30.1 58.3L30.1 90.5"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M137.9 97.5L137.9 65.2"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M137.9 65.2L107.9 24.9"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M107.9 24.9L78 30.7"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M137.9 97.5L90 125.1"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M90 92.8L137.9 65.2"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M30.1 58.3L78 30.7"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M60.1 52.5L107.9 24.9"></path></g><g transform="translate(174 188)"><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="2" y="-5" fill="var(--live)">cónico</text><path stroke="var(--d1)" stroke-width="1" fill="none" stroke-dasharray="6 3" d="M19.1 44.8L148.9 44.8"></path><path stroke="var(--faint)" stroke-width=".8" fill="none" stroke-dasharray="2 3" d="M125.5 56.9L141.5 44.8"></path><path stroke="var(--faint)" stroke-width=".8" fill="none" stroke-dasharray="2 3" d="M91.5 34.1L141.5 44.8"></path><path stroke="var(--faint)" stroke-width=".8" fill="none" stroke-dasharray="2 3" d="M125.5 90.6L141.5 44.8"></path><circle fill="var(--d1)" stroke="none" cx="141.5" cy="44.8" r="2.4"></circle><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M26.5 99.6L114.4 122"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M114.4 122L114.4 65.1"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M114.4 65.1L63 28"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M63 28L26.5 59.2"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M26.5 59.2L26.5 99.6"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M125.5 90.6L125.5 56.9"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M125.5 56.9L91.5 34.1"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M125.5 90.6L114.4 122"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M114.4 65.1L125.5 56.9"></path><path stroke="var(--ink)" stroke-width="1.5" fill="none" stroke-linejoin="round" stroke-linecap="round" d="M63 28L91.5 34.1"></path><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="19.1" y="39.8" text-anchor="start">h</text></g></svg><figcaption>Nuestra casita, la misma en los cuatro sistemas. En diédrico, el alzado y la planta, en las mismas verticales y sin línea de tierra; el hastial de delante es frontal, y el alzado lo da en verdadera magnitud. En acotado, solo la planta, con la cota de cada vértice escrita. En axonométrico, una isometría: las aristas paralelas siguen paralelas, y los ángulos rectos entre aristas paralelas a los ejes, como los de las esquinas, salen de 60° o de 120°. En cónico, desde un punto delante y a la derecha: el horizonte, h, va a la altura del ojo, y el alero de la derecha, la cumbrera y la arista de abajo de esa pared, que son paralelos, se juntan en su punto de fuga.</figcaption></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>sistema</th><th>cómo proyecta</th><th>qué se ve</th><th>qué conserva</th><th>qué pierde</th></tr></thead><tbody><tr><td><strong>diédrico</strong></td><td>cilíndrica ortogonal, sobre dos planos perpendiculares</td><td>dos vistas, alzado y planta</td><td>la verdadera magnitud de lo que es paralelo a cada plano; las tres coordenadas, dos en cada vista</td><td>la imagen de conjunto: la pieza se lee juntando las dos vistas</td></tr><tr><td><strong>acotado</strong></td><td>cilíndrica ortogonal, sobre un plano horizontal</td><td>una vista, la planta, con la cota de cada punto escrita</td><td>la verdadera magnitud de lo horizontal; la altura, como número</td><td>el dibujo de la altura: está en las cifras</td></tr><tr><td><strong>axonométrico</strong></td><td>cilíndrica, sobre un solo plano: ortogonal en la isometría, oblicua en la caballera</td><td>una vista con las tres dimensiones</td><td>las paralelas, y las medidas paralelas a cada eje, multiplicadas por un coeficiente fijo</td><td>los ángulos, salvo en las caras paralelas al plano del dibujo</td></tr><tr><td><strong>cónico</strong></td><td>cónica, desde un punto, sobre un plano, el cuadro</td><td>una vista, como la ve el ojo</td><td>que una recta sale recta, salvo la que pasa por el ojo, que sale un punto</td><td>el paralelismo, salvo el de las rectas paralelas al cuadro, y las medidas, salvo en el propio cuadro</td></tr></tbody></table>
+<p>El <strong>acotado</strong> es la planta del diédrico con el alzado cambiado por números: cada punto lleva
+escrita su cota. Sirve cuando la forma es casi plana y lo que importa es la altura de cada punto,
+como en un terreno o en una cubierta.</p>
+<p>El <strong>axonométrico</strong> enseña la pieza entera en una vista. Las aristas paralelas siguen paralelas, y
+una arista paralela a un eje sale en el dibujo con su medida multiplicada por el coeficiente de ese
+eje, así que se lee dividiendo por él (en la isometría de la figura, el coeficiente es el mismo para
+los tres). Lo que no conserva son los ángulos: en la
+isometría, el ángulo recto entre dos aristas paralelas a los ejes sale de 60° o de 120°. Las
+perspectivas vuelven en el bloque 2, en el tema 8.</p>
+<p>El <strong>cónico</strong> es el más parecido a lo que ve el ojo, y el que menos deja medir. Lo lejano sale más
+pequeño, y las rectas paralelas se juntan en un punto, el <strong>punto de fuga</strong>, salvo las que son
+paralelas al cuadro, como las verticales de la figura. Las que además son horizontales tienen su
+punto de fuga en el horizonte, a la altura del ojo.</p>
+<h2 id="por-qué-diédrico">Por qué diédrico</h2>
+<p>Las diapositivas no dicen por qué el curso usa el diédrico; lo que sigue es nuestro, y sale de
+comparar los cuatro. El cónico es para enseñar una pieza, no para medirla, y el axonométrico deja
+medir a lo largo de sus ejes, con su coeficiente, y en todas direcciones solo en lo que es paralelo
+al plano del dibujo, como la cara de delante en la caballera. El acotado mide, pero la altura la da
+en cifras. El diédrico es el que deja
+medirlo todo sobre el dibujo: cada vista enseña en verdadera magnitud lo que es paralelo a su plano,
+y lo que no lo es se pone paralelo con un cambio de plano, un giro o un abatimiento, que es el tema
+3. El temario de la guía docente le da su nombre al bloque 1 entero: geometría descriptiva en
+sistema diédrico directo.</p>
+<p>Y es la misma proyección que la de un plano de taller. La pág. 4 de las diapositivas ya enseña así
+la pieza de la pág. 2: el alzado en el plano vertical, arriba, y la planta en el horizontal, debajo,
+con el eje del agujero y sus aristas ocultas en discontinua. Las vistas de una pieza del bloque 2
+son esto mismo, con las vistas que hagan falta.</p>
+<div class="error-tipico" data-astro-cid-jdnpk4r2><p class="titulo" data-astro-cid-jdnpk4r2>«B₂C₂ es horizontal, así que el alzado da BC en verdadera magnitud»</p><div class="cuerpo" data-astro-cid-jdnpk4r2><p>Que una proyección salga horizontal en el papel no dice que esa vista la enseñe sin acortar. B₂C₂
+horizontal quiere decir que B y C tienen la misma cota: BC es una recta <strong>horizontal</strong>, paralela al
+plano horizontal, y está en verdadera magnitud en la <strong>planta</strong>. El alzado la acorta, salvo que BC
+sea además frontal, con B₁C₁ también horizontal en el papel: en el apartado 2 del Ejercicio 55 no
+lo es, y B₂C₂ mide 27,01 mm y BC, 54,02. En el alzado está en verdadera magnitud la recta
+<strong>frontal</strong>, la que tiene la planta horizontal en el papel.</p></div></div>
+<h2 id="sin-línea-de-tierra">Sin línea de tierra</h2>
+<p>La pág. 3 de las diapositivas monta el diédrico. Los dos planos de proyección, el vertical (PV) y el
+horizontal (PH), se cortan en ángulo recto a lo largo de una recta, la <strong>línea de tierra</strong> (LT). Una
+arista de la pieza se proyecta sobre los dos con rayos perpendiculares a cada plano. Después, el
+plano horizontal gira alrededor de la línea de tierra hasta quedar en el mismo plano que el
+vertical, y así los dos caben en una hoja: el alzado encima de la línea y la planta debajo. Por eso,
+en la hoja, la planta va debajo del alzado, y las dos proyecciones de un punto, en la misma
+vertical.</p>
+<p>La portada de la colección dice «Geometría descriptiva. Sistema diédrico directo», y sus figuras no
+dibujan la línea de tierra; las de las cuatro hojas del final, tampoco. Eso es el diédrico directo:
+el diédrico sin línea de tierra. Lo que alguna dibuja es un plano horizontal visto de canto en el
+alzado, como el suelo del Ejercicio 33 (SD47), rotulado «zorua», o el plano α del 36 (SD51): una
+altura de referencia del propio ejercicio, no la línea de tierra.</p>
+<p>Por qué se puede quitar no lo dicen ni las diapositivas ni la colección; esta explicación es
+nuestra. Desde la línea de tierra se miden dos distancias: la <strong>cota</strong>, lo que un punto está por
+encima del plano horizontal, y el <strong>alejamiento</strong>, lo que está por delante del plano vertical. Si
+los planos se corren, paralelos a sí mismos, la línea de tierra se mueve, pero el alzado y la planta
+de la pieza no cambian de forma: solo se acercan o se separan en el papel. Y lo que preguntan los
+ejercicios —cuánto mide un segmento, qué ángulo forman dos caras, a qué distancia pasan dos rectas,
+cuál es el vértice de mayor cota— depende de cuánto está un punto más alto o más adelante que otro,
+no de dónde estén los planos.</p>
+<p>Así que, sin línea de tierra, cota y alejamiento se <strong>comparan</strong> entre puntos
+(<a href="/expresion-grafica/expresion-grafica/t02-punto-recta-y-plano/#dos-vistas-de-lo-mismo">el tema 2, «Dos vistas de lo mismo»</a>):
+más arriba en el alzado, más cota; más abajo en la planta, más alejamiento, es decir, más lejos del
+plano vertical y más cerca de quien mira el alzado. Un cambio de plano lleva la diferencia con un
+punto de referencia
+(<a href="/expresion-grafica/expresion-grafica/t03-metodos-descriptivos/#el-cambio-de-plano-una-vista-nueva">el tema 3</a>),
+y un plano no se da por sus trazas, que necesitan la línea de tierra, sino por tres puntos, por dos
+rectas o por su línea de máxima pendiente, como en la colección.</p>
+<p>Hay una excepción, y conviene conocerla: si el enunciado da coordenadas, hace falta un origen. El
+Ejercicio 7 (SD9) da A(-20,40,70) y C(40,10,30) y no trae figura, y para situarlos hay que dibujar
+una línea de tierra y un origen; la lámina de ese ejercicio en el tema 3 es nuestra y los lleva.</p>
+<h2 id="cómo-es-el-control-del-bloque-1">Cómo es el control del bloque 1</h2>
+<p>El bloque 1 se examina con un control escrito, a mano y en papel; su peso, su mínimo y cuándo se
+libera el bloque están en la <a href="/expresion-grafica/expresion-grafica/">página de la asignatura</a>. Del
+control no hay en el material ninguna convocatoria con fecha. Lo más parecido son las cuatro hojas
+con que acaba la colección, los Ejercicios 52 a 55 (págs. 53 a 66): no dicen curso ni día, y solo
+la 54 se titula «Azterketa / Examen». Lo que sigue está comprobado en ellas.</p>
+<ul>
+<li><strong>Tres o cuatro ejercicios por hoja.</strong> El 52 trae cuatro y el 53, el 54 y el 55, tres. Este sitio
+los llama apartados, porque cada hoja es un solo ejercicio de la colección, y muchos se parten: el
+A y el B de cada uno del 53, el a y el b de cada uno del 54, del a al d en el primero del 55.</li>
+<li><strong>Sobre la figura impresa.</strong> Cada hoja trae una página de enunciado y detrás las figuras: en A4,
+una por ejercicio, en el 52, y en A3 en los otros tres, dos por página salvo la del primero del
+54, que ocupa una entera. Los datos vienen dibujados en alzado y planta, sin línea de tierra, y la
+respuesta se construye encima: los enunciados piden «dibujar», «representar», «completar las
+proyecciones», «calcular gráficamente» o «determinar gráficamente». La primera figura del 55 deja
+una casilla para escribir α, β, d y t.</li>
+<li><strong>A escala 1:1 o 1:100.</strong> El 53 dice «1:1» en la escala del cajetín de sus dos láminas, y el 55 lo
+dice en el enunciado de su primer ejercicio: «En la figura en escala 1:1»; el segundo y el tercero
+no dicen escala, y sus páginas toman las longitudes en milímetros de la lámina. El 54 lleva 1:100
+en el cajetín, y su tercer ejercicio lo repite, «La escala del dibujo es 1:100», y lo usa: el punto
+más alto del tren está a 4 m de su trayectoria y no debe pasar a menos de 3 m del cable, que a
+1:100 son 40 y 30 mm del papel. En su segundo ejercicio, en cambio, aquí los 30 mm del
+rectángulo se toman en la lámina: a 1:100 serían 0,3 mm de papel, y su página lo explica. El 52 no
+da escala, y sus medidas, 40 mm y 25 mm, se toman tal cual en el papel. Qué es una escala, en <a href="/expresion-grafica/expresion-grafica/t07-normalizacion/#las-escalas">el
+tema 7</a>.</li>
+<li><strong>En euskera y en castellano.</strong> En el 52 y el 53 cada ejercicio va en euskera y debajo en
+castellano; en el 54 y el 55, primero todo el enunciado en euskera y después todo en castellano
+(en el 54, bajo «Azterketa» y bajo «Examen»). Las figuras del 52, el 53 y el 55 rotulan cada
+ejercicio en los dos idiomas: «Ejercicio 1 / 1. Ariketa» en el 52, y con el euskera delante, como
+«1. Ariketa / Ejercicio 1», en el 53 y el 55. Aquí se transcribe el castellano.</li>
+<li><strong>Ninguna es de un solo tema.</strong> El 53, por ejemplo, corta una columna con un plano y abate la
+sección (temas 4 y 3), gira una ventana (tema 3) y mide el ángulo de los dos planos de un tejado y
+la distancia entre dos rectas (temas 6 y 5). Ninguna pregunta es de este tema: lo que este tema da
+es leer las dos vistas sin línea de tierra, saber qué se mide en cada una y a qué escala.</li>
+</ul>
+<p>Las cuatro hojas tienen su página, con lo que ya se corrige aquí: el
+<a href="/expresion-grafica/expresion-grafica/examenes/ejercicio-52/">Ejercicio 52</a>, el
+<a href="/expresion-grafica/expresion-grafica/examenes/ejercicio-53/">53</a>, el
+<a href="/expresion-grafica/expresion-grafica/examenes/ejercicio-54/">54</a> y el
+<a href="/expresion-grafica/expresion-grafica/examenes/ejercicio-55/">55</a>. El papel original está en el
+<a href="/expresion-grafica/examenes/expresion-grafica/coleccion-de-ejercicios.pdf#page=53">PDF de la colección</a>,
+de la pág. 53 a la 66.</p>
+<h2 id="cómo-se-trabaja-aquí">Cómo se trabaja aquí</h2>
+<p>El ejercicio de este tema es nuestro y no pide construir nada. Sobre la figura del apartado 2 del
+Ejercicio 55, B₂C₂ es horizontal en el alzado: hay que reconocer qué dice eso de BC, medirla donde
+está en verdadera magnitud y ordenar por qué. Se mide en la página del Ejercicio 55, con «medir», la
+herramienta del Taller que da en milímetros la distancia entre dos puntos de la lámina, o con la
+regla sobre la pág. 66 impresa a tamaño real. Es una lectura que aquel apartado necesita: su
+pirámide tiene de altura el doble de BC.</p>
+<h2 id="lo-que-hay-que-llevar-sabido">Lo que hay que llevar sabido</h2>
+<ul>
+<li><strong>Proyectar</strong> es llevar cada punto al plano por su rayo: proyección cónica si los rayos salen de
+un punto; cilíndrica si son paralelos, ortogonal si caen perpendiculares al plano.</li>
+<li><strong>Diédrico</strong>: cilíndrica ortogonal sobre dos planos; el alzado arriba y la planta debajo, en las
+mismas verticales; cada vista, en verdadera magnitud lo que es paralelo a su plano.</li>
+<li><strong>Acotado</strong>, la planta con las cotas escritas; <strong>axonométrico</strong>, una vista que conserva las
+paralelas y las medidas sobre los ejes con su coeficiente, pero en general no los ángulos;
+<strong>cónico</strong>, una vista desde un punto, donde las paralelas se juntan en un punto de fuga, salvo las
+paralelas al cuadro.</li>
+<li><strong>Una proyección ortogonal nunca alarga</strong>: un segmento sale igual si es paralelo al plano, y más
+corto si no.</li>
+<li><strong>Sin línea de tierra</strong>, cota y alejamiento se comparan entre puntos: más arriba en el alzado, más
+cota; más abajo en la planta, más alejamiento.</li>
+<li><strong>Una proyección horizontal en el papel</strong> dice cómo es la recta, no que esa vista la mida: B₂C₂
+horizontal es BC horizontal, en verdadera magnitud en la planta.</li>
+<li><strong>El control</strong>: tres o cuatro ejercicios sobre la figura impresa, a escala 1:1 o 1:100 (1:100 en
+el 54; el 52 y los ejercicios 2 y 3 del 55 no la dicen), en euskera y en castellano.</li>
+</ul><div class="practica no-imprimir" data-practica data-astro-cid-ln5sr2am><p class="rotulo pr-k" data-astro-cid-ln5sr2am>Practica lo que acabas de leer</p><p class="pr-tit" data-astro-cid-ln5sr2am>BC es horizontal, y se mide en la planta</p><p class="pr-sub" data-astro-cid-ln5sr2am>Ejemplo introductorio, para entrar de cero. Cada paso equivocado recibe su diagnóstico, no un «incorrecto».</p><a class="pr-cta" href="/expresion-grafica/expresion-grafica/t01-sistemas-de-representacion/ejercicios/1/#ej-sr-bc-horizontal-se-mide-en-la-planta" data-astro-cid-ln5sr2am>Hacer el ejercicio →</a></div><nav class="pasos no-imprimir" data-pasos hidden aria-label="Navegación por apartados" data-astro-cid-j54e57cz><button type="button" data-ir="-1" data-astro-cid-j54e57cz>← anterior</button><button type="button" data-ir="1" data-astro-cid-j54e57cz>siguiente →</button></nav></div><script type="module">var e=document.querySelector(`[data-lectura]`),t=document.querySelector(`[data-modos]`),n=document.querySelector(`[data-pasos]`);if(e&&t&&n){let r=[...e.children],i=[],a=null;for(let t of r)t.matches(`[data-modos], [data-pasos], [data-practica]`)||(t.tagName===`H2`&&(a=document.createElement(`section`),a.className=`grupo`,e.insertBefore(a,t),i.push(a)),a&&t!==a&&a.appendChild(t));if(i.length>1){let r=document.querySelector(`[data-avance]`),a=[...t.querySelectorAll(`[data-modo]`)],o=`guiado`,s=0;function c(){e.dataset.modo=o,i.forEach((e,t)=>{e.hidden=o===`guiado`&&t!==s}),n.hidden=o!==`guiado`,r.textContent=o===`guiado`?`${s+1} de ${i.length}`:`${i.length} apartados`;for(let e of a)e.setAttribute(`aria-pressed`,String(e.dataset.modo===o));for(let e of n.querySelectorAll(`[data-ir]`)){let t=Number(e.dataset.ir);e.disabled=t<0&&s===0||t>0&&s===i.length-1}}for(let e of a)e.addEventListener(`click`,()=>{o=e.dataset.modo;try{localStorage.setItem(`modo-lectura`,o)}catch{}c()});for(let e of n.querySelectorAll(`[data-ir]`))e.addEventListener(`click`,()=>{s=Math.max(0,Math.min(i.length-1,s+Number(e.dataset.ir))),c(),i[s].querySelector(`h2`)?.scrollIntoView({block:`start`})});for(let e of document.querySelectorAll(`.rail a`))e.addEventListener(`click`,()=>{let t=decodeURIComponent(e.hash.slice(1)),n=i.findIndex(e=>e.querySelector(`h2`)?.id===t);n>=0&&(s=n,c())});window.addEventListener(`beforeprint`,()=>{for(let e of i)e.hidden=!1}),window.addEventListener(`afterprint`,c);try{localStorage.getItem(`modo-lectura`)===`completo`&&(o=`completo`)}catch{}function l(){let e=decodeURIComponent(location.hash.slice(1));if(!e)return!1;let t=i.findIndex(t=>t.id===e||!!t.querySelector(`#${CSS.escape(e)}`));return t<0?!1:(s=t,!0)}let u=l();t.hidden=!1,c(),u&&document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({block:`start`}),window.addEventListener(`hashchange`,()=>{l()&&(c(),document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({block:`start`}))})}}var r=[...document.querySelectorAll(`.rail a`)],i=r.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e);if(i.length){let e=new IntersectionObserver(e=>{for(let t of e)if(t.isIntersecting){for(let e of r)e.removeAttribute(`aria-current`);r.find(e=>decodeURIComponent(e.hash.slice(1))===t.target.id)?.setAttribute(`aria-current`,`true`)}},{rootMargin:`-20% 0px -70% 0px`});for(let t of i)e.observe(t)}</script></section><section id="ejercicios" class="panel" aria-label="Ejercicios" data-astro-cid-ktanj4pa><div class="bloque-ej" data-bloque data-astro-cid-ktanj4pa><p class="rotulo be-cab" data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t01-sistemas-de-representacion/ejercicios/1/" data-astro-cid-ktanj4pa>Ejercicios el 1</a></p><ol class="be-lista" start="1" data-astro-cid-ktanj4pa><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t01-sistemas-de-representacion/ejercicios/1/#ej-sr-bc-horizontal-se-mide-en-la-planta" data-astro-cid-ktanj4pa>BC es horizontal, y se mide en la planta</a></li></ol></div></section><nav class="seguir no-imprimir" aria-label="Seguir desde aquí" data-astro-cid-zyhexgpy><div class="s-lados" data-astro-cid-zyhexgpy><span data-astro-cid-zyhexgpy></span><a class="s-tema s-sig" href="/expresion-grafica/expresion-grafica/t02-punto-recta-y-plano/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>tema 02 →</span><span class="s-t" data-astro-cid-zyhexgpy>El punto, la recta y el plano</span></a></div><div class="s-otros" data-astro-cid-zyhexgpy><a class="s-otro" href="/expresion-grafica/expresion-grafica/preparar/1c-control/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>ruta de estudio</span><span class="s-t" data-astro-cid-zyhexgpy>Preparar el control del bloque 1, el diédrico</span></a><a class="s-otro" href="/expresion-grafica/expresion-grafica/examenes/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>exámenes</span><span class="s-t" data-astro-cid-zyhexgpy>Las 4 convocatorias, resueltas enteras</span></a></div></nav><footer class="pie" data-astro-cid-ktanj4pa><p class="rotulo" data-astro-cid-ktanj4pa>Entrena COMP1 · COMP2 · COMP4</p><p class="rotulo fuente" data-astro-cid-ktanj4pa>Adaptado de la introducción («0 INTRODUCCIÓN», págs. 2 a 4) de las diapositivas «Sistema diedrico 1 · Representación de punto, recta y plano» de Expresión Gráfica, UPV/EHU, y de las cuatro hojas de varios apartados (Ejercicios 52 a 55, págs. 53 a 66) de la colección de ejercicios de diédrico directo del Dpto. de Expresión Gráfica y Proyectos de Ingeniería de la EIG. Son nuestros la clasificación de los sistemas y lo que conserva cada uno, por qué el curso usa el diédrico y por qué se puede quitar la línea de tierra, que las diapositivas no tratan, y la figura de la casita y el ejemplo.</p></footer></div></div><script type="module">var e=document.querySelector(`[data-armazon]`),t=JSON.parse(e?.dataset.direcciones||`{}`),n=e=>{let n=e;try{n=decodeURIComponent(e)}catch{}let r=t[n];return!r||document.getElementById(n)?!1:(location.replace(r),!0)};if(e&&!n(location.hash.slice(1))){let t=[...e.querySelectorAll(`[data-pestana]`)];function r(n,r){e.dataset.panel=n;for(let e of t)e.dataset.pestana===n?e.setAttribute(`aria-current`,`page`):e.removeAttribute(`aria-current`);r&&history.replaceState(null,``,`#${n}`)}for(let e of t)e.addEventListener(`click`,t=>{t.preventDefault(),r(e.dataset.pestana,!0)});let i=e=>e===`ejercicios`||e.startsWith(`ej-`)?`ejercicios`:`teoria`;r(i(location.hash.slice(1)),!1),window.addEventListener(`hashchange`,()=>{let e=location.hash.slice(1);n(e)||r(i(e),!1)}),window.addEventListener(`beforeprint`,()=>e.dataset.panel=`todo`),window.addEventListener(`afterprint`,()=>r(i(location.hash.slice(1)),!1));let a=[...e.querySelectorAll(`#teoria figure.sim[id]`)],o=a[0],s=e.querySelector(`[data-ir-sim]`);if(o&&s){s.href=`#${o.id}`,e.querySelector(`[data-ir-sim-nombre]`).textContent=o.querySelector(`.sim-head h3`)?.textContent?.trim()??`ábrelo`,s.hidden=!1;let t=[...e.querySelectorAll(`#teoria h2[id]`)];for(let n of a){let r=t.filter(e=>e.compareDocumentPosition(n)&Node.DOCUMENT_POSITION_FOLLOWING).pop(),i=r&&e.querySelector(`.rail a[href="#${CSS.escape(r.id)}"] .t`);if(!i||i.querySelector(`.chip`))continue;let a=document.createElement(`span`);a.className=`chip`,a.textContent=`simulador`,i.append(a)}s.addEventListener(`click`,e=>{location.hash===s.hash&&(e.preventDefault(),o.scrollIntoView({block:`start`}))})}}</script></main><footer class="pie-edicion" style="border-top: 1px solid var(--rule); margin-top: 3rem; padding: 1rem 1.25rem 1.5rem; color: var(--faint); font-size: .8rem; text-align: center"><p style="margin: 0">Edición de una sola asignatura de <strong>Road to Ingeniería</strong>.<a href="/expresion-grafica/" style="margin-left: .6rem; color: inherit; text-decoration: underline; text-underline-offset: .2em">Portada y buscador de esta edición</a></p></footer><script>
+      /* Marca las fórmulas de bloque que no caben en su columna.
+       *
+       * `.katex-display` ya se puede desplazar de lado, pero **no lo dice**, y
+       * eso es peor que no poder: el 4 de septiembre de 2026, barriendo las
+       * 167 páginas, salieron **doce fórmulas cortadas** y la peor era el
+       * enunciado de un ejercicio de Álgebra que define tres conjuntos y solo
+       * enseñaba dos y medio — con la pregunta pidiendo «cuáles de los tres».
+       * El lector ve una fórmula que acaba a media letra y no tiene por qué
+       * imaginarse que hay más a la derecha.
+       *
+       * Se hace aquí, con JavaScript, porque el CSS no sabe si algo desborda.
+       * Es lo mínimo: una clase, y el resto lo pinta `base.css`. */
+      (() => {
+        const marca = () => {
+          for (const f of document.querySelectorAll('.katex-display')) {
+            const d = f.firstElementChild;
+            f.classList.toggle('se-desplaza', !!d && d.scrollWidth > f.clientWidth + 4);
+          }
+        };
+        const cuando = () => requestAnimationFrame(marca);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(cuando);
+        else cuando();
+        addEventListener('resize', cuando);
+        /* Los paneles y los bloques plegables cambian el ancho al abrirse. */
+        addEventListener('toggle', cuando, true);
+        document.addEventListener('click', cuando);
+      })();
+    </script></body></html>

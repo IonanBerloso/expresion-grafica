@@ -1,0 +1,378 @@
+<!DOCTYPE html><html lang="es" data-theme="claro" style="--acento: var(--a-expresion)"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Normalización — Expresión Gráfica</title><meta name="description" content="Las reglas comunes de un plano. Los formatos A y su raíz de dos, la hoja del examen con su recuadro y su cajetín, las escalas que se pueden usar y qué línea va en cada sitio."><meta property="og:title" content="Normalización — Expresión Gráfica"><meta property="og:description" content="Las reglas comunes de un plano. Los formatos A y su raíz de dos, la hoja del examen con su recuadro y su cajetín, las escalas que se pueden usar y qué línea va en cada sitio."><meta property="og:type" content="website"><link rel="canonical" href="https://ionanberloso.github.io/expresion-grafica/expresion-grafica/t07-normalizacion/"><link rel="icon" type="image/svg+xml" href="/expresion-grafica/favicon.svg"><meta name="color-scheme" content="light dark"><script>
+      // Antes del primer pintado, para que no haya destello al recargar.
+      // La lectura va en su propio try: si el almacenamiento está bloqueado,
+      // la preferencia del sistema tiene que seguir mirándose (§02, regla 3).
+      let guardado = null;
+      try {
+        guardado = localStorage.getItem('tema');
+      } catch {}
+      if (guardado === 'oscuro' || guardado === 'claro') {
+        document.documentElement.dataset.theme = guardado;
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.dataset.theme = 'oscuro';
+      }
+    </script><link rel="stylesheet" href="/expresion-grafica/_astro/Cabecera.DzRFyI4l.css"><link rel="stylesheet" href="/expresion-grafica/_astro/Seguir.FVhjhl9z.css"><link rel="stylesheet" href="/expresion-grafica/_astro/_tema_.BaggnrbY.css"><link rel="stylesheet" href="/expresion-grafica/_astro/EnlaceAsignatura.CuotzBn5.css"><link rel="stylesheet" href="/expresion-grafica/_astro/ErrorTipico.QoP1w63h.css"></head><body><a class="saltar" href="#principal">Saltar al contenido</a><header class="top" data-astro-cid-zze2dqe4><a class="brand" href="/expresion-grafica/expresion-grafica/" data-astro-cid-zze2dqe4>Road to <span data-astro-cid-zze2dqe4>Ingeniería</span></a><span class="rotulo crumb" data-astro-cid-zze2dqe4>Expresión Gráfica · tema 07</span><span class="spacer" data-astro-cid-zze2dqe4></span><div class="modos no-imprimir" role="group" aria-label="Modo de lectura" data-modos hidden data-astro-cid-ln5sr2am><button type="button" data-modo="guiado" aria-pressed="true" data-astro-cid-ln5sr2am>guiado</button><button type="button" data-modo="completo" aria-pressed="false" data-astro-cid-ln5sr2am>completo</button><span class="rotulo avance" data-avance data-astro-cid-ln5sr2am></span></div><button class="toggle" type="button" data-cambia-tema aria-live="polite" data-astro-cid-zze2dqe4>tema</button></header><script>
+  (() => {
+    const boton = document.querySelector('[data-cambia-tema]');
+    if (!boton) return;
+    const pinta = () => {
+      const oscuro = document.documentElement.dataset.theme === 'oscuro';
+      boton.textContent = oscuro ? 'claro' : 'oscuro';
+      boton.setAttribute('aria-label', oscuro ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+    };
+    boton.addEventListener('click', () => {
+      const oscuro = document.documentElement.dataset.theme === 'oscuro';
+      document.documentElement.dataset.theme = oscuro ? 'claro' : 'oscuro';
+      try {
+        localStorage.setItem('tema', oscuro ? 'claro' : 'oscuro');
+      } catch {}
+      pinta();
+    });
+    pinta();
+  })();
+</script><main id="principal" data-astro-cid-ln5sr2am><div class="shell" data-armazon data-direcciones="{&quot;ej-norm-escala-de-una-arista&quot;:&quot;/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-escala-de-una-arista&quot;,&quot;ej-norm-del-a0-al-a3&quot;:&quot;/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-del-a0-al-a3&quot;,&quot;ej-norm-lineas-que-coinciden&quot;:&quot;/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-lineas-que-coinciden&quot;,&quot;ej-norm-recuadro-y-escala&quot;:&quot;/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-recuadro-y-escala&quot;,&quot;ej-norm-la-copia-reducida&quot;:&quot;/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-la-copia-reducida&quot;}" data-astro-cid-ktanj4pa><nav class="rail" aria-label="Índice del tema" data-astro-cid-ktanj4pa><div class="rail-bloque" data-de="teoria" data-astro-cid-ktanj4pa><h2 class="rotulo" data-astro-cid-ktanj4pa>En este tema</h2><ol data-astro-cid-ktanj4pa><li data-astro-cid-ktanj4pa><a href="#qué-es-una-norma-y-cuál-manda-aquí" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Qué es una norma, y cuál manda aquí</span></a></li><li data-astro-cid-ktanj4pa><a href="#los-formatos-y-por-qué-el-a4-mide-210-por-297" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Los formatos, y por qué el A4 mide 210 por 297</span></a></li><li data-astro-cid-ktanj4pa><a href="#la-hoja-del-examen-márgenes-recuadro-y-cajetín" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>La hoja del examen: márgenes, recuadro y cajetín</span></a></li><li data-astro-cid-ktanj4pa><a href="#las-escalas" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Las escalas</span></a></li><li data-astro-cid-ktanj4pa><a href="#las-líneas" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Las líneas</span></a></li><li data-astro-cid-ktanj4pa><a href="#cómo-se-trabaja-aquí" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Cómo se trabaja aquí</span></a></li><li data-astro-cid-ktanj4pa><a href="#lo-que-hay-que-llevar-sabido" data-astro-cid-ktanj4pa><span class="t" data-astro-cid-ktanj4pa>Lo que hay que llevar sabido</span></a></li></ol></div><div class="rail-bloque" data-de="ejercicios" data-astro-cid-ktanj4pa><h2 class="rotulo" data-astro-cid-ktanj4pa>Ejercicios</h2><ol data-astro-cid-ktanj4pa><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-escala-de-una-arista" data-astro-cid-ktanj4pa>Una arista a escala 1:2, y su cota</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-del-a0-al-a3" data-astro-cid-ktanj4pa>Del A0 al A3, sin tabla</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-lineas-que-coinciden" data-astro-cid-ktanj4pa>Seis cruces de líneas, y cuál se dibuja</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-recuadro-y-escala" data-astro-cid-ktanj4pa>El recuadro de un A3, y la escala con la que cabe una pieza</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-la-copia-reducida" data-astro-cid-ktanj4pa>Medir en una fotocopia reducida</a></li></ol></div></nav><div class="col" data-astro-cid-ktanj4pa><p class="rotulo rotulo--live eyebrow" data-astro-cid-ktanj4pa><a class="asignatura" href="/expresion-grafica/expresion-grafica/" data-asignatura="expresion-grafica" data-astro-cid-ololhd5l>Expresión Gráfica</a> · tema 07</p><h1 data-astro-cid-ktanj4pa>Normalización</h1><p class="lede" data-astro-cid-ktanj4pa>Las reglas comunes de un plano. Los formatos A y su raíz de dos, la hoja del examen con su recuadro y su cajetín, las escalas que se pueden usar y qué línea va en cada sitio.</p><a class="ir-sim no-imprimir" data-ir-sim href="#" hidden data-astro-cid-ktanj4pa><span class="rotulo rotulo--live" data-astro-cid-ktanj4pa>este tema trae un simulador</span><span class="nombre" data-ir-sim-nombre data-astro-cid-ktanj4pa></span></a><nav class="pestanas" aria-label="Secciones del tema" data-astro-cid-ktanj4pa><a href="#teoria" data-pestana="teoria" aria-current="page" data-astro-cid-ktanj4pa>Teoría</a><a href="#ejercicios" data-pestana="ejercicios" data-astro-cid-ktanj4pa>Ejercicios<span class="cuenta" data-astro-cid-ktanj4pa>5</span></a></nav><section id="teoria" class="panel" aria-label="Teoría" data-astro-cid-ktanj4pa><div class="read" data-lectura data-astro-cid-j54e57cz><p>Un plano lo lee alguien que no estaba cuando lo dibujaste: el que fabrica la
+pieza, el que la monta, el que la revisa años después. Para que lo entienda
+sin preguntarte, todos dibujan con las mismas reglas, y eso es la
+<strong>normalización</strong>. En esta asignatura tiene además un precio concreto. De los
+seis errores <strong>muy graves</strong> de la hoja de criterios de corrección, que cuestan
+dos puntos cada uno, tres son de la escala. Y uno de los mínimos sin los que el
+ejercicio ni se corrige es identificar un eje de simetría y uno de agujero,
+que es una cuestión de qué línea se usa.</p>
+<h2 id="qué-es-una-norma-y-cuál-manda-aquí">Qué es una norma, y cuál manda aquí</h2>
+<p>Una norma es una regla escrita y acordada para un problema que se repite: qué
+tamaño tiene una hoja, cómo se dibuja una arista oculta, cómo se escribe una
+escala. Las hay de tres niveles: <strong>nacionales</strong>, como las UNE en España;
+<strong>regionales</strong>, como las europeas, EN; e <strong>internacionales</strong>, como las ISO.
+Cuando Europa adopta una norma ISO y España adopta la europea, la designación
+lo lleva todo junto: <em>UNE-EN ISO 5455:1996</em>, la norma de escalas que citan las
+diapositivas (pág. 5), es la norma internacional adoptada en Europa y en
+España; 1996 es el año de la edición UNE.</p>
+<p>El libro escribe las normas UNE con guiones: en <em>UNE 1-042-75</em>, el 1 es la
+comisión que la redactó (asuntos generales), el 042 es su número dentro de ella
+y el 75 es el año, 1975 (libro, págs. 1-22 a 1-24). Para los formatos, el libro cita
+la UNE 1-011 (y la DIN 823), y las diapositivas, la UNE 1026-2:1983; las
+medidas de la serie A son las mismas en los dos.</p>
+<p>¿Y por qué hace falta? El ejemplo del libro es un incendio en Santander, en
+1941. Llegaron bomberos de otras ciudades a ayudar, y sus mangueras no tenían
+los mismos diámetros ni los mismos acoplamientos que las bocas de la ciudad:
+hubo que fabricar deprisa piezas de adaptación. Con piezas
+hechas en serie y montadas lejos de donde se fabrican pasa lo mismo, y la hoja
+de criterios lo castiga entre los muy graves: «definir un montaje mecánico
+imposible», como un agujero M10 con un eje M12 dentro.</p>
+<h2 id="los-formatos-y-por-qué-el-a4-mide-210-por-297">Los formatos, y por qué el A4 mide 210 por 297</h2>
+<p>La serie A sale de dos condiciones. La primera: el formato de partida, el
+<strong>A0</strong>, tiene un metro cuadrado de superficie. La segunda: al partir una hoja
+por la mitad, con un corte paralelo a su lado corto, cada mitad tiene que ser
+<strong>semejante</strong> a la hoja entera, con la misma forma. Esa segunda condición es la
+que fija la proporción. Si el lado largo es <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span></span></span></span> y el corto <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">y</span></span></span></span>, la mitad mide
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">y</span></span></span></span> por <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">x/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal">x</span><span class="mord">/2</span></span></span></span>, y para que sea semejante:</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><mi>x</mi><mi>y</mi></mfrac><mo>=</mo><mfrac><mi>y</mi><mrow><mi>x</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow></mfrac><mspace width="1em"></mspace><mo>⟹</mo><mspace width="1em"></mspace><mi>x</mi><mo>=</mo><msqrt><mn>2</mn></msqrt><mtext> </mtext><mi>y</mi></mrow><annotation encoding="application/x-tex">\frac{x}{y} = \frac{y}{x/2} \quad\Longrightarrow\quad x = \sqrt{2}\, y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.988em;vertical-align:-0.8804em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em"><span style="top:-2.314em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em">y</span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8804em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:2.0436em;vertical-align:-0.936em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1076em"><span style="top:-2.314em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal">x</span><span class="mord">/2</span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:1em"></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">⟹</span><span class="mspace" style="margin-right:1em"></span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1.1505em;vertical-align:-0.1944em"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9561em"><span class="svg-align" style="top:-3em"><span class="pstrut" style="height:3em"></span><span class="mord" style="padding-left:0.833em"><span class="mord">2</span></span></span><span style="top:-2.9161em"><span class="pstrut" style="height:3em"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.0839em"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em"></span><span class="mord mathnormal" style="margin-right:0.0359em">y</span></span></span></span></span>
+<p>Con <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>⋅</mo><mi>y</mi><mo>=</mo><mn>1</mn><mtext> </mtext><msup><mtext>m</mtext><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x \cdot y = 1\ \text{m}^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4445em"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">y</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.8141em"></span><span class="mord">1</span><span class="mspace"> </span><span class="mord"><span class="mord text"><span class="mord">m</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> sale <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>1</mn><mi mathvariant="normal">/</mi><mroot><mn>2</mn><mn>4</mn></mroot></mrow><annotation encoding="application/x-tex">y = 1/\sqrt[4]{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">y</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1.1572em;vertical-align:-0.25em"></span><span class="mord">1/</span><span class="mord sqrt"><span class="root"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7869em"><span style="top:-2.9647em"><span class="pstrut" style="height:2.5em"></span><span class="sizing reset-size6 size1 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9072em"><span class="svg-align" style="top:-3em"><span class="pstrut" style="height:3em"></span><span class="mord" style="padding-left:0.833em"><span class="mord">2</span></span></span><span style="top:-2.8672em"><span class="pstrut" style="height:3em"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1328em"><span></span></span></span></span></span></span></span></span> m, unos 841 mm, y
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mroot><mn>2</mn><mn>4</mn></mroot></mrow><annotation encoding="application/x-tex">x = \sqrt[4]{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.1328em"></span><span class="mord sqrt"><span class="root"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7869em"><span style="top:-2.9647em"><span class="pstrut" style="height:2.5em"></span><span class="sizing reset-size6 size1 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span></span></span></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9072em"><span class="svg-align" style="top:-3em"><span class="pstrut" style="height:3em"></span><span class="mord" style="padding-left:0.833em"><span class="mord">2</span></span></span><span style="top:-2.8672em"><span class="pstrut" style="height:3em"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1328em"><span></span></span></span></span></span></span></span></span> m, unos 1189 mm (libro, pág. 1-8). Desde ahí no hay más
+cuentas. Cada formato es el anterior partido por la mitad, así que <strong>su lado
+largo es el lado corto del anterior</strong>, y su lado corto, la mitad del largo del
+anterior. Cuando la mitad no da un número entero —1189 entre 2 son 594,5— la
+tabla se queda con el milímetro de abajo.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>formato</th><th>medidas, en mm</th><th>de dónde sale</th></tr></thead><tbody><tr><td>A0</td><td>841 × 1189</td><td>1 m², con los lados en razón √2</td></tr><tr><td>A1</td><td>594 × 841</td><td>el A0 partido: la mitad de 1189</td></tr><tr><td>A2</td><td>420 × 594</td><td>el A1 partido: la mitad de 841</td></tr><tr><td>A3</td><td>297 × 420</td><td>el A2 partido: la mitad de 594</td></tr><tr><td>A4</td><td>210 × 297</td><td>el A3 partido: la mitad de 420</td></tr></tbody></table>
+<p>Dos consecuencias que se usan. Un A0 son dieciséis A4, porque hay cuatro
+particiones entre los dos. Y como todos los formatos son semejantes, <strong>un
+dibujo pasa de uno al siguiente reduciéndose en la razón <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">1/\sqrt{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1572em;vertical-align:-0.25em"></span><span class="mord">1/</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9072em"><span class="svg-align" style="top:-3em"><span class="pstrut" style="height:3em"></span><span class="mord" style="padding-left:0.833em"><span class="mord">2</span></span></span><span style="top:-2.8672em"><span class="pstrut" style="height:3em"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1328em"><span></span></span></span></span></span></span></span></span></strong>, al
+71 %: es la reducción que hace una fotocopiadora al pasar de A3 a A4.</p>
+<p>Hay también formatos <strong>alargados</strong>, para piezas largas: el lado corto de un A3
+por 3 o 4, o el de un A4 por 3, 4 o 5. Un A3×3 mide 420 × 891 y un A4×3,
+297 × 630 (libro, pág. 1-10). Los planos del bloque 2 que trae el material —el
+del polipasto y el de la polea directriz— son A3 apaisados, como la hoja de
+examen 54 del diédrico.</p>
+<h2 id="la-hoja-del-examen-márgenes-recuadro-y-cajetín">La hoja del examen: márgenes, recuadro y cajetín</h2>
+<p>Dentro de la hoja se dibuja un <strong>recuadro</strong> en línea gruesa, que limita la
+zona de dibujo, y entre el recuadro y el borde queda un margen. A la izquierda
+es más ancho, porque es el <strong>margen de archivo</strong>: el de los taladros o la
+encuadernación, que va siempre en el lado opuesto al cajetín.</p>
+<p>Las diapositivas dan como mínimos recomendados un margen de 10 mm en A2, A3 y
+A4, de 20 en A0 y A1, y un margen de archivo de 20 (pág. 6). Es lo que tienen
+las láminas A3 de la escuela, medidas sobre su PDF: <strong>20 mm a la izquierda y
+10 en los otros tres lados</strong>. El recuadro de un A3 apaisado mide entonces</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mtable rowspacing="0.25em" columnalign="right left" columnspacing="0em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mtext>ancho</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mn>420</mn><mo>−</mo><mn>20</mn><mo>−</mo><mn>10</mn><mo>=</mo><mn>390</mn><mtext> mm</mtext></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="true"><mtext>alto</mtext></mstyle></mtd><mtd><mstyle scriptlevel="0" displaystyle="true"><mrow><mrow></mrow><mo>=</mo><mn>297</mn><mo>−</mo><mn>10</mn><mo>−</mo><mn>10</mn><mo>=</mo><mn>277</mn><mtext> mm</mtext></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}
+\text{ancho} &amp;= 420 - 20 - 10 = 390 \text{ mm} \\
+\text{alto} &amp;= 297 - 10 - 10 = 277 \text{ mm}
+\end{aligned}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.7em;vertical-align:-1.1em"></span><span class="mord"><span class="mtable"><span class="col-align-r"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em"><span style="top:-3.76em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord text"><span class="mord">ancho</span></span></span></span><span style="top:-2.26em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord text"><span class="mord">alto</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em"><span></span></span></span></span></span><span class="col-align-l"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6em"><span style="top:-3.76em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mord">420</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord">20</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mord">390</span><span class="mord text"><span class="mord"> mm</span></span></span></span><span style="top:-2.26em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord"></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mord">297</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord">10</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mord">277</span><span class="mord text"><span class="mord"> mm</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.1em"><span></span></span></span></span></span></span></span></span></span></span></span>
+<p>El libro trae dos tablas de márgenes que no coinciden. La de la pág. 1-11 pone
+30 mm en el margen izquierdo de un A3, y lo llama de plegado; la de las
+págs. 1-28 y 1-29 pide un margen de archivo de al menos 20, contando el normal. La
+de las diapositivas y de las láminas es la segunda: con la primera, el
+recuadro saldría de 380 mm de ancho.</p>
+<p>El <strong>cajetín</strong>, o cuadro de rotulación, va en la esquina inferior derecha del
+recuadro y se lee en el sentido del dibujo. La norma limita su zona de
+identificación —el número de identificación del plano, el título y el
+propietario— a 170 mm de largo, y el cajetín entero a 185 (diapositivas,
+pág. 7). El de la escuela mide 180 × 40 y
+tiene dos bandas: arriba, el nombre, el grupo y la fecha; abajo, la
+<strong>escala</strong>, el título, el número de plano y la calificación. Lleva además el
+símbolo del método de proyección, el europeo, y la tolerancia general,
+«ISO 2768-m», que se explica en el tema 12.</p>
+<p>En un plano de conjunto, la <strong>lista de piezas</strong> va encima del cajetín y se
+numera <strong>de abajo arriba</strong>: la marca 1 queda junto a la cabecera de las
+columnas, y la lista puede crecer sin tocar el cajetín. Lleva, de cada pieza,
+su marca, cuántas hay, su denominación y su material. Cómo se ponen las marcas
+sobre el dibujo es cosa del tema 13.</p>
+<figure><svg viewBox="0 0 460 374" role="img" width="460" height="374" aria-labelledby="t07-a3-t t07-a3-d"><title id="t07-a3-t">La hoja A3 de la escuela, a escala: márgenes, recuadro, cajetín y pliegues</title><desc id="t07-a3-d">Una hoja A3 apaisada de 420 por 297 milímetros, dibujada a escala. El recuadro, en línea gruesa, deja un margen de 20 milímetros a la izquierda, para archivar, y de 10 en los otros tres lados, así que mide 390 por 277. En la esquina inferior derecha del recuadro está el cajetín, de 180 por 40, partido en dos bandas: arriba nombre, grupo y fecha; abajo escala, título y número de plano. Encima del cajetín crece hacia arriba la lista de piezas, cuando la hay. Dos líneas de trazos verticales marcan los pliegues del plegado tipo A, a 125 y a 230 milímetros del borde izquierdo: los tres paños miden 125, 105 y 190, y el último pliegue cae justo en el borde izquierdo del cajetín.</desc><path stroke="var(--faint)" stroke-width="1.1" fill="none" d="M44.4 306L438.1 306L438.1 27.7L44.4 27.7Z"></path><path stroke="var(--ink)" stroke-width="2.6" fill="none" d="M63.2 296.6L428.7 296.6L428.7 37.1L63.2 37.1Z"></path><path stroke="var(--ink)" stroke-width="1.1" fill="none" d="M260 296.6L428.7 296.6L428.7 259.2L260 259.2Z"></path><path stroke="var(--ink)" stroke-width="1.1" fill="none" d="M260 277.9L428.7 277.9"></path><path stroke="var(--alt)" stroke-width="1.3" fill="none" stroke-dasharray="6 4" d="M161.6 306L161.6 27.7"></path><path stroke="var(--alt)" stroke-width="1.3" fill="none" stroke-dasharray="6 4" d="M260 306L260 27.7"></path><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="344.3" y="274.3" text-anchor="middle">nombre, grupo, fecha</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="344.3" y="291.1" text-anchor="middle">escala, título, plano</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="424.9" y="253.5" text-anchor="end">lista de piezas, hacia arriba</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="344.3" y="98" text-anchor="middle" fill="var(--ink)">A3 · 420 × 297</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="344.3" y="165.4" text-anchor="middle" fill="var(--faint)">zona de dibujo</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="53.8" y="169.4" text-anchor="middle" fill="var(--ink)">20</text><path stroke="var(--faint)" stroke-width="1" fill="none" d="M63.2 18.3L428.7 18.3"></path><path stroke="var(--faint)" stroke-width="1" fill="none" d="M63.2 22.1L63.2 14.6"></path><path stroke="var(--faint)" stroke-width="1" fill="none" d="M428.7 22.1L428.7 14.6"></path><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="245.9" y="14.3" text-anchor="middle" fill="var(--ink)">390</text><path stroke="var(--faint)" stroke-width="1" fill="none" d="M35.1 296.6L35.1 37.1"></path><path stroke="var(--faint)" stroke-width="1" fill="none" d="M31.3 296.6L38.8 296.6"></path><path stroke="var(--faint)" stroke-width="1" fill="none" d="M31.3 37.1L38.8 37.1"></path><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="31.1" y="170.9" text-anchor="end" fill="var(--ink)">277</text><path stroke="var(--faint)" stroke-width="1" fill="none" d="M44.4 321L438.1 321"></path><path stroke="var(--faint)" stroke-width="1" fill="none" d="M44.4 324.8L44.4 317.3"></path><path stroke="var(--faint)" stroke-width="1" fill="none" d="M161.6 324.8L161.6 317.3"></path><path stroke="var(--faint)" stroke-width="1" fill="none" d="M260 324.8L260 317.3"></path><path stroke="var(--faint)" stroke-width="1" fill="none" d="M438.1 324.8L438.1 317.3"></path><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="103" y="317" text-anchor="middle" fill="var(--alt)">125</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="210.8" y="317" text-anchor="middle" fill="var(--alt)">105</text><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="349" y="317" text-anchor="middle" fill="var(--alt)">190</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="241.2" y="345.4" text-anchor="middle">plegado tipo A: 125 + 105 + 190</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="241.2" y="358.5" text-anchor="middle">márgenes: 20 a la izquierda, 10 en los demás</text></svg><figcaption>La hoja A3 de la escuela, a escala. Las medidas son las de sus láminas: el recuadro deja 20 mm a la izquierda y 10 en los demás lados. Los pliegues del plegado tipo A caen a 125 y a 230 mm del borde, y el segundo coincide con el borde del cajetín: por eso el cajetín queda delante al plegar.</figcaption></figure>
+<p><strong>El plegado.</strong> Un plano más grande que un A4 se dobla hasta 210 × 297, en
+zigzag, primero a lo largo y después a lo alto, y con el cajetín a la vista
+(libro, pág. 1-19). El A3 solo se dobla a lo largo. El <strong>tipo A</strong>, para archivar
+con taladros, deja paños de 125, 105 y 190 mm; el <strong>tipo C</strong>, para fundas, dos
+de 210 (diapositivas, pág. 8). Fíjate en el último paño del tipo A: 190 son los
+180 del cajetín más los 10 del margen, y el pliegue cae justo en el borde del
+cajetín.</p>
+<p><strong>La rotulación.</strong> La letra tiene que ser legible y homogénea. Las alturas
+normalizadas son 2,5; 3,5; 5; 7; 10; 14 y 20 mm (libro, pág. 1-12), y cada
+una es la anterior por <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mn>2</mn></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.1328em"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9072em"><span class="svg-align" style="top:-3em"><span class="pstrut" style="height:3em"></span><span class="mord" style="padding-left:0.833em"><span class="mord">2</span></span></span><span style="top:-2.8672em"><span class="pstrut" style="height:3em"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"></path></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1328em"><span></span></span></span></span></span></span></span></span>, la misma razón de los formatos. Por eso, al
+reducir un plano de A3 a A4, una letra de 5 mm se queda en 3,5, que también es
+de la serie. Para las marcas de un conjunto, el libro recomienda el doble de
+la altura de las cotas (pág. 1-42).</p>
+<h2 id="las-escalas">Las escalas</h2>
+<p>La <strong>escala</strong> es la razón entre lo que mide algo en el dibujo y lo que mide en
+la pieza (libro, pág. 1-25):</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>escala</mtext><mo>=</mo><mfrac><mtext>medida en el dibujo</mtext><mtext>medida real</mtext></mfrac></mrow><annotation encoding="application/x-tex">\text{escala} = \frac{\text{medida en el dibujo}}{\text{medida real}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord text"><span class="mord">escala</span></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em"><span style="top:-2.314em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord text"><span class="mord">medida real</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.677em"><span class="pstrut" style="height:3em"></span><span class="mord"><span class="mord text"><span class="mord">medida en el dibujo</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>Se escribe con el dibujo delante. <strong>1:2</strong> quiere decir que 1 mm del papel son
+2 mm de la pieza: una <strong>reducción</strong>. <strong>2:1</strong>, que 2 mm del papel son 1 de la
+pieza: una <strong>ampliación</strong>. Y <strong>1:1</strong> es el tamaño natural.</p>
+<p>No vale cualquier escala. Las recomendadas son, de ampliación, 2:1, 5:1, 10:1,
+20:1 y 50:1, y de reducción, 1:2, 1:5, 1:10, 1:20 y así siguiendo, por
+potencias de diez (libro, pág. 1-26): un 1, un 2 o un 5 seguido de ceros. Las
+diapositivas de la asignatura añaden 1:2.500 entre las de reducción (pág. 5);
+para piezas mecánicas no cambia nada. Una escala como 1:3 o 1:1,33 no es de
+las recomendadas: el libro solo admite escalas intermedias en casos
+excepcionales. La escala tiene que ser lo bastante grande para que el dibujo
+se lea con facilidad (pág. 1-26), y la escala y el tamaño de la pieza influyen
+en la elección del formato (pág. 1-27). Con el formato fijado —el A3 de los
+planos del material—, conviene la <strong>mayor</strong> de las recomendadas con la que la
+pieza cabe. Lo que quede pequeño se saca aparte, en una vista de detalle a más
+escala.</p>
+<p><strong>Dónde se escribe.</strong> La escala principal va en el cajetín. Si una vista o una
+pieza va a otra escala, la suya se escribe junto a ella: «A (E 3:1)» en el
+detalle de la polea directriz; en el del polipasto, «DETALLE B» con «2:1»
+debajo. Y va también en el cajetín: la <a href="/expresion-grafica/expresion-grafica/#la-rubrica-de-laminas">rúbrica de láminas de la asignatura</a> da
+por bien que «Figuran todas las escalas utilizadas en el cajetín y junto a las
+vistas». El libro no dice lo mismo: pide que en el cajetín vaya solo la
+principal (pág. 1-26), aunque en su lista de datos del cajetín pone «escala o
+escalas utilizadas en el plano» (pág. 1-14). Y los planos de la escuela tampoco
+coinciden: el cajetín de la polea añade «(3:1)» debajo de «1:1»; el del
+polipasto dice solo «1:2». En tu lámina mandan la rúbrica y la hoja de
+criterios, que van en la misma línea: si una <strong>pieza</strong> va a una escala distinta
+de la del plano, se descuentan 0,5 puntos si falta junto a la pieza y otros 0,5
+si falta en el cajetín. Así que cada escala distinta de la principal se escribe
+en los dos sitios: junto a su vista y en el cajetín.</p>
+<p>Y la escala solo cambia el dibujo: <strong>las cotas son siempre las medidas
+reales</strong>. Una arista de 74 mm dibujada a 1:2 mide 37 mm en el papel, y su cota
+dice 74.</p>
+<div class="error-tipico" data-astro-cid-jdnpk4r2><p class="titulo" data-astro-cid-jdnpk4r2>Dibujar o acotar sin tener en cuenta la escala</p><div class="cuerpo" data-astro-cid-jdnpk4r2><p>La hoja de criterios trae dos errores muy graves, de −2, que se solapan:
+«Acotar y/o dibujar sin tener en cuenta la escala» y «Dibujar sin tener en
+cuenta la escala (-2 por pieza)». El primero alcanza también a la cota; el
+segundo, solo al dibujo, y se cobra en cada pieza mal dibujada. La hoja no dice
+si, al dibujar una pieza mal, se cobran los dos. Se cae de dos maneras: escribiendo en la cota lo que mide la línea
+en el papel —37 donde la pieza mide 74—, o dibujando sin convertir cada
+medida. A 1:2, cada medida real se divide entre 2 antes de llevarla al papel; a
+2:1, se multiplica por 2; y la cota se escribe con la medida real, siempre.</p></div></div>
+<div class="error-tipico" data-astro-cid-jdnpk4r2><p class="titulo" data-astro-cid-jdnpk4r2>La escala, fuera del cajetín</p><div class="cuerpo" data-astro-cid-jdnpk4r2><p>Tres criterios de corrección van sobre la escala del cajetín. «No indicar la
+escala en el cajetín» es muy grave: −2. «Identificar incorrectamente la escala
+general/principal en el cajetín» cuesta −1. Y si una pieza va a una escala
+distinta de la del plano y no se indica, son −0,5 si falta en la pieza más
+−0,5 si falta en el cajetín, con un máximo de −2 aunque pase en más piezas. En
+un despiece, la escala de esa pieza va junto a ella y también en el cajetín.</p></div></div>
+<h2 id="las-líneas">Las líneas</h2>
+<p>Cada línea de un plano dice una cosa, y la dice con su grosor y con su trazo.
+Hay dos grosores, <strong>gruesa</strong> y <strong>fina</strong>, y cuatro trazos: continuo, de trazos,
+de trazo y punto y de trazo y dos puntos (libro, pág. 2-1).</p>
+<figure><svg viewBox="0 0 380 336" role="img" width="380" height="336" aria-labelledby="t07-lineas-t t07-lineas-d"><title id="t07-lineas-t">Las nueve líneas del dibujo técnico, cada una con su uso</title><desc id="t07-lineas-d">Un muestrario de líneas, una por fila, con su nombre y su uso. gruesa continua: contornos y aristas vistos. fina continua: cotas, referencias, rayado. fina a mano alzada: límite de una vista parcial. fina con zigzag: el mismo límite, en recta. fina de trazos: contornos y aristas ocultos. fina de trazo y punto: ejes y planos de simetría. de corte: traza del plano de corte. gruesa de trazo y punto: superficie con un requisito. fina de trazo y dos puntos: pieza vecina, posición extrema. La de corte es fina de trazo y punto con los extremos gruesos.</desc><path stroke="var(--ink)" stroke-width="2.6" fill="none" d="M13.4 25.8L131.1 25.8"></path><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="145.8" y="23.8" text-anchor="start" fill="var(--ink)">gruesa continua</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="145.8" y="36.8" text-anchor="start">contornos y aristas vistos</text><path stroke="var(--ink)" stroke-width="1.1" fill="none" d="M13.4 61.8L131.1 61.8"></path><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="145.8" y="59.8" text-anchor="start" fill="var(--ink)">fina continua</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="145.8" y="72.8" text-anchor="start">cotas, referencias, rayado</text><path stroke="var(--ink)" stroke-width="1.1" fill="none" d="M13.4 97.8L14.8 97.3L16.3 96.8L17.8 96.3L19.2 95.8L20.7 95.4L22.2 95L23.7 94.6L25.1 94.3L26.6 94L28.1 93.8L29.6 93.6L31 93.5L32.5 93.5L34 93.5L35.4 93.6L36.9 93.7L38.4 93.9L39.9 94.1L41.3 94.4L42.8 94.7L44.3 95.1L45.7 95.5L47.2 96L48.7 96.5L50.2 97L51.6 97.5L53.1 98L54.6 98.5L56 99L57.5 99.5L59 99.9L60.5 100.3L61.9 100.7L63.4 101.1L64.9 101.4L66.4 101.6L67.8 101.9L69.3 102L70.8 102.1L72.2 102.1L73.7 102.1L75.2 102L76.7 101.9L78.1 101.6L79.6 101.4L81.1 101.1L82.5 100.7L84 100.3L85.5 99.9L87 99.5L88.4 99L89.9 98.5L91.4 98L92.8 97.5L94.3 97L95.8 96.5L97.3 96L98.7 95.5L100.2 95.1L101.7 94.7L103.2 94.4L104.6 94.1L106.1 93.9L107.6 93.7L109 93.6L110.5 93.5L112 93.5L113.5 93.5L114.9 93.6L116.4 93.8L117.9 94L119.3 94.3L120.8 94.6L122.3 95L123.8 95.4L125.2 95.8L126.7 96.3L128.2 96.8L129.6 97.3L131.1 97.8"></path><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="145.8" y="95.8" text-anchor="start" fill="var(--ink)">fina a mano alzada</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="145.8" y="108.8" text-anchor="start">límite de una vista parcial</text><path stroke="var(--ink)" stroke-width="1.1" fill="none" d="M13.4 133.8L67.8 133.8L70.8 123.7L73.7 143.9L76.7 133.8L131.1 133.8"></path><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="145.8" y="131.8" text-anchor="start" fill="var(--ink)">fina con zigzag</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="145.8" y="144.8" text-anchor="start">el mismo límite, en recta</text><path stroke="var(--ink)" stroke-width="1.1" fill="none" stroke-dasharray="7 4" d="M13.4 169.8L131.1 169.8"></path><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="145.8" y="167.8" text-anchor="start" fill="var(--ink)">fina de trazos</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="145.8" y="180.8" text-anchor="start">contornos y aristas ocultos</text><path stroke="var(--ink)" stroke-width="1.1" fill="none" stroke-dasharray="16 4 2 4" d="M13.4 205.8L131.1 205.8"></path><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="145.8" y="203.8" text-anchor="start" fill="var(--ink)">fina de trazo y punto</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="145.8" y="216.8" text-anchor="start">ejes y planos de simetría</text><path stroke="var(--ink)" stroke-width="1.1" fill="none" stroke-dasharray="16 4 2 4" d="M13.4 241.8L131.1 241.8"></path><path stroke="var(--ink)" stroke-width="2.6" fill="none" d="M13.4 241.8L28.1 241.8"></path><path stroke="var(--ink)" stroke-width="2.6" fill="none" d="M116.4 241.8L131.1 241.8"></path><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="145.8" y="239.8" text-anchor="start" fill="var(--ink)">de corte</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="145.8" y="252.8" text-anchor="start">traza del plano de corte</text><path stroke="var(--ink)" stroke-width="2.6" fill="none" stroke-dasharray="16 4 2 4" d="M13.4 277.8L131.1 277.8"></path><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="145.8" y="275.8" text-anchor="start" fill="var(--ink)">gruesa de trazo y punto</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="145.8" y="288.8" text-anchor="start">superficie con un requisito</text><path stroke="var(--ink)" stroke-width="1.1" fill="none" stroke-dasharray="16 4 2 3 2 4" d="M13.4 313.8L131.1 313.8"></path><text font-size="10.5px" font-family="var(--mono)" font-weight="700" paint-order="stroke" stroke="var(--paper)" stroke-width="3.4px" stroke-linejoin="round" x="145.8" y="311.8" text-anchor="start" fill="var(--ink)">fina de trazo y dos puntos</text><text fill="var(--faint)" font-size="10px" font-family="var(--mono)" paint-order="stroke" stroke="var(--paper)" stroke-width="3px" stroke-linejoin="round" x="145.8" y="324.8" text-anchor="start">pieza vecina, posición extrema</text></svg><figcaption>Las nueve líneas del dibujo técnico, cada una con su uso principal. La de corte es fina de trazo y punto, con los extremos gruesos.</figcaption></figure>
+<ul>
+<li><strong>Gruesa continua</strong>: los contornos y las aristas que se ven.</li>
+<li><strong>Fina continua</strong>: las líneas de cota y de referencia, las de proyección, el
+rayado de los cortes, las aristas ficticias —las que se han redondeado y ya
+no son aristas—, el contorno de una sección abatida sobre la vista y los ejes
+cortos.</li>
+<li><strong>Fina a mano alzada</strong>, o <strong>fina recta con zigzag</strong>: el límite de una vista
+o de un corte parcial o interrumpido.</li>
+<li><strong>De trazos</strong>: los contornos y las aristas ocultos. Puede ser gruesa o fina,
+y en las diapositivas de la asignatura la que va marcada es la fina.</li>
+<li><strong>Fina de trazo y punto</strong>: los ejes de revolución, las trazas de los planos
+de simetría y las trayectorias.</li>
+<li><strong>De corte</strong>: fina de trazo y punto, gruesa en los extremos y en los cambios
+de dirección. Marca por dónde pasa el plano de un corte.</li>
+<li><strong>Gruesa de trazo y punto</strong>: la línea o la superficie que lleva una
+especificación particular, como un tratamiento.</li>
+<li><strong>Fina de trazo y dos puntos</strong>: las piezas vecinas, las posiciones extremas
+de una pieza que se mueve, las líneas de centros de gravedad, la forma que
+tenía una pieza antes de conformarla y lo que queda delante de un plano de
+corte.</li>
+</ul>
+<p><strong>Cuando dos líneas caen una encima de otra</strong> se dibuja una sola, por este
+orden de prioridad (diapositivas, pág. 4):</p>
+<ol>
+<li>contornos y aristas vistos;</li>
+<li>contornos y aristas ocultos;</li>
+<li>trazas de planos de corte;</li>
+<li>ejes y trazas de planos de simetría;</li>
+<li>líneas de centros de gravedad;</li>
+<li>líneas de proyección.</li>
+</ol>
+<p>La que va antes gana. Una arista vista tapa al eje que pasa por ella; una
+oculta tapa al eje, y también a la traza de un corte.</p>
+<div class="error-tipico" data-astro-cid-jdnpk4r2><p class="titulo" data-astro-cid-jdnpk4r2>Los ejes que faltan, y las ocultas acotadas</p><div class="cuerpo" data-astro-cid-jdnpk4r2><p>Las líneas entran en la hoja de criterios por varios sitios. Entre los
+<strong>mínimos</strong>, sin los que el ejercicio no se corrige, hay dos: «Identificar al
+menos un eje de simetría y un eje de agujero (si lo tiene)», y dibujar bien al
+menos una rosca, que incluye «diferenciar el tipo de línea» (las roscas se ven
+en el tema 11). Entre los errores típicos:
+«No indicar ejes en agujeros/cilindros», a −0,5 cada uno y hasta −2,5 en todo
+el plano. Y entre los muy graves: «Acotar rayas discontinuas», −2. Un agujero
+sin su eje de trazo y punto pierde puntos aunque esté bien dibujado, y una
+arista oculta no se acota nunca: se busca la vista o el corte donde se ve.</p></div></div>
+<h2 id="cómo-se-trabaja-aquí">Cómo se trabaja aquí</h2>
+<p>Ni la colección de diédrico, ni sus hojas de examen, ni el cuaderno de
+ejercicios del segundo cuatrimestre, que empieza en las vistas, traen un
+ejercicio que pregunte solo por normalización: la norma se corrige dentro de
+los planos, con la hoja de criterios. Por eso los ejercicios de este tema son
+nuestros. Piden lo que la norma deja calcular —un formato, un recuadro, una
+escala, la medida en una copia reducida— y el orden de las líneas que
+coinciden.</p>
+<h2 id="lo-que-hay-que-llevar-sabido">Lo que hay que llevar sabido</h2>
+<ul>
+<li><strong>Formatos.</strong> El A0 tiene 1 m² y los lados en razón √2: 841 × 1189 mm. Cada
+formato es el anterior partido por la mitad: A1, 594 × 841; A2, 420 × 594;
+A3, 297 × 420; A4, 210 × 297.</li>
+<li><strong>La hoja A3 de la escuela.</strong> Margen de 20 mm a la izquierda y de 10 en los
+otros tres lados; recuadro de 390 × 277; cajetín abajo a la derecha, con la
+escala; lista de piezas encima, numerada de abajo arriba.</li>
+<li><strong>Plegado.</strong> Hasta 210 × 297, con el cajetín delante. El A3 tipo A, en
+paños de 125, 105 y 190.</li>
+<li><strong>Escala.</strong> Medida en el dibujo partida por medida real: 1:x reduce y x:1
+amplía. Las recomendadas, un 1, un 2 o un 5 seguidos de ceros (las
+diapositivas añaden 1:2.500). La principal va en el cajetín, y las demás,
+junto a su vista y también en el cajetín (rúbrica de láminas y criterios de
+corrección). Las cotas, siempre reales.</li>
+<li><strong>Líneas.</strong> Gruesa continua, lo que se ve; de trazos, lo oculto; fina de
+trazo y punto, ejes y simetrías; de corte, trazo y punto con los extremos
+gruesos; fina continua, cotas, referencias y rayado; trazo y dos puntos,
+piezas vecinas y posiciones extremas.</li>
+<li><strong>Prioridad.</strong> Vista, oculta, corte, eje, centro de gravedad, proyección:
+cada una tapa a las que van detrás.</li>
+<li><strong>Rotulación.</strong> 2,5; 3,5; 5; 7; 10; 14 y 20 mm, en razón √2. Las
+marcas, al doble de altura que las cotas.</li>
+</ul><div class="practica no-imprimir" data-practica data-astro-cid-ln5sr2am><p class="rotulo pr-k" data-astro-cid-ln5sr2am>Practica lo que acabas de leer</p><p class="pr-tit" data-astro-cid-ln5sr2am>Una arista a escala 1:2, y su cota</p><p class="pr-sub" data-astro-cid-ln5sr2am>Ejemplo introductorio, para entrar de cero. Cada paso equivocado recibe su diagnóstico, no un «incorrecto».</p><a class="pr-cta" href="/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-escala-de-una-arista" data-astro-cid-ln5sr2am>Hacer el ejercicio →</a></div><nav class="pasos no-imprimir" data-pasos hidden aria-label="Navegación por apartados" data-astro-cid-j54e57cz><button type="button" data-ir="-1" data-astro-cid-j54e57cz>← anterior</button><button type="button" data-ir="1" data-astro-cid-j54e57cz>siguiente →</button></nav></div><script type="module">var e=document.querySelector(`[data-lectura]`),t=document.querySelector(`[data-modos]`),n=document.querySelector(`[data-pasos]`);if(e&&t&&n){let r=[...e.children],i=[],a=null;for(let t of r)t.matches(`[data-modos], [data-pasos], [data-practica]`)||(t.tagName===`H2`&&(a=document.createElement(`section`),a.className=`grupo`,e.insertBefore(a,t),i.push(a)),a&&t!==a&&a.appendChild(t));if(i.length>1){let r=document.querySelector(`[data-avance]`),a=[...t.querySelectorAll(`[data-modo]`)],o=`guiado`,s=0;function c(){e.dataset.modo=o,i.forEach((e,t)=>{e.hidden=o===`guiado`&&t!==s}),n.hidden=o!==`guiado`,r.textContent=o===`guiado`?`${s+1} de ${i.length}`:`${i.length} apartados`;for(let e of a)e.setAttribute(`aria-pressed`,String(e.dataset.modo===o));for(let e of n.querySelectorAll(`[data-ir]`)){let t=Number(e.dataset.ir);e.disabled=t<0&&s===0||t>0&&s===i.length-1}}for(let e of a)e.addEventListener(`click`,()=>{o=e.dataset.modo;try{localStorage.setItem(`modo-lectura`,o)}catch{}c()});for(let e of n.querySelectorAll(`[data-ir]`))e.addEventListener(`click`,()=>{s=Math.max(0,Math.min(i.length-1,s+Number(e.dataset.ir))),c(),i[s].querySelector(`h2`)?.scrollIntoView({block:`start`})});for(let e of document.querySelectorAll(`.rail a`))e.addEventListener(`click`,()=>{let t=decodeURIComponent(e.hash.slice(1)),n=i.findIndex(e=>e.querySelector(`h2`)?.id===t);n>=0&&(s=n,c())});window.addEventListener(`beforeprint`,()=>{for(let e of i)e.hidden=!1}),window.addEventListener(`afterprint`,c);try{localStorage.getItem(`modo-lectura`)===`completo`&&(o=`completo`)}catch{}function l(){let e=decodeURIComponent(location.hash.slice(1));if(!e)return!1;let t=i.findIndex(t=>t.id===e||!!t.querySelector(`#${CSS.escape(e)}`));return t<0?!1:(s=t,!0)}let u=l();t.hidden=!1,c(),u&&document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({block:`start`}),window.addEventListener(`hashchange`,()=>{l()&&(c(),document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({block:`start`}))})}}var r=[...document.querySelectorAll(`.rail a`)],i=r.map(e=>document.getElementById(decodeURIComponent(e.hash.slice(1)))).filter(e=>!!e);if(i.length){let e=new IntersectionObserver(e=>{for(let t of e)if(t.isIntersecting){for(let e of r)e.removeAttribute(`aria-current`);r.find(e=>decodeURIComponent(e.hash.slice(1))===t.target.id)?.setAttribute(`aria-current`,`true`)}},{rootMargin:`-20% 0px -70% 0px`});for(let t of i)e.observe(t)}</script></section><section id="ejercicios" class="panel" aria-label="Ejercicios" data-astro-cid-ktanj4pa><div class="bloque-ej" data-bloque data-astro-cid-ktanj4pa><p class="rotulo be-cab" data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/" data-astro-cid-ktanj4pa>Ejercicios del 1 al 5</a></p><ol class="be-lista" start="1" data-astro-cid-ktanj4pa><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-escala-de-una-arista" data-astro-cid-ktanj4pa>Una arista a escala 1:2, y su cota</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-del-a0-al-a3" data-astro-cid-ktanj4pa>Del A0 al A3, sin tabla</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-lineas-que-coinciden" data-astro-cid-ktanj4pa>Seis cruces de líneas, y cuál se dibuja</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-recuadro-y-escala" data-astro-cid-ktanj4pa>El recuadro de un A3, y la escala con la que cabe una pieza</a></li><li data-astro-cid-ktanj4pa><a href="/expresion-grafica/expresion-grafica/t07-normalizacion/ejercicios/1/#ej-norm-la-copia-reducida" data-astro-cid-ktanj4pa>Medir en una fotocopia reducida</a></li></ol></div></section><nav class="seguir no-imprimir" aria-label="Seguir desde aquí" data-astro-cid-zyhexgpy><div class="s-lados" data-astro-cid-zyhexgpy><a class="s-tema s-ant" href="/expresion-grafica/expresion-grafica/t06-angulos/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>← tema 06</span><span class="s-t" data-astro-cid-zyhexgpy>Ángulos</span></a><a class="s-tema s-sig" href="/expresion-grafica/expresion-grafica/t08-vistas-y-perspectivas/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>tema 08 →</span><span class="s-t" data-astro-cid-zyhexgpy>Vistas normalizadas y perspectivas</span></a></div><div class="s-otros" data-astro-cid-zyhexgpy><a class="s-otro" href="/expresion-grafica/expresion-grafica/examenes/" data-astro-cid-zyhexgpy><span class="rotulo" data-astro-cid-zyhexgpy>exámenes</span><span class="s-t" data-astro-cid-zyhexgpy>Las 4 convocatorias, resueltas enteras</span></a></div></nav><footer class="pie" data-astro-cid-ktanj4pa><p class="rotulo" data-astro-cid-ktanj4pa>Entrena COMP1 · COMP2 · COMP4</p><p class="rotulo fuente" data-astro-cid-ktanj4pa>Adaptado del tema I y del apartado «Grupos de líneas» del tema II del libro «Normalización básica. Dibujo técnico» · Dpto. de Expresión Gráfica y Proyectos de Ingeniería, UPV/EHU, y de las diapositivas de normalización de Expresión Gráfica, UPV/EHU. Las páginas del libro se citan por su pie impreso, tema y página. Los márgenes y el cajetín se han medido en las láminas A3 de la Escuela de Ingeniería de Gipuzkoa; los criterios citados son los de su hoja «Criterios para la corrección de ejercicios y exámenes», y la rúbrica, su «Rúbrica para láminas de Expresión Gráfica». Las figuras y los ejercicios son nuestros.</p></footer></div></div><script type="module">var e=document.querySelector(`[data-armazon]`),t=JSON.parse(e?.dataset.direcciones||`{}`),n=e=>{let n=e;try{n=decodeURIComponent(e)}catch{}let r=t[n];return!r||document.getElementById(n)?!1:(location.replace(r),!0)};if(e&&!n(location.hash.slice(1))){let t=[...e.querySelectorAll(`[data-pestana]`)];function r(n,r){e.dataset.panel=n;for(let e of t)e.dataset.pestana===n?e.setAttribute(`aria-current`,`page`):e.removeAttribute(`aria-current`);r&&history.replaceState(null,``,`#${n}`)}for(let e of t)e.addEventListener(`click`,t=>{t.preventDefault(),r(e.dataset.pestana,!0)});let i=e=>e===`ejercicios`||e.startsWith(`ej-`)?`ejercicios`:`teoria`;r(i(location.hash.slice(1)),!1),window.addEventListener(`hashchange`,()=>{let e=location.hash.slice(1);n(e)||r(i(e),!1)}),window.addEventListener(`beforeprint`,()=>e.dataset.panel=`todo`),window.addEventListener(`afterprint`,()=>r(i(location.hash.slice(1)),!1));let a=[...e.querySelectorAll(`#teoria figure.sim[id]`)],o=a[0],s=e.querySelector(`[data-ir-sim]`);if(o&&s){s.href=`#${o.id}`,e.querySelector(`[data-ir-sim-nombre]`).textContent=o.querySelector(`.sim-head h3`)?.textContent?.trim()??`ábrelo`,s.hidden=!1;let t=[...e.querySelectorAll(`#teoria h2[id]`)];for(let n of a){let r=t.filter(e=>e.compareDocumentPosition(n)&Node.DOCUMENT_POSITION_FOLLOWING).pop(),i=r&&e.querySelector(`.rail a[href="#${CSS.escape(r.id)}"] .t`);if(!i||i.querySelector(`.chip`))continue;let a=document.createElement(`span`);a.className=`chip`,a.textContent=`simulador`,i.append(a)}s.addEventListener(`click`,e=>{location.hash===s.hash&&(e.preventDefault(),o.scrollIntoView({block:`start`}))})}}</script></main><footer class="pie-edicion" style="border-top: 1px solid var(--rule); margin-top: 3rem; padding: 1rem 1.25rem 1.5rem; color: var(--faint); font-size: .8rem; text-align: center"><p style="margin: 0">Edición de una sola asignatura de <strong>Road to Ingeniería</strong>.<a href="/expresion-grafica/" style="margin-left: .6rem; color: inherit; text-decoration: underline; text-underline-offset: .2em">Portada y buscador de esta edición</a></p></footer><script>
+      /* Marca las fórmulas de bloque que no caben en su columna.
+       *
+       * `.katex-display` ya se puede desplazar de lado, pero **no lo dice**, y
+       * eso es peor que no poder: el 4 de septiembre de 2026, barriendo las
+       * 167 páginas, salieron **doce fórmulas cortadas** y la peor era el
+       * enunciado de un ejercicio de Álgebra que define tres conjuntos y solo
+       * enseñaba dos y medio — con la pregunta pidiendo «cuáles de los tres».
+       * El lector ve una fórmula que acaba a media letra y no tiene por qué
+       * imaginarse que hay más a la derecha.
+       *
+       * Se hace aquí, con JavaScript, porque el CSS no sabe si algo desborda.
+       * Es lo mínimo: una clase, y el resto lo pinta `base.css`. */
+      (() => {
+        const marca = () => {
+          for (const f of document.querySelectorAll('.katex-display')) {
+            const d = f.firstElementChild;
+            f.classList.toggle('se-desplaza', !!d && d.scrollWidth > f.clientWidth + 4);
+          }
+        };
+        const cuando = () => requestAnimationFrame(marca);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(cuando);
+        else cuando();
+        addEventListener('resize', cuando);
+        /* Los paneles y los bloques plegables cambian el ancho al abrirse. */
+        addEventListener('toggle', cuando, true);
+        document.addEventListener('click', cuando);
+      })();
+    </script></body></html>
